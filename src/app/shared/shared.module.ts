@@ -4,6 +4,7 @@ import { SharedComponentsModule } from './shared-components/shared-components.mo
 
 
 const shared:any = [
+  CommonModule,
   SharedComponentsModule
 ]
 
