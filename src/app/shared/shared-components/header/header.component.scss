@@ -7,7 +7,6 @@
     aside{
         margin: auto;
         padding: 10px 10px;
-        align-items: center;
         svg{
             color: rgb(255, 60, 0);
         }
@@ -16,6 +15,16 @@
             padding-bottom: 10px;
             svg{
                 padding-top: 10px;
+            }
+        }
+        .language{
+            width:45px;
+        }
+        .account{
+            border-radius: 50px;
+            border: 1px solid rgb(221, 221, 221);
+            mat-icon{
+                padding-top: 2px;
             }
         }
         div{
