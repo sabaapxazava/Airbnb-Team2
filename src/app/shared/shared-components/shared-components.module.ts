@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CardComponent } from './card/card.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { MaterialModule } from 'src/app/core/material/material.module';
 
 const shared:any = [
   CommonModule,
@@ -18,6 +19,7 @@ const shared:any = [
     FooterComponent
   ],
   imports: [
+    MaterialModule
   ],
   exports:[
     [...shared]
