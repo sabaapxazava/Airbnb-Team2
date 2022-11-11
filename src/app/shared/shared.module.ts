@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { SharedComponentsModule } from './shared-components/shared-components.module';
+
 
 
 const shared:any = [
@@ -10,11 +10,7 @@ const shared:any = [
 
 @NgModule({
   declarations: [],
-  imports: [
-    [...shared]
-  ],
-  exports:[
-    [...shared]
-  ]
+  imports: [[...shared]],
+  exports: [[...shared]],
 })
-export class SharedModule { }
+export class SharedModule {}
