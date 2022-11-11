@@ -1,4 +1,70 @@
 <div class="card-block">
-    <h1>card</h1>
-    <h4>card</h4>
-</div>
+  <div class="card-group" style="width: 270px">
+    <div class="card">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li
+                data-target="#carouselExampleIndicators"
+                data-slide-to="0"
+                class="active"
+              ></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+              <div class="carousel-item active" *ngFor="let img of card.img">
+                <img [src]="img" class="d-block w-100" alt="..." />
+              </div>
+            </div>
+            <button
+              class="carousel-control-prev"
+              type="button"
+              data-target="#carouselExampleIndicators"
+              data-slide="prev"
+            >
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </button>
+            <button
+              class="carousel-control-next"
+              type="button"
+              data-target="#carouselExampleIndicators"
+              data-slide="next"
+            >
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </button>
+          </div>
+          
+      <div class="card-body">
+        <h2 class="card-title">{{ card.title }}</h2>
+        <p class="card-text hotel-reiting">
+          <span
+            ><svg
+              viewBox="0 0 32 32"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+              role="presentation"
+              focusable="false"
+              style="
+                display: block;
+                height: 12px;
+                width: 12px;
+                fill: currentcolor;
+              "
+            >
+              <path
+                d="M15.094 1.579l-4.124 8.885-9.86 1.27a1 1 0 0 0-.542 1.736l7.293 6.565-1.965 9.852a1 1 0 0 0 1.483 1.061L16 25.951l8.625 4.997a1 1 0 0 0 1.482-1.06l-1.965-9.853 7.293-6.565a1 1 0 0 0-.541-1.735l-9.86-1.271-4.127-8.885a1 1 0 0 0-1.814 0z"
+                fill-rule="evenodd"
+              ></path></svg
+          ></span>
+          <span> {{ card.reiting }}</span>
+        </p>
+        <p class="card-text">
+          <b>$ {{ card.price }}</b> nigth
+        </p>
+      </div>
+    </div>
+  </div>
+</div> 
+

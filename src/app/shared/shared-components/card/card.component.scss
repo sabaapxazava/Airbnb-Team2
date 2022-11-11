@@ -1,0 +1,17 @@
+.card-title{
+    font-size: 15px;
+    font-weight: 600;
+}
+.hotel-reiting {
+  display: flex;
+  align-items: center;
+  :first-child{
+    svg{
+        margin-left: 0px !important;
+    }
+  }
+  :last-child {
+    font-size: 15px;
+    margin-left: 5px;
+  }
+}
