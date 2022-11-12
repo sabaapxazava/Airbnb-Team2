@@ -1,1 +1,3 @@
-<app-card></app-card>
+<article class="d-flex f-wrap">
+  <app-card *ngFor="let card of cards" [card]="card"></app-card>
+</article>

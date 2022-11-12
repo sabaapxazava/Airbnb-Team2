@@ -1,10 +1,11 @@
 .card-group {
   display: flex;
   align-items: flex-start;
+  margin-left: 15px;
 }
 
 .card {
-  max-width: 270px;
+  max-width: 300px;
   border-radius: 10px;
 }
 .card-title {
@@ -134,16 +135,24 @@
 
 // wishlist
 .wishlist-btn {
-  background-color:black  !important;
-  opacity: 0.6;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: inherit;
+  border: none;
   border-radius: 50%;
   transition: transform 0.25s ease;
-  padding: 4px 7px 3px 7px;
+  &:hover{
+    background: rgb(191, 191, 191);
+    transition: 0.3s;
+  }
   svg {
     display: block;
     fill: white !important;
-    width: 20px !important;
-    height: 20px !important;
+    width: 25px !important;
+    height: 25px !important;
     stroke: var(--f-mkcy-f);
     stroke-width: 2;
     overflow: visible;
