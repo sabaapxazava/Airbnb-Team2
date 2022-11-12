@@ -45,4 +45,8 @@ export class CardComponent implements OnInit {
       this.selectedIndex++
     }
   }
+
+  ono(){
+    console.log('add wishlist')
+  }
 }

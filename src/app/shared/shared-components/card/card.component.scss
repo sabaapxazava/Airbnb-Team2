@@ -1,10 +1,9 @@
 .card-group {
   display: flex;
   align-items: flex-start;
-  width: 30%;
 }
 
-.card{
+.card {
   max-width: 270px;
   border-radius: 10px;
 }
@@ -123,7 +122,30 @@
   font-size: 25px;
 }
 
-.btn-next{
+.btn-next {
   right: 0;
 }
 
+.wishlist {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+
+// wishlist
+.wishlist-btn {
+  background-color:black  !important;
+  opacity: 0.6;
+  border-radius: 50%;
+  transition: transform 0.25s ease;
+  padding: 4px 7px 3px 7px;
+  svg {
+    display: block;
+    fill: white !important;
+    width: 20px !important;
+    height: 20px !important;
+    stroke: var(--f-mkcy-f);
+    stroke-width: 2;
+    overflow: visible;
+  }
+}
