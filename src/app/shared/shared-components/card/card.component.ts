@@ -3,13 +3,50 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
-  styleUrls: ['./card.component.scss']
+  styleUrls: ['./card.component.scss'],
 })
 export class CardComponent implements OnInit {
+  cards = [
+    {
+      img: [
+        'https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg',
+        'https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        'https://images.pexels.com/photos/2017802/pexels-photo-2017802.jpeg?auto=compress&cs=tinysrgb&w=1600',
+      ],
+      title: 'Los Veneros, Punta Mita, Mexico',
+      reiting: '4.5',
+      price: 380,
+    },
+  ];
 
-  constructor() { }
+  selectedIndex = 0;
 
-  ngOnInit(): void {
+  constructor() {}
+
+  ngOnInit(): void {}
+
+  // dot click
+  selectImage(index: number) {
+    this.selectedIndex = index;
   }
 
+  onPrevClick(){
+    if(this.selectedIndex == 0){
+      this.selectedIndex = this.cards[0].img.length - 1
+    }else{
+      this.selectedIndex--
+    }
+  }
+
+  onNextClick(){
+    if(this.selectedIndex === this.cards[0].img.length - 1){
+      this.selectedIndex = 0 
+    }else{
+      this.selectedIndex++
+    }
+  }
+
+  ono(){
+    console.log('add wishlist')
+  }
 }
