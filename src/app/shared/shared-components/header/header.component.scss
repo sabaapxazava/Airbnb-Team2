@@ -13,6 +13,7 @@
         button{
             width: auto;
             padding-bottom: 10px;
+            border-radius: 50px;
             svg{
                 padding-top: 10px;
             }
@@ -30,6 +31,37 @@
         div{
             height: 50px;
         }
+        .header_language {
+            width: auto;
+            padding-top: 20px;
+            position: relative;
+            &:hover {
+                .langs_drop {
+                    opacity: 1;
+                    visibility: visible;
+                    pointer-events: all;
+                    -webkit-transform: translateY(0);
+                    transform: translateY(0);
+                }
+            }
+            .lang_flag {
+                cursor: pointer;
+                width: 30px;
+            }
+            .langs_drop {
+                position: absolute;
+                opacity: 0;
+                visibility: hidden;
+                pointer-events: none;
+                -webkit-transition: all .3s linear;
+                transition: all .3s linear;
+                -webkit-transform: translateY(-20px);
+                transform: translateY(-20px);
+                .lang_flag {
+                    margin-top: 10px;
+                }
+            }
+        }
     }
     .right{
         right: 0%;
@@ -37,4 +69,5 @@
     .left{
         left: 0%;
     }
+    
 }
