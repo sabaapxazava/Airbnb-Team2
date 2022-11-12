@@ -1,43 +1,42 @@
 <div class="card-block">
-  <div class="card-group" style="width: 270px">
-    <div class="card">
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-              <li
-                data-target="#carouselExampleIndicators"
-                data-slide-to="0"
-                class="active"
-              ></li>
-              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner">
-              <div class="carousel-item active" *ngFor="let img of card.img">
-                <img [src]="img" class="d-block w-100" alt="..." />
-              </div>
-            </div>
-            <button
-              class="carousel-control-prev"
-              type="button"
-              data-target="#carouselExampleIndicators"
-              data-slide="prev"
-            >
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </button>
-            <button
-              class="carousel-control-next"
-              type="button"
-              data-target="#carouselExampleIndicators"
-              data-slide="next"
-            >
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </button>
-          </div>
-          
+  <div class="card-group col-md-12">
+    <div class="card" *ngFor="let card of cards">
+      
+      <div class="carousel-container d-flex">
+        <img
+          *ngFor="let img of card.img; let i = index"
+          [src]="img"
+          alt=""
+          [ngClass]="{ 'image-active': selectedIndex === i }"
+          class="animation-slider"
+        />
+
+        <div class="carousel-dot-container">
+          <span
+            *ngFor="let dot of card.img; let i = index"
+            class="dot"
+            [ngClass]="{ active: selectedIndex === i }"
+            (click)="selectImage(i)"
+          ></span>
+        </div>
+
+        <button class="btn-carousel btn-prev">
+          <i
+            class="fas fa-arrow-circle-left icon-carousel icon-prev"
+            (click)="onPrevClick()"
+          ></i>
+        </button>
+
+        <button class="btn-carousel btn-next">
+          <i
+            class="fas fa-arrow-circle-right icon-carousel icon-next"
+            (click)="onNextClick()"
+          ></i>
+        </button>
+      </div>
+
       <div class="card-body">
-        <h2 class="card-title">{{ card.title }}</h2>
+        <p class="card-title">{{ card.title }}</p>
         <p class="card-text hotel-reiting">
           <span
             ><svg
@@ -66,5 +65,4 @@
       </div>
     </div>
   </div>
-</div> 
-
+</div>
