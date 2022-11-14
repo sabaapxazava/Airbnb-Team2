@@ -5,8 +5,8 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MainPageModule } from './main-page/main-page.module';
 import { RouterModule } from '@angular/router';
+import { ViewsModule } from './views/views.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,7 +15,7 @@ import { RouterModule } from '@angular/router';
     AppRoutingModule,
     CoreModule,
     SharedModule,
-    MainPageModule,
+    ViewsModule,
     BrowserAnimationsModule,
     RouterModule,
   ],

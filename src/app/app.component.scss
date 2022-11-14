@@ -1,5 +1,10 @@
 footer{
-    position: absolute;
-    bottom: 0px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
     width: 100%;
+}
+main{
+    padding-left: 80px;
+    padding-right: 80px;
 }
