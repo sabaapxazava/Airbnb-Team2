@@ -1,0 +1,73 @@
+<section class="rooms-and-beds">
+  <header>
+    <h4>Rooms and beds</h4>
+  </header>
+  <div class="title-and-buttons">
+    <h4>Bedrooms</h4>
+    <div
+      class="btn-group"
+      role="group"
+      aria-label="Basic radio toggle button group"
+    >
+      <div *ngFor="let item of bedrooms; let i = index">
+        <input
+          type="radio"
+          class="btn-check"
+          name="bedrooms"
+          id="bedrooms{{ i }}"
+          autocomplete="off"
+          [checked]="item == 0"
+        />
+        <label class="btn btn-outline-primary" for="bedrooms{{ i }}">{{
+          item == 0 ? "Any" : i
+        }}</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="title-and-buttons">
+    <h4>Beds</h4>
+    <div
+      class="btn-group"
+      role="group"
+      aria-label="Basic radio toggle button group"
+    >
+      <div *ngFor="let item of beds; let i = index">
+        <input
+          type="radio"
+          class="btn-check"
+          name="beds"
+          id="beds{{ i }}"
+          autocomplete="off"
+          [checked]="item == 0"
+        />
+        <label class="btn btn-outline-primary" for="beds{{ i }}">{{
+          item == 0 ? "Any" : i
+        }}</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="title-and-buttons">
+    <h4>Bathrooms</h4>
+    <div
+      class="btn-group"
+      role="group"
+      aria-label="Basic radio toggle button group"
+    >
+      <div *ngFor="let item of bathrooms; let i = index">
+        <input
+          type="radio"
+          class="btn-check"
+          name="bathrooms"
+          id="bathrooms{{ i }}"
+          autocomplete="off"
+          [checked]="item == 0"
+        />
+        <label class="btn btn-outline-primary" for="bathrooms{{ i }}">{{
+          item == 0 ? "Any" : i
+        }}</label>
+      </div>
+    </div>
+  </div>
+</section>

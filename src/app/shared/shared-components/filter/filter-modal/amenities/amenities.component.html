@@ -1,0 +1,74 @@
+<section class="amenities">
+  <header>
+    <h4>Amenities</h4>
+  </header>
+  <div class="essentials">
+    <h6>Essentials</h6>
+    <div class="checkbox-wrapper">
+      <div class="form-check" *ngFor="let item of amenities.essentials">
+        <label class="form-check-label" for="{{ item }}">
+          <span>{{ item }}</span>
+        </label>
+        <input
+          class="form-check-input"
+          type="checkbox"
+          value=""
+          id="{{ item }}"
+        />
+      </div>
+    </div>
+  </div>
+  <ng-container *ngIf="!showMore">
+    <div class="features">
+      <h6>Features</h6>
+      <div class="checkbox-wrapper">
+        <div class="form-check" *ngFor="let item of amenities.features">
+          <label class="form-check-label" for="{{ item }}">
+            <span>{{ item }}</span>
+          </label>
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="{{ item }}"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="location">
+      <h6>Location</h6>
+      <div class="checkbox-wrapper">
+        <div class="form-check" *ngFor="let item of amenities.location">
+          <label class="form-check-label" for="{{ item }}">
+            <span>{{ item }}</span>
+          </label>
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="{{ item }}"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="safety">
+      <h6>Safety</h6>
+      <div class="checkbox-wrapper">
+        <div class="form-check" *ngFor="let item of amenities.safety">
+          <label class="form-check-label" for="{{ item }}">
+            <span>{{ item }}</span>
+          </label>
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="{{ item }}"
+          />
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  <button type="button" class="more-less" (click)="onShowMore()">
+    {{ showMore ? "Show more" : "Show less" }}
+  </button>
+</section>

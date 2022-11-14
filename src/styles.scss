@@ -1,7 +1,6 @@
-
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
-@use '@angular/material' as mat;
+@use "@angular/material" as mat;
 // Plus imports for other components in your app.
 
 // Include the common styles for Angular Material. We include this here so that you only
@@ -19,13 +18,15 @@ $airbnb-team2-warn: mat.define-palette(mat.$red-palette);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$airbnb-team2-theme: mat.define-light-theme((
-  color: (
-    primary: $airbnb-team2-primary,
-    accent: $airbnb-team2-accent,
-    warn: $airbnb-team2-warn,
+$airbnb-team2-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $airbnb-team2-primary,
+      accent: $airbnb-team2-accent,
+      warn: $airbnb-team2-warn,
+    ),
   )
-));
+);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -34,5 +35,44 @@ $airbnb-team2-theme: mat.define-light-theme((
 
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+//-------------------------------------Filter
+.ngx-slider-pointer {
+  cursor: pointer !important;
+  width: 25px !important;
+  height: 25px !important;
+  top: -11px !important;
+  background: rgb(87, 84, 84) !important;
+  z-index: 3 !important;
+  border-radius: 16px !important;
+}
+
+.ngx-slider-pointer:after {
+  width: 0px !important;
+  height: 0px !important;
+}
+
+.ngx-slider-selection {
+  background: rgb(87, 84, 84) !important;
+}
+.ngx-slider-span.ngx-slider-bubble.ngx-slider-model-high,
+.ngx-slider-span.ngx-slider-bubble.ngx-slider-model-value,
+.ngx-slider-span.ngx-slider-bubble.ngx-slider-limit.ngx-slider-floor,
+.ngx-slider-span.ngx-slider-bubble.ngx-slider-limit.ngx-slider-ceil {
+  visibility: hidden !important;
+}
+.ngx-slider .ngx-slider-pointer.ngx-slider-active:after {
+  background-color: white !important;
+  border: none !important;
+}
+.showmodal {
+  background-color: rgba(220, 220, 220, 0.498) !important;
+}

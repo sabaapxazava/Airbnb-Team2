@@ -19,7 +19,6 @@ import { NgxSliderModule } from '@angular-slider/ngx-slider';
     ViewsModule,
     BrowserAnimationsModule,
     RouterModule,
-    NgModule,
     NgxSliderModule,
   ],
   providers: [],

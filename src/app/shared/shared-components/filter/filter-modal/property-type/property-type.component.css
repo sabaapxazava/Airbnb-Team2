@@ -1,0 +1,53 @@
+.property-type {
+  height: 30vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.hagt-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.hagt {
+  height: 6rem;
+  width: 8.5rem;
+  position: relative;
+}
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  border-radius: 10%;
+  cursor: pointer;
+  border: 1px solid rgb(222, 217, 217);
+  outline: none;
+  transition: all 0.5s;
+}
+
+input[type="checkbox"]:hover {
+  border: 0.1rem solid rgb(102, 98, 98);
+}
+input[type="checkbox"]:checked {
+  border: 0.1rem solid rgb(102, 98, 98);
+  background-color: rgba(218, 217, 217, 0.381);
+}
+label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  height: 80%;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  cursor: pointer;
+  margin-left: 10%;
+}
+label .hagt-img {
+  height: 35%;
+  width: 25%;
+}

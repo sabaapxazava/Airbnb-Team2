@@ -1,0 +1,41 @@
+header {
+  margin-bottom: 5%;
+}
+
+.checkbox-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.form-check {
+  width: 50%;
+  margin-bottom: 1.5%;
+}
+
+.form-check-input {
+  height: 1.5rem;
+  width: 1.5rem;
+  cursor: pointer;
+}
+
+label {
+  margin-left: 1.2rem;
+}
+span {
+  font-size: 1.2rem;
+  color: rgb(42, 42, 42);
+}
+
+h6 {
+  margin-top: 5%;
+  margin-bottom: 2%;
+}
+
+.more-less {
+  background-color: inherit;
+  border: none;
+  margin-top: 3%;
+  font-weight: 600;
+  text-decoration: underline;
+}
