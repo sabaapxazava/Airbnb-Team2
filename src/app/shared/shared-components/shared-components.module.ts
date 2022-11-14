@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CardComponent } from './card/card.component';
-
 import { MaterialModule } from 'src/app/core/material/material.module';
 import { FilterComponent } from './filter/filter.component';
 import { FilterButtonsSliderComponent } from './filter/filter-buttons-slider/filter-buttons-slider.component';
@@ -16,12 +15,22 @@ import { RoomsAndBedsComponent } from './filter/filter-modal/rooms-and-beds/room
 import { TypeOfPlaceComponent } from './filter/filter-modal/type-of-place/type-of-place.component';
 import { FilterHeaderComponent } from './filter/filter-modal/filter-header/filter-header.component';
 import { FilterFooterComponent } from './filter/filter-modal/filter-footer/filter-footer.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 const shared: any = [
   CommonModule,
   CardComponent,
-  FilterHeaderComponent,
+  HeaderComponent,
+  FooterComponent,
+  AmenitiesComponent,
   FilterFooterComponent,
+  FilterHeaderComponent,
+  HostLanguageComponent,
+  PriceRangeComponent,
+  PropertyTypeComponent,
+  RoomsAndBedsComponent,
+  TypeOfPlaceComponent,
   FilterComponent,
   FilterButtonsSliderComponent,
   FilterModalComponent,
@@ -30,19 +39,19 @@ const shared: any = [
 @NgModule({
   declarations: [
     CardComponent,
-
-    FilterComponent,
-    FilterButtonsSliderComponent,
-    FilterModalComponent,
-    FilterComponent,
+    HeaderComponent,
+    FooterComponent,
     AmenitiesComponent,
+    FilterFooterComponent,
+    FilterHeaderComponent,
     HostLanguageComponent,
     PriceRangeComponent,
     PropertyTypeComponent,
     RoomsAndBedsComponent,
     TypeOfPlaceComponent,
-    FilterHeaderComponent,
-    FilterFooterComponent,
+    FilterComponent,
+    FilterButtonsSliderComponent,
+    FilterModalComponent,
   ],
   imports: [MaterialModule, FormsModule, NgxSliderModule],
   exports: [[...shared]],
