@@ -7,6 +7,7 @@ import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { ViewsModule } from './views/views.module';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,6 +19,7 @@ import { ViewsModule } from './views/views.module';
     ViewsModule,
     BrowserAnimationsModule,
     RouterModule,
+    NgxSliderModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

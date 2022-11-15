@@ -1,0 +1,25 @@
+<section class="price-range">
+  <header>
+    <h3>Price range</h3>
+    <p>The average nightly price is €138</p>
+  </header>
+  <div class="price-input">
+    <div class="field">
+      <span>Min</span>
+      <input type="number" [(ngModel)]="minValue" class="inpu-min" />
+    </div>
+    <div class="separator">-</div>
+    <div class="field">
+      <span>Max</span>
+      <input type="number" [(ngModel)]="maxValue" class="inpu-max" />
+    </div>
+  </div>
+
+  <div class="range-input">
+    <ngx-slider
+      [(value)]="minValue"
+      [(highValue)]="maxValue"
+      [options]="options"
+    ></ngx-slider>
+  </div>
+</section>
