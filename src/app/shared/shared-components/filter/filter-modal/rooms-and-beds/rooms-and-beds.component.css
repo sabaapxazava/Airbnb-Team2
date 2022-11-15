@@ -1,0 +1,42 @@
+.rooms-and-beds {
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.btn-group {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+h4 {
+  margin-bottom: 2%;
+  font-weight: 400;
+}
+.btn {
+  color: rgb(66, 63, 63) !important;
+  border-color: rgb(178, 172, 172) !important;
+  width: 3.5rem !important;
+  border-radius: 1.5rem !important;
+}
+
+.btn-check:checked + .btn,
+.btn.active,
+.btn.show,
+.btn:first-child:active,
+:not(.btn-check) + .btn:active {
+  background-color: rgb(66, 63, 63) !important;
+  border-color: rgb(66, 63, 63) !important;
+  color: white !important;
+}
+.btn-outline-primary {
+  --bs-btn-border-color: rgb(30, 27, 27) !important;
+}
+.btn:hover {
+  background-color: rgba(218, 218, 218, 0.548) !important;
+}
+h3 {
+  font-weight: 500;
+}

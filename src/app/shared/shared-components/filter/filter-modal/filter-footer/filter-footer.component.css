@@ -1,0 +1,13 @@
+.modal-footer {
+  width: 100%;
+  display: flex !important;
+  justify-content: space-between !important;
+}
+
+.clear-all {
+  background-color: inherit;
+  border: none;
+  margin-top: 3%;
+  font-weight: 600;
+  text-decoration: underline;
+}

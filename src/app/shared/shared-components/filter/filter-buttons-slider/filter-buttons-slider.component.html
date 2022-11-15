@@ -1,0 +1,22 @@
+<div class="filter-slider-button-wrapper">
+  <button id="btn-left" class="slider-btn btn-left" (click)="onScrollLeft()">
+    🡸
+  </button>
+  <div class="slider-icons-wrapper">
+    <div
+      class="slider-icons"
+      *ngFor="let item of filterSliderButtonsList"
+      (mousemove)="dragging($event)"
+      (mousedown)="dragStart($event)"
+      (mouseup)="dragStop()"
+    >
+      <button class="filter-slider-button">
+        <img class="filter-slider-img" [src]="item.image" />
+        <span>{{ item.title }}</span>
+      </button>
+    </div>
+  </div>
+  <button id="btn-right" class="slider-btn btn-right" (click)="onScrollRight()">
+    🡺
+  </button>
+</div>

@@ -1,0 +1,40 @@
+<section class="host-language">
+  <header>
+    <h4>Host language</h4>
+  </header>
+  <div class="checkbox-wrapper">
+    <div class="form-check" *ngFor="let item of hostLanguage.slice(0, 4)">
+      <ng-container>
+        <label class="form-check-label" for="{{ item }}">
+          <span>{{ item }}</span>
+        </label>
+        <input
+          class="form-check-input"
+          type="checkbox"
+          value=""
+          id="{{ item }}"
+        />
+      </ng-container>
+    </div>
+    <ng-container *ngIf="!showMore">
+      <div
+        class="form-check"
+        *ngFor="let item of hostLanguage.slice(4, hostLanguage.length)"
+      >
+        <label class="form-check-label" for="{{ item }}">
+          <span>{{ item }}</span>
+        </label>
+        <input
+          class="form-check-input"
+          type="checkbox"
+          value=""
+          id="{{ item }}"
+        />
+      </div>
+    </ng-container>
+
+    <button type="button" class="more-less" (click)="onShowMore()">
+      {{ showMore ? "Show more" : "Show less" }}
+    </button>
+  </div>
+</section>
