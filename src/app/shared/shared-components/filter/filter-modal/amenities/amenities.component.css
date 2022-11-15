@@ -24,7 +24,7 @@ span {
   color: rgb(42, 42, 42);
 }
 
-h6 {
+h4 {
   margin-top: 5%;
   margin-bottom: 2%;
 }
@@ -35,4 +35,7 @@ h6 {
   margin-top: 3%;
   font-weight: 600;
   text-decoration: underline;
+}
+h3 {
+  font-weight: 500;
 }

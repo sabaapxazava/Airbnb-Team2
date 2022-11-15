@@ -1,16 +1,15 @@
 .filter-slider-button-wrapper {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  background-color: red;
-}
-.slider-icons-wrapper {
-  width: 90rem;
+  width: 83vmax;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+.slider-icons-wrapper {
+  width: 100%;
+  margin: 0 2.5rem;
+  display: flex;
   overflow: hidden;
   scroll-behavior: smooth;
-  background-color: green;
 }
 
 .filter-slider-button {
@@ -46,4 +45,15 @@ span {
 }
 .slider-btn:hover {
   transform: scale(1.1);
+}
+
+@media (max-width: 2000px) {
+  .filter-slider-button-wrapper {
+    width: 80vmax;
+  }
+}
+@media (max-width: 1500px) {
+  .filter-slider-button-wrapper {
+    width: 75vmax;
+  }
 }

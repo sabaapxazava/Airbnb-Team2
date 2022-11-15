@@ -37,3 +37,6 @@ h4 {
 .btn:hover {
   background-color: rgba(218, 218, 218, 0.548) !important;
 }
+h3 {
+  font-weight: 500;
+}
