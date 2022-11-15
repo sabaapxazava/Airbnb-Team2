@@ -1,16 +1,18 @@
 .filter-area {
   display: flex;
   justify-content: space-between;
-  padding: 0 5%;
+  width: 100%;
+  height: 80px;
+  padding-right: 80px;
+  padding-left: 80px;
 }
 .buttons-slider {
-  height: 10vh;
   width: 90%;
+  overflow: hidden;
   display: flex;
   align-items: center;
 }
 .filter-modal-area {
   display: flex;
   align-items: center;
-  height: 10vh;
 }

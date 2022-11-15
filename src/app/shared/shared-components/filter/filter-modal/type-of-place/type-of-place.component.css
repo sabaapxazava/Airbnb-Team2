@@ -5,6 +5,7 @@ span {
   display: flex;
   flex-wrap: wrap;
   margin-top: 2.2rem;
+  background-color: red;
 }
 .form-check {
   width: 50%;

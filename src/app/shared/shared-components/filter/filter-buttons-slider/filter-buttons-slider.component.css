@@ -1,15 +1,16 @@
 .filter-slider-button-wrapper {
-  width: 90rem;
+  width: 100%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  background-color: red;
 }
 .slider-icons-wrapper {
-  width: 90%;
+  width: 90rem;
   display: flex;
   justify-content: space-between;
   overflow: hidden;
   scroll-behavior: smooth;
+  background-color: green;
 }
 
 .filter-slider-button {
