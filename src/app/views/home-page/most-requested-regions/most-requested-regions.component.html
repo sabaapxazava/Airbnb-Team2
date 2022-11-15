@@ -1,1 +1,7 @@
-<p>most-requested-regions works!</p>
+<article class="popular-hotel-by-region">
+  <div class="row">
+    <div class="col-md-2" *ngFor="let card of cards">
+      <app-card [card]="card"></app-card>
+    </div>
+  </div>
+</article>

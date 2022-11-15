@@ -1,3 +1,7 @@
-<article class="d-flex f-wrap">
-  <app-card *ngFor="let card of cards" [card]="card"></app-card>
+<article class="most-popular-hotel">
+  <div class="row">
+    <div class="col-md-2" *ngFor="let card of cards">
+      <app-card [card]="card"></app-card>
+    </div>
+  </div>
 </article>
