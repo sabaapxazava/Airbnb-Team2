@@ -1,11 +1,12 @@
-.card-group {
-  display: flex;
-  align-items: flex-start;
-  margin-right: 15px;
-}
+// .card-group {
+//   display: flex;
+//   align-items: flex-start;
+//   margin: 15px 15px 0px 0px;
+// }
 
 .card {
-  max-width: 300px;
+  // max-width: 300px;
+  margin-bottom: 15px;
   border-radius: 10px;
 }
 .card-title {
@@ -38,6 +39,7 @@
   height: 250px;
   display: none;
   border-radius: 10px 10px 0px 0px;
+  object-fit: cover;
 }
 .carousel-container img.image-active {
   display: block;
