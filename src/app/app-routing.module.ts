@@ -1,11 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomePageComponent } from './views/home-page/home-page.component';
+import { InnerHotelPgComponent } from './views/inner-hotel-pg/inner-hotel-pg.component';
 
 const routes: Routes = [
   {
     path: '',
     component: HomePageComponent,
+  },
+  {
+    path: 'hotel/:id',
+    component: InnerHotelPgComponent,
   },
 ];
 
