@@ -1,5 +1,5 @@
 .filter-slider-button-wrapper {
-  width: 83vmax;
+  width: 71vmax !important;
   display: flex;
   justify-content: space-between;
   align-items: center;
