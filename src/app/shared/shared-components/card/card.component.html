@@ -1,7 +1,8 @@
 <div class="card-group">
-  <div class="card" routerLink="/hotel/{{ card.id }}">
+  <div class="card">
     <div class="carousel-container d-flex">
       <img
+      routerLink="/hotel/{{ card.id }}"
         *ngFor="let img of card.img; let i = index"
         [src]="img"
         alt=""
@@ -33,7 +34,7 @@
       </button>
     </div>
 
-    <div class="card-body">
+    <div class="card-body" routerLink="/hotel/{{ card.id }}">
       <p class="card-title">{{ card.title }}</p>
       <p class="card-text hotel-reiting">
         <span
