@@ -9,6 +9,8 @@ import { ActivatedRoute } from '@angular/router';
 export class InnerHotelPgComponent implements OnInit {
   currentHotel = {
     image: 'https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg',
+    title: 'Los Veneros, Punta Mita, Mexico',
+    address: '12, square times , Mexico, America',
   };
 
   constructor(private activatedRoute: ActivatedRoute) {}

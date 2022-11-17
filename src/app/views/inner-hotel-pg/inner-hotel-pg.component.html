@@ -1,17 +1,21 @@
 <!-- <h1>This is the page of your chosen hotel !!</h1>
 <h3>This hotel's ID is <b>{{hotelId}}</b></h3> -->
 
-<section>
-  <div class="col col-md-12 ineerBody">
-    <img [src]="currentHotel.image" class="card-img-top" alt="..." />
+<section class="col-md-12 cont-max-width cont-max-width m-auto">
+  <div class="col col-md-12">
+    <img [src]="currentHotel.image" class="card-img-top bannerImg" alt="..." />
   </div>
-</section>
+  <div class="com-md-12 d-flex">
+    <aside class="col-md-8">
+      <div class="d-flex title-star">
+        <h2>{{ currentHotel.title }}</h2>
+        <p class="star">✨✨✨✨✨</p>
+      </div>
+      <p>{{ currentHotel.address }}</p>
+    </aside>
 
-<section class="col-md-12 cont-max-width d-flex cont-max-width m-auto">
-  <aside class="col-md-8">
-    <p>test</p>
-  </aside>
-  <aside class="col-md-4">
-    <p>test right</p>
-  </aside>
+    <aside class="col-md-4">
+      <p>test right</p>
+    </aside>
+  </div>
 </section>
