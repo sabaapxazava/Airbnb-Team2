@@ -13,7 +13,7 @@ const shared: any = [
   MostRequestedHotelsComponent,
   MostRequestedRegionsComponent,
   FilteredHotelsComponent,
-  InnerHotelPgComponent
+  InnerHotelPgComponent,
 ];
 
 @NgModule({
