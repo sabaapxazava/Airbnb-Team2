@@ -17,6 +17,7 @@ import { FilterHeaderComponent } from './filter/filter-modal/filter-header/filte
 import { FilterFooterComponent } from './filter/filter-modal/filter-footer/filter-footer.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { AppRoutingModule } from 'src/app/app-routing.module';
 
 const shared: any = [
   CommonModule,
@@ -53,7 +54,7 @@ const shared: any = [
     FilterButtonsSliderComponent,
     FilterModalComponent,
   ],
-  imports: [MaterialModule, FormsModule, NgxSliderModule],
+  imports: [MaterialModule, FormsModule, NgxSliderModule,AppRoutingModule],
   exports: [[...shared]],
 })
 export class SharedComponentsModule {}
