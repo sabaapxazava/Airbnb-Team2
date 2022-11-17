@@ -7,13 +7,15 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./inner-hotel-pg.component.scss'],
 })
 export class InnerHotelPgComponent implements OnInit {
+  currentHotel = {
+    image: 'https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg',
+  };
+
   constructor(private activatedRoute: ActivatedRoute) {}
 
-
-  hotelId = this.activatedRoute.snapshot.params['id']
+  hotelId = this.activatedRoute.snapshot.params['id'];
 
   ngOnInit(): void {
-  console.log(this.hotelId);
+    console.log(this.hotelId);
   }
-  
 }
