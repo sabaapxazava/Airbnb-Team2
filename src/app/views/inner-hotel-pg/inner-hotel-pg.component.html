@@ -64,15 +64,19 @@
           Reserve
         </button>
 
-        <div class="chooseDays">
-          <p class="daysAndPrice">
-            Number of days: <b>{{ numberOfDays }}</b>
+        <div class="chooseDays d-flex">
+          <p class="daysAndPrice">Number of days:</p>
+          <p class="daysAndPrice number-of-days">
+            <b>{{ numberOfDays }}</b>
           </p>
         </div>
         <hr />
-        <div class="cost">
+        <div class="cost d-flex">
           <p class="daysAndPrice">
-            Total <b>{{ cost }} $</b>
+            <b>Total </b>
+          </p>
+          <p class="daysAndPrice total-cost">
+            <b>{{ cost }} $</b>
           </p>
         </div>
       </div>
