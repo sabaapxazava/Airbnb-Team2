@@ -12,6 +12,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { NgImageSliderModule } from 'ng-image-slider';
 
 const shared: any = [
   CommonModule,
@@ -28,6 +29,7 @@ const matShared: any = [
   MatDatepickerModule,
   ReactiveFormsModule,
   MatButtonModule,
+  NgImageSliderModule,
 ];
 
 @NgModule({

@@ -6,6 +6,7 @@
     <img [src]="currentHotel.image" class="card-img-top bannerImg" alt="..." />
   </div>
   <div class="col-md-12 d-flex">
+    <!-- left aside body start -->
     <aside class="col-md-7">
       <div class="d-flex title-star">
         <h2>{{ currentHotel.title }}</h2>
@@ -19,10 +20,19 @@
       <p>
         {{ currentHotel.description }}
       </p>
-
+      <hr />
+      <!-- start image slider -->
+      <h3>Hotel Rooms</h3>
+      <ng-image-slider
+        [images]="currentHotel.hotelRoomsImages"
+        #nav
+      ></ng-image-slider>
+      <!-- finish image slider -->
       <hr />
     </aside>
-
+    <!-- left aside body finish -->
+    <!-- --------------------------------- -->
+    <!-- right aside body start -->
     <aside class="col-md-4">
       <div class="col col-md-12 calculator">
         <p class="price">
@@ -81,5 +91,6 @@
         </div>
       </div>
     </aside>
+    <!-- right aside body finish -->
   </div>
 </section>
