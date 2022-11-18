@@ -8,6 +8,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { ViewsModule } from './views/views.module';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
+import { MaterialModule } from './core/material/material.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,6 +22,8 @@ import { NgxSliderModule } from '@angular-slider/ngx-slider';
     BrowserAnimationsModule,
     RouterModule,
     NgxSliderModule,
+    MaterialModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
