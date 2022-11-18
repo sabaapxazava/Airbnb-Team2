@@ -16,22 +16,16 @@
             margin-top: auto;
             margin-bottom: auto;
             border-radius: 50px;
-            height: 50px;
             svg{
                 padding-top: 10px;
             }
         }
-        .language{
-            width:45px;
-        }
-        .account{
-            margin-top: 10px;
-            border-radius: 50px;
-            border: 1px solid rgb(221, 221, 221);
-            height: 50px !important;
+        app-account{
+            margin-top: auto;
+            margin-bottom: auto;
         }
         div{
-            height: 50px;
+            height: 30px;
         }
         .header_language {
             width: auto;

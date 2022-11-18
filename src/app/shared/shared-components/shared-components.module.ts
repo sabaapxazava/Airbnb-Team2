@@ -18,11 +18,13 @@ import { FilterFooterComponent } from './filter/filter-modal/filter-footer/filte
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { AppRoutingModule } from 'src/app/app-routing.module';
+import { AccountComponent } from './header/account/account.component';
 
 const shared: any = [
   CommonModule,
   CardComponent,
   HeaderComponent,
+  AccountComponent,
   FooterComponent,
   AmenitiesComponent,
   FilterFooterComponent,
@@ -41,6 +43,7 @@ const shared: any = [
   declarations: [
     CardComponent,
     HeaderComponent,
+    AccountComponent,
     FooterComponent,
     AmenitiesComponent,
     FilterFooterComponent,
