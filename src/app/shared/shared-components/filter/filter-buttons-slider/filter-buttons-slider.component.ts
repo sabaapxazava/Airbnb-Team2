@@ -191,9 +191,9 @@ export class FilterButtonsSliderComponent implements OnInit {
   }
 
   onScrollLeft() {
-    this.sliderIcons.scrollLeft += 500;
+    this.sliderIcons.scrollLeft -= 500;
   }
   onScrollRight() {
-    this.sliderIcons.scrollLeft -= 500;
+    this.sliderIcons.scrollLeft += 500;
   }
 }

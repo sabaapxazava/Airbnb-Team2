@@ -3,8 +3,8 @@
   justify-content: space-between;
   width: 100%;
   height: 80px;
-  padding-left: 80px;
-  padding-right: 80px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 .buttons-slider {
   display: flex;
