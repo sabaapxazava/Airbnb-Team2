@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FilterModalDataComunicationService } from 'src/app/shared/shared-services/filter-modal-data-comunication.service';
 
 @Component({
   selector: 'app-amenities',
@@ -37,7 +38,62 @@ export class AmenitiesComponent implements OnInit {
     this.showMore = !this.showMore;
   }
 
-  constructor() {}
+  constructor(private filterModalInfo: FilterModalDataComunicationService) {}
 
   ngOnInit(): void {}
+
+  onEssntials(e: any) {
+    if (e.target.checked) {
+      this.filterModalInfo.filterModalInfo.amenities.essentials.push(
+        e.target.value
+      );
+    } else {
+      let index =
+        this.filterModalInfo.filterModalInfo.amenities.essentials.indexOf(
+          e.target.value
+        );
+      this.filterModalInfo.filterModalInfo.amenities.essentials.splice(
+        index,
+        1
+      );
+    }
+  }
+  onFeatures(e: any) {
+    if (e.target.checked) {
+      this.filterModalInfo.filterModalInfo.amenities.features.push(
+        e.target.value
+      );
+    } else {
+      let index =
+        this.filterModalInfo.filterModalInfo.amenities.features.indexOf(
+          e.target.value
+        );
+      this.filterModalInfo.filterModalInfo.amenities.features.splice(index, 1);
+    }
+  }
+  onLocation(e: any) {
+    if (e.target.checked) {
+      this.filterModalInfo.filterModalInfo.amenities.location.push(
+        e.target.value
+      );
+    } else {
+      let index =
+        this.filterModalInfo.filterModalInfo.amenities.location.indexOf(
+          e.target.value
+        );
+      this.filterModalInfo.filterModalInfo.amenities.location.splice(index, 1);
+    }
+  }
+  onSafety(e: any) {
+    if (e.target.checked) {
+      this.filterModalInfo.filterModalInfo.amenities.safety.push(
+        e.target.value
+      );
+    } else {
+      let index = this.filterModalInfo.filterModalInfo.amenities.safety.indexOf(
+        e.target.value
+      );
+      this.filterModalInfo.filterModalInfo.amenities.safety.splice(index, 1);
+    }
+  }
 }

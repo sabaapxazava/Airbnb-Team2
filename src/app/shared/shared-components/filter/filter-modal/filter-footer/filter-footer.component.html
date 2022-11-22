@@ -1,6 +1,13 @@
 <div class="modal-footer">
-  <button type="button" class="btn clear-all" data-bs-dismiss="modal">
+  <button
+    type="button"
+    class="btn clear-all"
+    data-bs-dismiss="modal"
+    (click)="onClearAll()"
+  >
     Clear All
   </button>
-  <button type="button" class="btn btn-dark">Show 7 homes</button>
+  <button type="button" class="btn btn-dark" (click)="onShowHomes()">
+    Show 7 homes
+  </button>
 </div>
