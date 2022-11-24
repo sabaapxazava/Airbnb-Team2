@@ -19,6 +19,8 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { AccountComponent } from './header/account/account.component';
+import { RegistrationComponent } from './auth/registration/registration.component';
+import { LoginComponent } from './auth/login/login.component';
 
 const shared: any = [
   CommonModule,
@@ -56,6 +58,8 @@ const shared: any = [
     FilterComponent,
     FilterButtonsSliderComponent,
     FilterModalComponent,
+    RegistrationComponent,
+    LoginComponent,
   ],
   imports: [MaterialModule, FormsModule, NgxSliderModule,AppRoutingModule],
   exports: [[...shared]],
