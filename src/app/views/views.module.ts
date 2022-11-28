@@ -13,6 +13,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { NgImageSliderModule } from 'ng-image-slider';
+import { DatePickerComponent } from './inner-hotel-pg/date-picker/date-picker.component';
 
 const shared: any = [
   CommonModule,
@@ -21,6 +22,7 @@ const shared: any = [
   MostRequestedRegionsComponent,
   FilteredHotelsComponent,
   InnerHotelPgComponent,
+  DatePickerComponent
 ];
 
 const matShared: any = [
@@ -39,6 +41,7 @@ const matShared: any = [
     MostRequestedRegionsComponent,
     FilteredHotelsComponent,
     InnerHotelPgComponent,
+    DatePickerComponent
   ],
   imports: [SharedModule, [...matShared]],
   exports: [[...shared]],

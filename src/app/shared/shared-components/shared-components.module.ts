@@ -19,6 +19,8 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { AccountComponent } from './header/account/account.component';
+import { DatePickerComponent } from '../../views/inner-hotel-pg/date-picker/date-picker.component';
+import { ImageSliderComponent } from './image-slider/image-slider.component';
 
 const shared: any = [
   CommonModule,
@@ -37,6 +39,7 @@ const shared: any = [
   FilterComponent,
   FilterButtonsSliderComponent,
   FilterModalComponent,
+  ImageSliderComponent
 ];
 
 @NgModule({
@@ -56,6 +59,7 @@ const shared: any = [
     FilterComponent,
     FilterButtonsSliderComponent,
     FilterModalComponent,
+    ImageSliderComponent,
   ],
   imports: [MaterialModule, FormsModule, NgxSliderModule,AppRoutingModule],
   exports: [[...shared]],

@@ -1,11 +1,4 @@
-import {
-  AfterContentChecked,
-  AfterViewChecked,
-  Component,
-  OnChanges,
-  OnInit,
-  SimpleChanges,
-} from '@angular/core';
+import {AfterContentChecked,AfterViewChecked,Component,OnChanges,OnInit,Output,SimpleChanges} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
 
@@ -15,11 +8,8 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./inner-hotel-pg.component.scss'],
 })
 export class InnerHotelPgComponent implements OnInit, AfterViewChecked {
-  range = new FormGroup({
-    start: new FormControl<Date | null>(null),
-    end: new FormControl<Date | null>(null),
-  });
 
+  @Output()
   currentHotel = {
     image: 'https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg',
     title: 'Los Veneros, Punta Mita, Mexico',
@@ -63,31 +53,19 @@ export class InnerHotelPgComponent implements OnInit, AfterViewChecked {
 
   cost: any = 0;
   numberOfDays: any = 0;
-  startDate!: any;
-  endDate!: any;
 
   constructor(private activatedRoute: ActivatedRoute) {}
+  ngAfterViewChecked(): void {
+    throw new Error('Method not implemented.');
+  }
 
   hotelId = this.activatedRoute.snapshot.params['id'];
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
-  ngAfterViewChecked(): void {
-    if (
-      this.range.controls.start.value != null &&
-      this.range.controls.end.value != null
-    ) {
-      this.startDate = this.range.controls.start.value.getDate();
-      this.endDate = this.range.controls.end.value.getDate();
-      this.numberOfDays = this.endDate - this.startDate;
-      this.cost = this.numberOfDays * this.currentHotel.price;
-
-      console.log('start date', this.startDate);
-      console.log('end date', this.endDate);
-      console.log(this.numberOfDays);
-
-      this.endDate = null;
-      this.startDate = null;
-    }
+  numberOfDaysChanged(numberofdays:any){
+    this.numberOfDays = numberofdays;
+    this.cost = this.numberOfDays * this.currentHotel.price;
   }
 }
