@@ -51,9 +51,6 @@ export class InnerHotelPgComponent implements OnInit, AfterViewChecked {
     ],
   };
 
-  cost: any = 0;
-  numberOfDays: any = 0;
-
   constructor(private activatedRoute: ActivatedRoute) {}
   ngAfterViewChecked(): void {
     throw new Error('Method not implemented.');
@@ -64,8 +61,4 @@ export class InnerHotelPgComponent implements OnInit, AfterViewChecked {
   ngOnInit(): void {
   }
 
-  numberOfDaysChanged(numberofdays:any){
-    this.numberOfDays = numberofdays;
-    this.cost = this.numberOfDays * this.currentHotel.price;
-  }
 }

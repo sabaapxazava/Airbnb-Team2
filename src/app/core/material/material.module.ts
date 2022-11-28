@@ -5,6 +5,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { NgImageSliderModule } from 'ng-image-slider';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatNativeDateModule } from '@angular/material/core';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const materialModules = [
   CommonModule,
@@ -12,7 +15,10 @@ const materialModules = [
   MatButtonModule,
   MatProgressBarModule,
   MatDatepickerModule,
-  NgImageSliderModule
+  NgImageSliderModule,
+  MatFormFieldModule,
+  MatNativeDateModule,
+  ReactiveFormsModule,
 ];
 
 @NgModule({
