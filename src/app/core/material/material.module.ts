@@ -22,8 +22,6 @@ const materialModules = [
   MatNativeDateModule,
   ReactiveFormsModule,
 ];
-
-import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [],
   imports: [
@@ -33,7 +31,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatProgressBarModule,
     MatDialogModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    [...materialModules]
   ],
   exports:[
     CommonModule,
@@ -42,7 +41,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatProgressBarModule,
     MatDialogModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    [...materialModules]
   ]
 })
 export class MaterialModule {}
