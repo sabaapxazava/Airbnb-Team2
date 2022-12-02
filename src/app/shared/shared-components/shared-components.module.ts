@@ -21,6 +21,8 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
 import { AccountComponent } from './header/account/account.component';
 import { DatePickerComponent } from './date-picker/date-picker.component';
 import { ImageSliderComponent } from './image-slider/image-slider.component';
+import { RegistrationComponent } from './auth/registration/registration.component';
+import { LoginComponent } from './auth/login/login.component';
 
 const shared: any = [
   CommonModule,
@@ -61,7 +63,9 @@ const shared: any = [
     FilterButtonsSliderComponent,
     FilterModalComponent,
     ImageSliderComponent,
-    DatePickerComponent
+    DatePickerComponent,
+    RegistrationComponent,
+    LoginComponent,
   ],
   imports: [MaterialModule, FormsModule, NgxSliderModule,AppRoutingModule],
   exports: [[...shared]],
