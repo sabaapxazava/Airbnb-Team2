@@ -7,7 +7,7 @@ import { FormGroup, FormControl } from '@angular/forms';
   templateUrl: './inner-hotel-pg.component.html',
   styleUrls: ['./inner-hotel-pg.component.scss'],
 })
-export class InnerHotelPgComponent implements OnInit, AfterViewChecked {
+export class InnerHotelPgComponent implements OnInit {
 
   @Output()
   currentHotel = {
@@ -52,9 +52,7 @@ export class InnerHotelPgComponent implements OnInit, AfterViewChecked {
   };
 
   constructor(private activatedRoute: ActivatedRoute) {}
-  ngAfterViewChecked(): void {
-    throw new Error('Method not implemented.');
-  }
+  
 
   hotelId = this.activatedRoute.snapshot.params['id'];
 
