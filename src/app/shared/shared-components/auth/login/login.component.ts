@@ -20,8 +20,24 @@ export class LoginComponent implements OnInit {
     let formValue: any = this.LoginForm.value;
     this.fireWorker.SignIn(formValue.email, formValue.password).then((res) => {
       res.subscribe((user: any) => {
-        console.log(user);
+        this.fireWorker.signInEmitter.emit(user);
       });
+    });
+  }
+
+  signInWithGoogle() {
+    this.fireWorker.googleAuth().then((res) => {
+      res.subscribe((user: any) => {
+        console.log(user);
+        this.fireWorker.signInEmitter.emit(user);
+      });
+    });
+  }
+
+  forgotPassword() {
+    let userEmail: any = this.LoginForm.value.email;
+    this.fireWorker.forgotPassword(userEmail).then(res =>{
+      console.log(res);
     });
   }
 }

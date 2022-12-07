@@ -1,15 +1,18 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import {
   AngularFirestore,
   AngularFirestoreDocument,
 } from '@angular/fire/compat/firestore';
+import * as firebase from 'firebase/auth';
 import { User } from '../shared-models/user.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FirebaseWorkerService {
+  signInEmitter: EventEmitter<any> = new EventEmitter();
+
   constructor(
     private firestore: AngularFirestore,
     private auth: AngularFireAuth
@@ -30,11 +33,19 @@ export class FirebaseWorkerService {
   }
 
   sendVerificationMail() {
-    // return this.auth.currentUser
-    //   .then((u: any) => u.sendEmailVerification())
-    //   .then(() => {
-    //     this.router.navigate(['verify-email-address']);
-    //   });
+    return this.auth.currentUser
+      .then((u: any) => u.sendEmailVerification())
+  }
+
+  forgotPassword(passwordResetEmail: string) {
+    return this.auth
+      .sendPasswordResetEmail(passwordResetEmail)
+      .then(() => {
+        window.alert('Password reset email sent, check your inbox.');
+      })
+      .catch((error) => {
+        window.alert(error);
+      });
   }
 
   setUserDataSingUp(fireUser: any, user: User) {
@@ -71,10 +82,33 @@ export class FirebaseWorkerService {
             // alert('sasces')
           }
         });
-        return this.getUserDoc(result.user?.uid ?? '')
+        return this.getUserDoc(result.user?.uid ?? '');
       })
       .catch((error) => {
         window.alert(error.message);
       });
+  }
+
+  // google Auth
+  googleAuth() {
+    return this.authLogin(new firebase.GoogleAuthProvider());
+  }
+
+  authLogin(provider: any) {
+    return this.auth
+      .signInWithPopup(provider)
+      .then((result) => {
+        return this.getUserDoc(result.user?.uid ?? '');
+      })
+      .catch((error) => {
+        window.alert(error);
+      });
+  }
+  // end google Auth
+
+  signOut() {
+    return this.auth.signOut().then(() => {
+      localStorage.removeItem('user');
+    });
   }
 }

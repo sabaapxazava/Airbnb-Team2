@@ -1,11 +1,23 @@
-
 <div class="dropdown">
-    <button class="btn dropdown-toggle account" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-        <mat-icon>menu</mat-icon>
-        <mat-icon>account_circle</mat-icon>
-    </button>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" (click)="openDialogLogin()">Login</a></li>
-      <li><a class="dropdown-item" (click)="openDialogRegister()">Register</a></li>
-    </ul>
-  </div>
+  <button
+    class="btn dropdown-toggle account"
+    type="button"
+    data-bs-toggle="dropdown"
+    aria-expanded="false"
+  >
+    <mat-icon>menu</mat-icon>
+    <mat-icon>account_circle</mat-icon>
+  </button>
+  <ul class="dropdown-menu">
+    <li *ngIf="user == null">
+      <a class="dropdown-item" (click)="openDialogLogin()">Login</a>
+    </li>
+    <li *ngIf="user == null">
+      <a class="dropdown-item" (click)="openDialogRegister()">Register</a>
+    </li>
+    <li *ngIf="user != null">
+      <a class="dropdown-item"><b>{{ user.email }}</b></a>
+    </li>
+    <li *ngIf="user != null"><a class="dropdown-item">Sign Out</a></li>
+  </ul>
+</div>
