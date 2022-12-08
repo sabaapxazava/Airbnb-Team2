@@ -15,6 +15,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { NgImageSliderModule } from 'ng-image-slider';
 import { HotelInformationComponent } from './inner-hotel-pg/hotel-information/hotel-information.component';
 import { HotelReserveComponent } from './inner-hotel-pg/hotel-reserve/hotel-reserve.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const shared: any = [
   CommonModule,
@@ -23,7 +24,7 @@ const shared: any = [
   MostRequestedRegionsComponent,
   FilteredHotelsComponent,
   InnerHotelPgComponent,
-  
+  HttpClientModule,
 ];
 
 const matShared: any = [
@@ -43,7 +44,7 @@ const matShared: any = [
     FilteredHotelsComponent,
     InnerHotelPgComponent,
     HotelInformationComponent,
-    HotelReserveComponent
+    HotelReserveComponent,
   ],
   imports: [SharedModule, [...matShared]],
   exports: [[...shared]],

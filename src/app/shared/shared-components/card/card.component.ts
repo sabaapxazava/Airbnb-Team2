@@ -38,6 +38,4 @@ export class CardComponent implements OnInit {
   addCardInWishlist() {
     console.log('add wishlist');
   }
-
-
 }

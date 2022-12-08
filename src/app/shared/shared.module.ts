@@ -1,14 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { SharedComponentsModule } from './shared-components/shared-components.module';
+import { CategoryService } from './shared-services/category.service';
 
-import { SharedServicesModule } from './shared-services/shared-services.module';
-
-const shared: any = [
-  CommonModule,
-  SharedComponentsModule,
-  SharedServicesModule,
-];
+const shared: any = [CommonModule, SharedComponentsModule];
 
 @NgModule({
   declarations: [],

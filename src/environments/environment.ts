@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  baseCategoryApiUrl:
+    'http://airbnb-dev.us-east-1.elasticbeanstalk.com/api/Category',
 };
 
 /*
