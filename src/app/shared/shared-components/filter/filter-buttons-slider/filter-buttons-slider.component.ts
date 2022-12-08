@@ -24,7 +24,6 @@ export class FilterButtonsSliderComponent implements OnInit {
   readAllCategories() {
     this.categoryService.getAllCategories().subscribe((response) => {
       this.filterSliderButtonsList = response;
-      console.log(this.filterSliderButtonsList);
     });
   }
 
