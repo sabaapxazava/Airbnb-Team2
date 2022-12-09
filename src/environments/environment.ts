@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+
   firebaseConfig: {
     apiKey: 'AIzaSyChKG2J8kxMxfsSi2nX3iZDPoIrHlCxq9o',
     authDomain: 'airbnb-team2-init.firebaseapp.com',
@@ -13,6 +14,10 @@ export const environment = {
     appId: '1:125942658022:web:1416392f588e4b691e9c27',
     measurementId: 'G-H4J7N1LV3L',
   },
+
+  baseCategoryApiUrl:
+    'http://airbnb-dev.us-east-1.elasticbeanstalk.com/api/Category',
+
 };
 
 /*

@@ -42,7 +42,7 @@ const shared: any = [
   FilterButtonsSliderComponent,
   FilterModalComponent,
   ImageSliderComponent,
-  DatePickerComponent
+  DatePickerComponent,
 ];
 
 @NgModule({
@@ -67,7 +67,7 @@ const shared: any = [
     RegistrationComponent,
     LoginComponent,
   ],
-  imports: [MaterialModule, FormsModule, NgxSliderModule,AppRoutingModule],
+  imports: [MaterialModule, FormsModule, NgxSliderModule, AppRoutingModule],
   exports: [[...shared]],
 })
 export class SharedComponentsModule {}
