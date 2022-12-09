@@ -94,7 +94,7 @@ export class FirebaseWorkerService {
     );
     const userData: User = {
       id: fireUser.uid,
-      firstName: fireUser.displayName,
+      firstName: user.firstName,
       email: fireUser.email,
       lastName: user.lastName,
       phoneNumber: user.phoneNumber,
