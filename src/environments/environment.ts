@@ -6,18 +6,15 @@ export const environment = {
   production: false,
 
   firebaseConfig: {
-    apiKey: 'AIzaSyChKG2J8kxMxfsSi2nX3iZDPoIrHlCxq9o',
-    authDomain: 'airbnb-team2-init.firebaseapp.com',
-    projectId: 'airbnb-team2-init',
-    storageBucket: 'airbnb-team2-init.appspot.com',
-    messagingSenderId: '125942658022',
-    appId: '1:125942658022:web:1416392f588e4b691e9c27',
-    measurementId: 'G-H4J7N1LV3L',
+    apiKey: 'AIzaSyBKb3Uju1AUWO3BoGZLMTlbnGi83H-V7XE',
+    authDomain: 'airbnb-team2.firebaseapp.com',
+    projectId: 'airbnb-team2',
+    storageBucket: 'airbnb-team2.appspot.com',
+    messagingSenderId: '986153956513',
+    appId: '1:986153956513:web:8972b9de27010b5672ece0',
   },
-
   baseCategoryApiUrl:
     'http://airbnb-dev.us-east-1.elasticbeanstalk.com/api/Category',
-
 };
 
 /*
