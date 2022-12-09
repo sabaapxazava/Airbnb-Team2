@@ -4,7 +4,9 @@ import {
   AngularFirestore,
   AngularFirestoreDocument,
 } from '@angular/fire/compat/firestore';
+import { Router } from '@angular/router';
 import * as firebase from 'firebase/auth';
+import { Subscription } from 'rxjs';
 import { User } from '../shared-models/user.model';
 
 @Injectable({
@@ -12,18 +14,34 @@ import { User } from '../shared-models/user.model';
 })
 export class FirebaseWorkerService {
   signInEmitter: EventEmitter<any> = new EventEmitter();
+  signInSubscription!: Subscription;
 
   constructor(
     private firestore: AngularFirestore,
-    private auth: AngularFireAuth
+    private auth: AngularFireAuth,
+    private router: Router
   ) {}
+
+  signIn(email: string, password: string) {
+    return this.auth
+      .signInWithEmailAndPassword(email, password)
+      .then((result) => {
+        this.signInSubscription = this.getUserDoc(
+          result.user?.uid ?? ''
+        ).subscribe((response: any) => {
+          localStorage['user'] = JSON.stringify(response);
+        });
+      })
+      .catch((error) => {
+        window.alert(error.message);
+      });
+  }
 
   signUp(user: User, password: string) {
     return this.auth
       .createUserWithEmailAndPassword(user.email, password)
       .then((result) => {
         console.log(result, '---singUp');
-
         this.sendVerificationMail();
         this.setUserDataSingUp(result.user, user);
       })
@@ -32,9 +50,23 @@ export class FirebaseWorkerService {
       });
   }
 
-  sendVerificationMail() {
-    return this.auth.currentUser
-      .then((u: any) => u.sendEmailVerification())
+  googleAuth() {
+    return this.auth
+      .signInWithPopup(new firebase.GoogleAuthProvider())
+      .then((result) => {
+        return this.getUserDoc(result.user?.uid ?? '');
+      })
+      .catch((error) => {
+        window.alert(error);
+      });
+  }
+
+  signOut() {
+    return this.auth.signOut().then(() => {
+      localStorage.clear();
+      this.router.navigate(['/']);
+      this.signInSubscription.unsubscribe();
+    });
   }
 
   forgotPassword(passwordResetEmail: string) {
@@ -48,9 +80,15 @@ export class FirebaseWorkerService {
       });
   }
 
-  setUserDataSingUp(fireUser: any, user: User) {
-    console.log(user, '-- setUserData');
+  sendVerificationMail() {
+    return this.auth.currentUser.then((u: any) => u.sendEmailVerification());
+  }
 
+  private getUserDoc(id: string): any {
+    return this.firestore.collection('users').doc(id).valueChanges();
+  }
+
+  private setUserDataSingUp(fireUser: any, user: User) {
     const userRef: AngularFirestoreDocument<any> = this.firestore.doc(
       `users/${fireUser.uid}`
     );
@@ -65,50 +103,6 @@ export class FirebaseWorkerService {
     };
     return userRef.set(userData, {
       merge: true,
-    });
-  }
-
-  getUserDoc(id: string): any {
-    return this.firestore.collection('users').doc(id).valueChanges();
-  }
-
-  SignIn(email: string, password: string) {
-    return this.auth
-      .signInWithEmailAndPassword(email, password)
-      .then((result) => {
-        console.log(result, '---singIn');
-        this.auth.authState.subscribe((user) => {
-          if (user) {
-            // alert('sasces')
-          }
-        });
-        return this.getUserDoc(result.user?.uid ?? '');
-      })
-      .catch((error) => {
-        window.alert(error.message);
-      });
-  }
-
-  // google Auth
-  googleAuth() {
-    return this.authLogin(new firebase.GoogleAuthProvider());
-  }
-
-  authLogin(provider: any) {
-    return this.auth
-      .signInWithPopup(provider)
-      .then((result) => {
-        return this.getUserDoc(result.user?.uid ?? '');
-      })
-      .catch((error) => {
-        window.alert(error);
-      });
-  }
-  // end google Auth
-
-  signOut() {
-    return this.auth.signOut().then(() => {
-      localStorage.removeItem('user');
     });
   }
 }

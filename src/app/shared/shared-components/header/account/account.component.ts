@@ -17,9 +17,11 @@ export class AccountComponent implements OnInit {
     private firebaseWorker: FirebaseWorkerService
   ) {}
   ngOnInit(): void {
-    this.firebaseWorker.signInEmitter.subscribe((res) => {
-      this.user = res;
-    });
+    // this.firebaseWorker.signInEmitter.subscribe((res) => {
+    //   this.user = res;
+    // });
+    let userFromLocalStorage = JSON.parse(localStorage.getItem('user') || '');
+    this.user = userFromLocalStorage;
   }
 
   openDialogRegister() {
@@ -27,5 +29,9 @@ export class AccountComponent implements OnInit {
   }
   openDialogLogin() {
     this.dialog.open(LoginComponent);
+  }
+
+  singOut() {
+    this.firebaseWorker.signOut();
   }
 }

@@ -18,10 +18,10 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     let formValue: any = this.LoginForm.value;
-    this.fireWorker.SignIn(formValue.email, formValue.password).then((res) => {
-      res.subscribe((user: any) => {
-        this.fireWorker.signInEmitter.emit(user);
-      });
+    this.fireWorker.signIn(formValue.email, formValue.password).then((res) => {
+      // res.subscribe((user: any) => {
+      //   this.fireWorker.signInEmitter.emit(user);
+      // });
     });
   }
 

@@ -16,8 +16,12 @@
       <a class="dropdown-item" (click)="openDialogRegister()">Register</a>
     </li>
     <li *ngIf="user != null">
-      <a class="dropdown-item"><b>{{ user.email }}</b></a>
+      <a class="dropdown-item"
+        ><b>{{ user.email }}</b></a
+      >
     </li>
-    <li *ngIf="user != null"><a class="dropdown-item">Sign Out</a></li>
+    <li *ngIf="user != null">
+      <a class="dropdown-item" (click)="singOut()">Sign Out</a>
+    </li>
   </ul>
 </div>
