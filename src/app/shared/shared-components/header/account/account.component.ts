@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { FirebaseWorkerService } from 'src/app/shared/shared-services/firebase-worker.service';
-import { LoginComponent } from '../../auth/login/login.component';
-import { RegistrationComponent } from '../../auth/registration/registration.component';
+import {Component, OnInit} from '@angular/core';
+import {MatDialog} from '@angular/material/dialog';
+import {FirebaseWorkerService} from 'src/app/shared/shared-services/firebase-worker.service';
+import {LoginComponent} from '../../auth/login/login.component';
+import {RegistrationComponent} from '../../auth/registration/registration.component';
+import {EventManagerService} from "../../../shared-services/event-manager.service";
 
 @Component({
   selector: 'app-account',
@@ -14,14 +15,42 @@ export class AccountComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
-    private firebaseWorker: FirebaseWorkerService
-  ) {}
+    private firebaseWorker: FirebaseWorkerService,
+
+    private eventManagerService: EventManagerService
+  ) {
+
+    this.eventManagerService.loginEventHTMLHandler.subscribe({
+      next: (msg: any) => {
+        this.showProfile(msg)
+      }
+    })
+
+    this.eventManagerService.logoutEventHTMLHandler.subscribe({
+      next: () => {
+        this.clearProfile()
+      }
+    })
+
+  }
   ngOnInit(): void {
-    // this.firebaseWorker.signInEmitter.subscribe((res) => {
-    //   this.user = res;
-    // });
-    let userFromLocalStorage = JSON.parse(localStorage.getItem('user') || '');
-    this.user = userFromLocalStorage;
+    const localUser: string | null = localStorage.getItem('user')
+
+    this.showProfile(localUser)
+  }
+
+  showProfile(data:any):void{
+    if(data){
+      if(typeof data !== 'object'){
+        this.user = JSON.parse(data || '');
+      }else{
+        this.user = data
+      }
+    }
+  }
+
+  clearProfile():void {
+    this.user = null
   }
 
   openDialogRegister() {
@@ -34,4 +63,5 @@ export class AccountComponent implements OnInit {
   singOut() {
     this.firebaseWorker.signOut();
   }
+
 }

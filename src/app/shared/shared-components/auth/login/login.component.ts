@@ -18,6 +18,8 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     let formValue: any = this.LoginForm.value;
+    //TODO need to write validation service
+
     this.fireWorker.signIn(formValue.email, formValue.password).then((res) => {
       // res.subscribe((user: any) => {
       //   this.fireWorker.signInEmitter.emit(user);
