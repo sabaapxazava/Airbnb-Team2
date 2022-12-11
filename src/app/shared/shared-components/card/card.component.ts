@@ -1,4 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { MatDialog } from '@angular/material/dialog';
+import { LoginComponent } from '../auth/login/login.component';
 
 @Component({
   selector: 'app-card',
@@ -10,7 +13,17 @@ export class CardComponent implements OnInit {
 
   selectedIndex = 0;
 
-  constructor() {}
+  auth!: boolean;
+  constructor(private angularFireAuth: AngularFireAuth,private dialog: MatDialog,) {
+    var self = this;
+    this.angularFireAuth.onAuthStateChanged(function (user) {
+      if (user) {
+        self.auth = true;
+      } else {
+        self.auth = false;
+      }
+    });
+  }
 
   ngOnInit(): void {}
 
@@ -36,6 +49,10 @@ export class CardComponent implements OnInit {
   }
 
   addCardInWishlist() {
-    console.log('add wishlist');
+    if (this.auth) {
+      alert('Added');
+    } else {
+      this.dialog.open(LoginComponent);
+    }
   }
 }

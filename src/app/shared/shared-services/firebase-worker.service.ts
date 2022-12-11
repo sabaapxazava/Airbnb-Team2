@@ -108,7 +108,7 @@ export class FirebaseWorkerService {
       email: fireUser.email,
       phoneNumber: user.phoneNumber,
       gender: user.gender,
-      verifiedUser: true,
+      verifiedUser: true
     };
     return userRef.set(userData, {
       merge: true,

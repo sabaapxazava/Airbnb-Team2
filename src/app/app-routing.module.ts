@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './core/guards/auth.guard';
 import { HomePageComponent } from './views/home-page/home-page.component';
 import { InnerHotelPgComponent } from './views/inner-hotel-pg/inner-hotel-pg.component';
 
@@ -11,6 +12,7 @@ const routes: Routes = [
   {
     path: 'hotel/:id',
     component: InnerHotelPgComponent,
+    canActivate: [],
   },
 ];
 
