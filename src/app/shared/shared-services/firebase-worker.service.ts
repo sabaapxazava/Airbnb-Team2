@@ -6,19 +6,19 @@ import {
 } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import * as firebase from 'firebase/auth';
-import { Subscription } from 'rxjs';
 import { User } from '../shared-models/user.model';
+import { EventManagerService } from './event-manager.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FirebaseWorkerService {
   signInEmitter: EventEmitter<any> = new EventEmitter();
-  signInSubscription!: Subscription;
 
   constructor(
     private firestore: AngularFirestore,
     private auth: AngularFireAuth,
+    private readonly eventManagerService: EventManagerService,
     private router: Router
   ) {}
 
@@ -26,11 +26,14 @@ export class FirebaseWorkerService {
     return this.auth
       .signInWithEmailAndPassword(email, password)
       .then((result) => {
-        this.signInSubscription = this.getUserDoc(
-          result.user?.uid ?? ''
-        ).subscribe((response: any) => {
-          localStorage['user'] = JSON.stringify(response);
-        });
+        const loginEventMessage: Record<string, any> = {
+          type: 'login',
+          body: result.user,
+        };
+
+        this.eventManagerService.autEventHandler.emit(loginEventMessage);
+
+        localStorage['user'] = JSON.stringify(result.user);
       })
       .catch((error) => {
         window.alert(error.message);
@@ -63,9 +66,16 @@ export class FirebaseWorkerService {
 
   signOut() {
     return this.auth.signOut().then(() => {
-      localStorage.clear();
+      const logoutEventMessage: Record<string, any> = {
+        type: 'logout',
+        body: localStorage.getItem('user'),
+      };
+
+      localStorage.removeItem('user');
+
+      this.eventManagerService.autEventHandler.emit(logoutEventMessage);
+
       this.router.navigate(['/']);
-      this.signInSubscription.unsubscribe();
     });
   }
 
@@ -85,7 +95,7 @@ export class FirebaseWorkerService {
   }
 
   private getUserDoc(id: string): any {
-    return this.firestore.collection('users').doc(id).valueChanges();
+    return this.firestore.collection('users').doc(id);
   }
 
   private setUserDataSingUp(fireUser: any, user: User) {
@@ -94,9 +104,8 @@ export class FirebaseWorkerService {
     );
     const userData: User = {
       id: fireUser.uid,
-      firstName: user.firstName,
+      fullName: user.fullName,
       email: fireUser.email,
-      lastName: user.lastName,
       phoneNumber: user.phoneNumber,
       gender: user.gender,
       verifiedUser: true,
