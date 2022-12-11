@@ -1,13 +1,9 @@
-<h1 mat-dialog-title>Login</h1>
+<h1 mat-dialog-title>Registracion</h1>
 <div mat-dialog-content>
   <form [formGroup]="RegistrationForm" (ngSubmit)="onSubmit()">
     <div class="mb-3">
-      <label class="form-label">First Name</label>
-      <input type="text" class="form-control" formControlName="firstName" />
-    </div>
-    <div class="mb-3">
-      <label class="form-label">Last Name</label>
-      <input type="text" class="form-control" formControlName="lastName" />
+      <label class="form-label">FullName</label>
+      <input type="text" class="form-control" formControlName="fullName" />
     </div>
     <div class="mb-3">
       <label class="form-label">Email address</label>
@@ -28,7 +24,7 @@
       <label class="form-label">Password</label>
       <input type="password" class="form-control" formControlName="password" />
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary">Sign Up</button>
   </form>
 </div>
 <div mat-dialog-actions>

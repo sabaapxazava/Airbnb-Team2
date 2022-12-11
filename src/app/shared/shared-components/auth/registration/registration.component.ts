@@ -19,9 +19,8 @@ export class RegistrationComponent implements OnInit {
   ngOnInit(): void {}
 
   RegistrationForm = new FormGroup({
-    firstName: new FormControl(''),
     email: new FormControl(''),
-    lastName: new FormControl(''),
+    fullName: new FormControl(''),
     phoneNumber: new FormControl(''),
     gender: new FormControl(''),
     password: new FormControl(''),

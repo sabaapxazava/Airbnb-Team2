@@ -7,7 +7,7 @@ import {
 import { Router } from '@angular/router';
 import * as firebase from 'firebase/auth';
 import { User } from '../shared-models/user.model';
-import {EventManagerService} from "./event-manager.service";
+import { EventManagerService } from './event-manager.service';
 
 @Injectable({
   providedIn: 'root',
@@ -26,16 +26,14 @@ export class FirebaseWorkerService {
     return this.auth
       .signInWithEmailAndPassword(email, password)
       .then((result) => {
-
         const loginEventMessage: Record<string, any> = {
           type: 'login',
-          body: result.user
-        }
+          body: result.user,
+        };
 
-        this.eventManagerService.autEventHandler.emit(loginEventMessage)
+        this.eventManagerService.autEventHandler.emit(loginEventMessage);
 
         localStorage['user'] = JSON.stringify(result.user);
-
       })
       .catch((error) => {
         window.alert(error.message);
@@ -70,12 +68,12 @@ export class FirebaseWorkerService {
     return this.auth.signOut().then(() => {
       const logoutEventMessage: Record<string, any> = {
         type: 'logout',
-        body: localStorage.getItem('user')
-      }
+        body: localStorage.getItem('user'),
+      };
 
-      localStorage.removeItem('user')
+      localStorage.removeItem('user');
 
-      this.eventManagerService.autEventHandler.emit(logoutEventMessage)
+      this.eventManagerService.autEventHandler.emit(logoutEventMessage);
 
       this.router.navigate(['/']);
     });
@@ -97,7 +95,7 @@ export class FirebaseWorkerService {
   }
 
   private getUserDoc(id: string): any {
-    return this.firestore.collection('users').doc(id)
+    return this.firestore.collection('users').doc(id);
   }
 
   private setUserDataSingUp(fireUser: any, user: User) {
@@ -106,9 +104,8 @@ export class FirebaseWorkerService {
     );
     const userData: User = {
       id: fireUser.uid,
-      firstName: user.firstName,
+      fullName: user.fullName,
       email: fireUser.email,
-      lastName: user.lastName,
       phoneNumber: user.phoneNumber,
       gender: user.gender,
       verifiedUser: true,
