@@ -24,9 +24,9 @@
       />
       <p class="forgot-password" (click)="forgotPassword()">Forgot Password</p>
     </div>
-    <button type="submit" class="btn btn-primary">Sign In</button>
+    <button type="submit" class="btn btn-primary" mat-dialog-close>Sign In</button>
     <br />
-    <button type="button" class="btn btn-primary" (click)="signInWithGoogle()">
+    <button type="button" class="btn btn-primary" (click)="signInWithGoogle()" mat-dialog-close>
       Sign In With Google
     </button>
     <br />

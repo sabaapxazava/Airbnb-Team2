@@ -4,7 +4,7 @@ import {FirebaseWorkerService} from 'src/app/shared/shared-services/firebase-wor
 import {LoginComponent} from '../../auth/login/login.component';
 import {RegistrationComponent} from '../../auth/registration/registration.component';
 import {EventManagerService} from "../../../shared-services/event-manager.service";
-
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 @Component({
   selector: 'app-account',
   templateUrl: './account.component.html',
@@ -16,22 +16,18 @@ export class AccountComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     private firebaseWorker: FirebaseWorkerService,
-
+    private angularFireAuth: AngularFireAuth,
     private eventManagerService: EventManagerService
   ) {
-
-    this.eventManagerService.loginEventHTMLHandler.subscribe({
-      next: (msg: any) => {
-        this.showProfile(msg)
+    var self = this;
+    this.angularFireAuth.onAuthStateChanged(function(user) {
+      if (user) {
+        self.showProfile(user)
       }
-    })
-
-    this.eventManagerService.logoutEventHTMLHandler.subscribe({
-      next: () => {
-        this.clearProfile()
+      else{
+        self.clearProfile()
       }
-    })
-
+    });
   }
   ngOnInit(): void {
     const localUser: string | null = localStorage.getItem('user')

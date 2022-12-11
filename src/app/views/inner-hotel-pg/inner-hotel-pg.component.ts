@@ -58,5 +58,4 @@ export class InnerHotelPgComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }
