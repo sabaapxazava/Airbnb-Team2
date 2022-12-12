@@ -34,14 +34,14 @@ export class CardComponent implements OnInit {
 
   onPrevClick() {
     if (this.selectedIndex == 0) {
-      this.selectedIndex = this.card.img.length - 1;
+      this.selectedIndex = this.card.mainImages.length - 1;
     } else {
       this.selectedIndex--;
     }
   }
 
   onNextClick() {
-    if (this.selectedIndex === this.card.img.length - 1) {
+    if (this.selectedIndex === this.card.mainImages.length - 1) {
       this.selectedIndex = 0;
     } else {
       this.selectedIndex++;

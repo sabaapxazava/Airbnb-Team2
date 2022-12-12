@@ -33,18 +33,4 @@ export class RegistrationComponent implements OnInit {
       this.router.navigate(['/']);
     });
   }
-
-  // signUp() {
-  //   let tmpUser: User = new User();
-  //   tmpUser.email = 'givi@gmail.com';
-  //   tmpUser.gender = 'onisesoselia@gmail.com';
-  //   tmpUser.lastName = 'onisesoselia@gmail.com';
-  //   tmpUser.phoneNumber = 'onisesoselia@gmail.com';
-  //   tmpUser.firstName = 'onisesoselia@gmail.com';
-  //   this.fireWorker.signUp(tmpUser, '123123');
-  // }
-
-  // signIn() {
-  //   this.fireWorker.SignIn('givi@gmail.com', '123123');
-  // }
 }

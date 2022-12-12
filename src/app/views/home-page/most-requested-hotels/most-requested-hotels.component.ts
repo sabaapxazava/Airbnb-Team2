@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { observable } from 'rxjs';
+import { BaseHttpService } from 'src/app/core/http/base-http.service';
+import { Hotel } from 'src/app/shared/shared-models/hotel.model';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-most-requested-hotels',
@@ -6,142 +10,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./most-requested-hotels.component.scss'],
 })
 export class MostRequestedHotelsComponent implements OnInit {
-  cards = [
-    {
-      id: 1,
-      img: [
-        'https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg',
-        'https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'https://images.pexels.com/photos/2017802/pexels-photo-2017802.jpeg?auto=compress&cs=tinysrgb&w=1600',
-      ],
-      title: 'Los Veneros, Punta Mita, Mexico',
-      reiting: '4.5',
-      price: 380,
-    },
-    {
-      id: 2,
-      img: [
-        'https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg',
-        'https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'https://images.pexels.com/photos/2017802/pexels-photo-2017802.jpeg?auto=compress&cs=tinysrgb&w=1600',
-      ],
-      title: 'Los Veneros, Punta Mita, Mexico',
-      reiting: '4.5',
-      price: 380,
-    },
-    {
-      id: 3,
-      img: [
-        'https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg',
-        'https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'https://images.pexels.com/photos/2017802/pexels-photo-2017802.jpeg?auto=compress&cs=tinysrgb&w=1600',
-      ],
-      title: 'Los Veneros, Punta Mita, Mexico',
-      reiting: '4.5',
-      price: 380,
-    },
-    {
-      id: 4,
-      img: [
-        'https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg',
-        'https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'https://images.pexels.com/photos/2017802/pexels-photo-2017802.jpeg?auto=compress&cs=tinysrgb&w=1600',
-      ],
-      title: 'Los Veneros, Punta Mita, Mexico',
-      reiting: '4.5',
-      price: 380,
-    },
-    {
-      id: 5,
-      img: [
-        'https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg',
-        'https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'https://images.pexels.com/photos/2017802/pexels-photo-2017802.jpeg?auto=compress&cs=tinysrgb&w=1600',
-      ],
-      title: 'Los Veneros, Punta Mita, Mexico',
-      reiting: '4.5',
-      price: 380,
-    },
-    {
-      id: 6,
-      img: [
-        'https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg',
-        'https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'https://images.pexels.com/photos/2017802/pexels-photo-2017802.jpeg?auto=compress&cs=tinysrgb&w=1600',
-      ],
-      title: 'Los Veneros, Punta Mita, Mexico',
-      reiting: '4.5',
-      price: 380,
-    },
-    {
-      id: 7,
-      img: [
-        'https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg',
-        'https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'https://images.pexels.com/photos/2017802/pexels-photo-2017802.jpeg?auto=compress&cs=tinysrgb&w=1600',
-      ],
-      title: 'Los Veneros, Punta Mita, Mexico',
-      reiting: '4.5',
-      price: 380,
-    },
-    {
-      id: 8,
-      img: [
-        'https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg',
-        'https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'https://images.pexels.com/photos/2017802/pexels-photo-2017802.jpeg?auto=compress&cs=tinysrgb&w=1600',
-      ],
-      title: 'Los Veneros, Punta Mita, Mexico',
-      reiting: '4.5',
-      price: 380,
-    },
-    {
-      id: 9,
-      img: [
-        'https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg',
-        'https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'https://images.pexels.com/photos/2017802/pexels-photo-2017802.jpeg?auto=compress&cs=tinysrgb&w=1600',
-      ],
-      title: 'Los Veneros, Punta Mita, Mexico',
-      reiting: '4.5',
-      price: 380,
-    },
-    {
-      id: 10,
-      img: [
-        'https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg',
-        'https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'https://images.pexels.com/photos/2017802/pexels-photo-2017802.jpeg?auto=compress&cs=tinysrgb&w=1600',
-      ],
-      title: 'Los Veneros, Punta Mita, Mexico',
-      reiting: '4.5',
-      price: 380,
-    },
-    {
-      id: 11,
-      img: [
-        'https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg',
-        'https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'https://images.pexels.com/photos/2017802/pexels-photo-2017802.jpeg?auto=compress&cs=tinysrgb&w=1600',
-      ],
-      title: 'Los Veneros, Punta Mita, Mexico',
-      reiting: '4.5',
-      price: 380,
-    },
-    {
-      id: 12,
-      img: [
-        'https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg',
-        'https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'https://images.pexels.com/photos/2017802/pexels-photo-2017802.jpeg?auto=compress&cs=tinysrgb&w=1600',
-      ],
-      title: 'Los Veneros, Punta Mita, Mexico',
-      reiting: '4.5',
-      price: 380,
-    },
-  ];
+  cards: any[] = [];
+  constructor(private baseHttpService: BaseHttpService) {}
 
-  constructor() {}
-
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    const fullApiUrl = `${environment.baseApiUrl}/Hotel`;
+    this.baseHttpService.getAll<Hotel>(fullApiUrl).subscribe((res: any) => {
+      this.cards = res;
+      console.log(this.cards);
+      
+    });
+  }
 }
