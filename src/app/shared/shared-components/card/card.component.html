@@ -2,8 +2,8 @@
   <div class="card">
     <div class="carousel-container d-flex">
       <img
-      routerLink="/hotel/{{ card.id }}"
-        *ngFor="let img of card.img; let i = index"
+        routerLink="/hotel/{{ card.id }}"
+        *ngFor="let img of card.mainImages; let i = index"
         [src]="img"
         alt=""
         [ngClass]="{ 'image-active': selectedIndex === i }"
@@ -35,7 +35,7 @@
     </div>
 
     <div class="card-body" routerLink="/hotel/{{ card.id }}">
-      <p class="card-title">{{ card.title }}</p>
+      <p class="card-title">{{ card.name }}</p>
       <p class="card-text hotel-reiting">
         <span
           ><svg
@@ -56,10 +56,10 @@
               fill-rule="evenodd"
             ></path></svg
         ></span>
-        <span> {{ card.reiting }}</span>
+        <span> {{ card.starCount }}</span>
       </p>
       <p class="card-text">
-        <b>$ {{ card.price }}</b> nigth
+        <b>$ {{ card.rooms[0].price }}</b> nigth
       </p>
     </div>
 
