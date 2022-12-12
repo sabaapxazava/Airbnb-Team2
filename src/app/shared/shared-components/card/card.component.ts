@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { MatDialog } from '@angular/material/dialog';
+import { Hotel } from '../../shared-models/hotel.model';
 import { LoginComponent } from '../auth/login/login.component';
 
 @Component({
@@ -9,7 +10,7 @@ import { LoginComponent } from '../auth/login/login.component';
   styleUrls: ['./card.component.scss'],
 })
 export class CardComponent implements OnInit {
-  @Input() card: any;
+  @Input() card!: Hotel;
 
   selectedIndex = 0;
 
