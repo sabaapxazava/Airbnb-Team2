@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MaterialModule } from './material/material.module';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 const shared:any = [
   CommonModule,
@@ -14,6 +15,7 @@ const shared:any = [
   ],
   exports:[
     [...shared]
-  ]
+  ],
+  providers: [AngularFireAuth]
 })
 export class CoreModule { }

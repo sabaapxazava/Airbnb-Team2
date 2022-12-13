@@ -1,0 +1,30 @@
+<aside class="col-md-4">
+  <div class="col col-md-12 calculator">
+    <p class="price">
+      <b>$ {{ currentHotel.price }}</b> nigth
+    </p>
+
+    <app-date-picker
+      [currentHotel]="this.currentHotel"
+      (numberOfDaysEmitter)="numberOfDaysChanged($event)"
+    ></app-date-picker>
+
+    <button class="reserve-btn" mat-raised-button color="warn">Reserve</button>
+
+    <div class="chooseDays d-flex">
+      <p class="daysAndPrice">Number of days:</p>
+      <p class="daysAndPrice number-of-days">
+        <b>{{ numberOfDays }}</b>
+      </p>
+    </div>
+    <hr />
+    <div class="cost d-flex">
+      <p class="daysAndPrice">
+        <b>Total </b>
+      </p>
+      <p class="daysAndPrice total-cost">
+        <b>{{ cost }} $</b>
+      </p>
+    </div>
+  </div>
+</aside>

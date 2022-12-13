@@ -15,8 +15,9 @@
           class="btn-check"
           name="bedrooms"
           id="bedrooms{{ i }}"
-          autocomplete="off"
           [checked]="item == 0"
+          value="{{ item }}"
+          (change)="onChangeBedrooms($event)"
         />
         <label class="btn btn-outline-primary" for="bedrooms{{ i }}">{{
           item == 0 ? "Any" : i
@@ -38,8 +39,9 @@
           class="btn-check"
           name="beds"
           id="beds{{ i }}"
-          autocomplete="off"
           [checked]="item == 0"
+          value="{{ item }}"
+          (change)="onChangeBeds($event)"
         />
         <label class="btn btn-outline-primary" for="beds{{ i }}">{{
           item == 0 ? "Any" : i
@@ -61,8 +63,9 @@
           class="btn-check"
           name="bathrooms"
           id="bathrooms{{ i }}"
-          autocomplete="off"
           [checked]="item == 0"
+          value="{{ item }}"
+          (change)="onChangeBathrooms($event)"
         />
         <label class="btn btn-outline-primary" for="bathrooms{{ i }}">{{
           item == 0 ? "Any" : i

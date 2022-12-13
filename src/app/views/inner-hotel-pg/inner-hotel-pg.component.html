@@ -5,17 +5,10 @@
   <div class="col col-md-12">
     <img [src]="currentHotel.image" class="card-img-top bannerImg" alt="..." />
   </div>
-  <div class="com-md-12 d-flex">
-    <aside class="col-md-8">
-      <div class="d-flex title-star">
-        <h2>{{ currentHotel.title }}</h2>
-        <p class="star">✨✨✨✨✨</p>
-      </div>
-      <p>{{ currentHotel.address }}</p>
-    </aside>
+  <div class="col-md-12 d-flex">
 
-    <aside class="col-md-4">
-      <p>test right</p>
-    </aside>
+    <app-hotel-information [currentHotel]="this.currentHotel"></app-hotel-information>
+
+    <app-hotel-reserve [currentHotel]="this.currentHotel"></app-hotel-reserve>
   </div>
 </section>

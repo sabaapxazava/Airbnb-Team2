@@ -4,7 +4,13 @@
   </header>
   <div class="hagt-wrapper">
     <div class="hagt">
-      <input type="checkbox" name="house" id="house" />
+      <input
+        type="checkbox"
+        name="house"
+        id="house"
+        value="house"
+        (change)="onChangeHouse($event)"
+      />
       <label for="house">
         <img
           class="hagt-img"
@@ -16,7 +22,13 @@
       </label>
     </div>
     <div class="hagt">
-      <input type="checkbox" name="apartament" id="apartament" />
+      <input
+        type="checkbox"
+        name="apartament"
+        id="apartament"
+        value="apartament"
+        (change)="onChangeApartament($event)"
+      />
       <label for="apartament">
         <img
           class="hagt-img"
@@ -28,7 +40,13 @@
       </label>
     </div>
     <div class="hagt">
-      <input type="checkbox" name="guesthouse" id="guesthouse" />
+      <input
+        type="checkbox"
+        name="guesthouse"
+        id="guesthouse"
+        value="guesthouse"
+        (change)="onChangeGuesthouse($event)"
+      />
       <label for="guesthouse">
         <img
           class="hagt-img"
@@ -40,7 +58,13 @@
       </label>
     </div>
     <div class="hagt">
-      <input type="checkbox" name="hotel" id="hotel" />
+      <input
+        type="checkbox"
+        name="hotel"
+        id="hotel"
+        value="hotel"
+        (change)="onChangeHotel($event)"
+      />
       <label for="hotel">
         <img
           class="hagt-img"

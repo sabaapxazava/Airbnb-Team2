@@ -18,11 +18,17 @@ import { FilterFooterComponent } from './filter/filter-modal/filter-footer/filte
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { AppRoutingModule } from 'src/app/app-routing.module';
+import { AccountComponent } from './header/account/account.component';
+import { DatePickerComponent } from './date-picker/date-picker.component';
+import { ImageSliderComponent } from './image-slider/image-slider.component';
+import { RegistrationComponent } from './auth/registration/registration.component';
+import { LoginComponent } from './auth/login/login.component';
 
 const shared: any = [
   CommonModule,
   CardComponent,
   HeaderComponent,
+  AccountComponent,
   FooterComponent,
   AmenitiesComponent,
   FilterFooterComponent,
@@ -35,12 +41,15 @@ const shared: any = [
   FilterComponent,
   FilterButtonsSliderComponent,
   FilterModalComponent,
+  ImageSliderComponent,
+  DatePickerComponent,
 ];
 
 @NgModule({
   declarations: [
     CardComponent,
     HeaderComponent,
+    AccountComponent,
     FooterComponent,
     AmenitiesComponent,
     FilterFooterComponent,
@@ -53,8 +62,12 @@ const shared: any = [
     FilterComponent,
     FilterButtonsSliderComponent,
     FilterModalComponent,
+    ImageSliderComponent,
+    DatePickerComponent,
+    RegistrationComponent,
+    LoginComponent,
   ],
-  imports: [MaterialModule, FormsModule, NgxSliderModule,AppRoutingModule],
+  imports: [MaterialModule, FormsModule, NgxSliderModule, AppRoutingModule],
   exports: [[...shared]],
 })
 export class SharedComponentsModule {}
