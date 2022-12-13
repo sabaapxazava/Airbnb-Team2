@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { HotelModelModule } from 'src/app/shared/shared-models/hotel-model.model';
+import { Hotel } from '../../shared-models/hotel.model';
 
 @Component({
   selector: 'app-date-picker',
@@ -9,7 +10,7 @@ import { HotelModelModule } from 'src/app/shared/shared-models/hotel-model.model
 })
 export class DatePickerComponent implements OnInit {
   @Input()
-  currentHotel!:HotelModelModule;
+  currentHotel!:Hotel;
   @Output() numberOfDaysEmitter : EventEmitter<any> = new EventEmitter();
 
   range = new FormGroup({
@@ -33,7 +34,7 @@ export class DatePickerComponent implements OnInit {
       this.startDate = this.range.controls.start.value.getDate();
       this.endDate = this.range.controls.end.value.getDate();
       this.numberOfDays = this.endDate - this.startDate;
-      this.cost = this.numberOfDays * this.currentHotel.price;
+      this.cost = this.numberOfDays * this.currentHotel.rooms[0].price;
 
       console.log('start date', this.startDate);
       console.log('end date', this.endDate);
