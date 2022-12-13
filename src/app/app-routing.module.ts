@@ -4,6 +4,7 @@ import { AuthGuard } from './core/guards/auth.guard';
 import { FilteredHotelsComponent } from './views/filtered-hotels/filtered-hotels.component';
 import { HomePageComponent } from './views/home-page/home-page.component';
 import { InnerHotelPgComponent } from './views/inner-hotel-pg/inner-hotel-pg.component';
+import { ProfileComponent } from './views/profile/profile.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,7 @@ const routes: Routes = [
     component: InnerHotelPgComponent,
     canActivate: [],
   },
+  { path: 'profile', component: ProfileComponent },
 ];
 
 @NgModule({

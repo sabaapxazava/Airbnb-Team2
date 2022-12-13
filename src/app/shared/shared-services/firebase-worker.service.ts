@@ -6,6 +6,7 @@ import {
 } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import * as firebase from 'firebase/auth';
+import Swal from 'sweetalert2';
 import { User } from '../shared-models/user.model';
 import { EventManagerService } from './event-manager.service';
 
@@ -36,7 +37,7 @@ export class FirebaseWorkerService {
         localStorage['user'] = JSON.stringify(result.user);
       })
       .catch((error) => {
-        window.alert(error.message);
+        Swal.fire(error.message)
       });
   }
 
@@ -44,12 +45,11 @@ export class FirebaseWorkerService {
     return this.auth
       .createUserWithEmailAndPassword(user.email, password)
       .then((result) => {
-        console.log(result, '---singUp');
         this.sendVerificationMail();
         this.setUserDataSingUp(result.user, user);
       })
       .catch((error) => {
-        window.alert(error.message);
+        Swal.fire(error.message)
       });
   }
 
@@ -60,7 +60,7 @@ export class FirebaseWorkerService {
         return this.getUserDoc(result.user?.uid ?? '');
       })
       .catch((error) => {
-        window.alert(error);
+        Swal.fire(error.message)
       });
   }
 
@@ -83,10 +83,10 @@ export class FirebaseWorkerService {
     return this.auth
       .sendPasswordResetEmail(passwordResetEmail)
       .then(() => {
-        window.alert('Password reset email sent, check your inbox.');
+        Swal.fire('Password reset email sent, check your inbox.')
       })
       .catch((error) => {
-        window.alert(error);
+        Swal.fire(error.message)
       });
   }
 

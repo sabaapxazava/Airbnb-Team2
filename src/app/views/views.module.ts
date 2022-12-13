@@ -16,12 +16,14 @@ import { NgImageSliderModule } from 'ng-image-slider';
 import { HotelInformationComponent } from './inner-hotel-pg/hotel-information/hotel-information.component';
 import { HotelReserveComponent } from './inner-hotel-pg/hotel-reserve/hotel-reserve.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ProfileComponent } from './profile/profile.component';
 
 const shared: any = [
   CommonModule,
   HomePageComponent,
   MostRequestedHotelsComponent,
   MostRequestedRegionsComponent,
+  ProfileComponent,
   FilteredHotelsComponent,
   InnerHotelPgComponent,
   HttpClientModule,
@@ -45,6 +47,7 @@ const matShared: any = [
     InnerHotelPgComponent,
     HotelInformationComponent,
     HotelReserveComponent,
+    ProfileComponent,
   ],
   imports: [SharedModule, [...matShared]],
   exports: [[...shared]],

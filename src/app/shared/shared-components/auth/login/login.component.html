@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>Autorization</h1>
+<h1 mat-dialog-title>Log in</h1>
 <div mat-dialog-content>
   <form [formGroup]="LoginForm" (ngSubmit)="onSubmit()">
     <div class="mb-3">
@@ -24,10 +24,10 @@
       />
       <p class="forgot-password" (click)="forgotPassword()">Forgot Password</p>
     </div>
-    <button type="submit" class="btn btn-primary" mat-dialog-close>Sign In</button>
+    <button type="submit" class="btn btn-primary" mat-dialog-close>Log In</button>
     <br />
     <button type="button" class="btn btn-primary" (click)="signInWithGoogle()" mat-dialog-close>
-      Sign In With Google
+      Log In With Google
     </button>
     <br />
   </form>
