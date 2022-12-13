@@ -9,6 +9,7 @@ import { Hotel } from 'src/app/shared/shared-models/hotel.model';
 })
 export class HotelInformationComponent implements OnInit {
   @Input() currentHotel!:Hotel;
+  
   constructor() { }
 
   ngOnInit(): void {

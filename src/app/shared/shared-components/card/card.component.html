@@ -12,7 +12,7 @@
 
       <div class="carousel-dot-container">
         <span
-          *ngFor="let dot of card.rooms[0].images; let i = index" 
+          *ngFor="let dot of card.mainImages; let i = index" 
           class="dot"
           [ngClass]="{ active: selectedIndex === i }"
           (click)="selectImage(i)"
