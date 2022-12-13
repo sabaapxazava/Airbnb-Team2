@@ -10,7 +10,7 @@
       (mousedown)="dragStart($event)"
       (mouseup)="dragStop()"
     >
-      <button class="filter-slider-button">
+      <button (click)="onCategoriesClick(item)" class="filter-slider-button">
         <img class="filter-slider-img" [src]="item.icon" />
         <span>{{ item.name }}</span>
       </button>

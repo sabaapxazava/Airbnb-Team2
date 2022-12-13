@@ -1,1 +1,7 @@
 <app-filter></app-filter>
+
+<article class="app-filtered-hotels">
+  <div class="" *ngFor="let card of hotelFilteredArray">
+    <app-card [card]="card"></app-card>
+  </div>
+</article>

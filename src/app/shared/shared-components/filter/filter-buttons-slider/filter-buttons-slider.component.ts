@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryService } from 'src/app/shared/shared-services/category.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-filter-buttons-slider',
@@ -14,7 +15,10 @@ export class FilterButtonsSliderComponent implements OnInit {
   prevScrollLeft!: any;
   positionDiff!: any;
 
-  constructor(private categoryService: CategoryService) {}
+  constructor(
+    private categoryService: CategoryService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.sliderIcons = document.querySelector('.slider-icons-wrapper');
@@ -47,5 +51,9 @@ export class FilterButtonsSliderComponent implements OnInit {
   }
   onScrollRight() {
     this.sliderIcons.scrollLeft += 500;
+  }
+  onCategoriesClick(item: any) {
+    this.categoryService.categoryItemEmitter.emit();
+    this.router.navigate(['filtered-hotels', item.name]);
   }
 }
