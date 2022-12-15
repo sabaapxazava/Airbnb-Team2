@@ -54,7 +54,7 @@ export class FilterButtonsSliderComponent implements OnInit {
   }
   onCategoriesClick(item: any) {
     this.categoryService.categoryItemEmitter.emit();
-    this.router.navigate(['filtered-hotels'], {
+    this.router.navigate(['filtered-hotels/category-filter'], {
       queryParams: {
         name: item.name,
       },
