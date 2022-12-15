@@ -7,6 +7,7 @@ import { FilteredHotelsComponent } from './filtered-hotels/filtered-hotels.compo
 import { SharedModule } from '../shared/shared.module';
 import { InnerHotelPgComponent } from './inner-hotel-pg/inner-hotel-pg.component';
 
+import {MatTableModule} from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -16,12 +17,14 @@ import { NgImageSliderModule } from 'ng-image-slider';
 import { HotelInformationComponent } from './inner-hotel-pg/hotel-information/hotel-information.component';
 import { HotelReserveComponent } from './inner-hotel-pg/hotel-reserve/hotel-reserve.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ProfileComponent } from './profile/profile.component';
 
 const shared: any = [
   CommonModule,
   HomePageComponent,
   MostRequestedHotelsComponent,
   MostRequestedRegionsComponent,
+  ProfileComponent,
   FilteredHotelsComponent,
   InnerHotelPgComponent,
   HttpClientModule,
@@ -34,6 +37,7 @@ const matShared: any = [
   ReactiveFormsModule,
   MatButtonModule,
   NgImageSliderModule,
+  MatTableModule,
 ];
 
 @NgModule({
@@ -45,6 +49,7 @@ const matShared: any = [
     InnerHotelPgComponent,
     HotelInformationComponent,
     HotelReserveComponent,
+    ProfileComponent,
   ],
   imports: [SharedModule, [...matShared]],
   exports: [[...shared]],

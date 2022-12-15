@@ -10,18 +10,21 @@
   </button>
   <ul class="dropdown-menu">
     <li *ngIf="user == null">
-      <a class="dropdown-item" (click)="openDialogLogin()">Autorization</a>
+      <a class="dropdown-item" (click)="openDialogLogin()">Log in</a>
     </li>
     <li *ngIf="user == null">
-      <a class="dropdown-item" (click)="openDialogRegister()">Registration</a>
+      <a class="dropdown-item" (click)="openDialogRegister()">Sign up</a>
     </li>
     <li *ngIf="user != null">
       <a class="dropdown-item"
         ><b>{{ user.email }}</b></a
       >
     </li>
+    <li *ngIf="user != null" routerLink="/profile">
+      <a class="dropdown-item">Profile</a>
+    </li>
     <li *ngIf="user != null">
-      <a class="dropdown-item" (click)="singOut()">Sign Out</a>
+      <a class="dropdown-item" (click)="singOut()">Sign out</a>
     </li>
   </ul>
 </div>

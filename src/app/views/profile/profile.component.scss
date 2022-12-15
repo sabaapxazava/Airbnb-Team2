@@ -1,0 +1,14 @@
+.profile-page{
+    h2{
+        display: flex;
+        justify-content: center !important;
+        font-size: 30px !important;
+        margin: 30px 0 50px 0 !important;
+    }
+}
+.reserved-hotel-card{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(278px, 1fr));
+    grid-gap: 15px;
+  
+}
