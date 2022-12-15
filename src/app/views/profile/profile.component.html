@@ -1,22 +1,11 @@
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Photo</th>
-      <th scope="col">Name</th>
-      <th scope="col">Location</th>
-      <th scope="col">prise</th>
-      <th scope="col">pay</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let reservedHotel of reservedHotelArray; let i = index">
-      <th scope="row">{{ i + 1 }}</th>
-      <td><img [src]="reservedHotel.image" alt="" /></td>
-      <td>{{ reservedHotel.name }}</td>
-      <td>{{ reservedHotel.location }}</td>
-      <td>{{ reservedHotel.price }}</td>
-      <td>{{ reservedHotel.pay }}</td>
-    </tr>
-  </tbody>
-</table>
+<article class="profile-page">
+  <div class="col-md-12">
+    <h2>Reserved Hotels</h2>
+  </div>
+  <div class="reserved-hotel-card">
+    <app-card
+      *ngFor="let reservedHotel of reservedHotelArray"
+      [card]="reservedHotel"
+    ></app-card>
+  </div>
+</article>
