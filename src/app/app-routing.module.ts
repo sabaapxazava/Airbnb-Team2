@@ -11,7 +11,7 @@ const routes: Routes = [
     component: HomePageComponent,
   },
   {
-    path: 'filtered-hotels/:name',
+    path: 'filtered-hotels',
     component: FilteredHotelsComponent,
   },
   {

@@ -1,6 +1,7 @@
 import { AfterContentChecked, Component, OnInit } from '@angular/core';
 import { Options } from '@angular-slider/ngx-slider';
 import { FilterModalDataComunicationService } from 'src/app/shared/shared-services/filter-modal-data-comunication.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-price-range',
@@ -14,10 +15,22 @@ export class PriceRangeComponent implements OnInit, AfterContentChecked {
     floor: 0,
     ceil: 700,
   };
-  constructor(private filterInfo: FilterModalDataComunicationService) {}
+  constructor(
+    private filterInfo: FilterModalDataComunicationService,
+    private router: Router
+  ) {}
   ngAfterContentChecked(): void {
     this.filterInfo.filterModalInfo.priceRange.minPrice = this.minValue;
     this.filterInfo.filterModalInfo.priceRange.maxPrice = this.maxValue;
+    // this.router.navigate([
+    //   'filtered-hotels',
+    //   {
+    //     queryParams: {
+    //       PriceFrom: this.minValue,
+    //       PriceTo: this.maxValue,
+    //     },
+    //   },
+    // ]);
   }
 
   ngOnInit(): void {}

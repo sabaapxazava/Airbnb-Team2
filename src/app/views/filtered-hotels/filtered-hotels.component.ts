@@ -28,7 +28,7 @@ export class FilteredHotelsComponent implements OnInit {
       this.filterByIcon();
     });
 
-    this.activatedRoute.params.subscribe((response) => {
+    this.activatedRoute.queryParams.subscribe((response) => {
       if (response) {
         this.categoryItem = response;
         this.filterByIcon();
