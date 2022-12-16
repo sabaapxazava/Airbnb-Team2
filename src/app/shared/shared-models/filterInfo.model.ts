@@ -25,9 +25,9 @@ export class FilterInfo {
     };
     this.typeOfPlace = [];
     this.roomsAndBeds = {
-      bedrooms: 'any',
-      beds: 'any',
-      bathrooms: 'any',
+      bedrooms: '',
+      beds: '',
+      bathrooms: '',
     };
     this.propertyOfType = [];
     this.amenities = {
