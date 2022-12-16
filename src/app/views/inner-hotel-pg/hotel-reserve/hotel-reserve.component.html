@@ -9,7 +9,9 @@
       (numberOfDaysEmitter)="numberOfDaysChanged($event)"
     ></app-date-picker>
 
-    <button class="reserve-btn" mat-raised-button color="warn">Reserve</button>
+    <button (click)="reservationBtn()" class="reserve-btn" mat-raised-button color="warn">
+      Reserve
+    </button>
 
     <div class="chooseDays d-flex">
       <p class="daysAndPrice">Number of days:</p>

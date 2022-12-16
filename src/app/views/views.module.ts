@@ -18,6 +18,7 @@ import { HotelInformationComponent } from './inner-hotel-pg/hotel-information/ho
 import { HotelReserveComponent } from './inner-hotel-pg/hotel-reserve/hotel-reserve.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProfileComponent } from './profile/profile.component';
+import { ReservationComponent } from './reservation/reservation.component';
 
 const shared: any = [
   CommonModule,
@@ -50,6 +51,7 @@ const matShared: any = [
     HotelInformationComponent,
     HotelReserveComponent,
     ProfileComponent,
+    ReservationComponent,
   ],
   imports: [SharedModule, [...matShared]],
   exports: [[...shared]],
