@@ -12,6 +12,7 @@ export class HotelReserveComponent implements OnInit {
   @Input() currentHotel!: Hotel;
   cost: any = 0;
   numberOfDays: any = 0;
+  // currentHotelId:string = this.currentHotel.id;
 
   constructor(private router: Router) {}
 
@@ -22,9 +23,12 @@ export class HotelReserveComponent implements OnInit {
   }
 
   reservationBtn() {
-    console.log('reservation');
-    this.router.navigate(['/reservation']);
-    console.log(this.numberOfDays);
-    console.log(this.cost);
+    this.router.navigate(['/reservation'], {
+      queryParams: {
+        numberOfDays: this.numberOfDays,
+        cost: this.cost,
+        currentHotelId: this.currentHotel.id,
+      },
+    });
   }
 }
