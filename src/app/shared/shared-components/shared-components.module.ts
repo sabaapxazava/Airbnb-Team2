@@ -23,6 +23,8 @@ import { DatePickerComponent } from './date-picker/date-picker.component';
 import { ImageSliderComponent } from './image-slider/image-slider.component';
 import { RegistrationComponent } from './auth/registration/registration.component';
 import { LoginComponent } from './auth/login/login.component';
+import { PayFormComponent } from './pay-form/pay-form.component';
+import { ReservedCardComponent } from './reserved-card/reserved-card.component';
 
 const shared: any = [
   CommonModule,
@@ -43,6 +45,8 @@ const shared: any = [
   FilterModalComponent,
   ImageSliderComponent,
   DatePickerComponent,
+  PayFormComponent,
+  ReservedCardComponent,
 ];
 
 @NgModule({
@@ -66,6 +70,8 @@ const shared: any = [
     DatePickerComponent,
     RegistrationComponent,
     LoginComponent,
+    PayFormComponent,
+    ReservedCardComponent,
   ],
   imports: [MaterialModule, FormsModule, NgxSliderModule, AppRoutingModule],
   exports: [[...shared]],

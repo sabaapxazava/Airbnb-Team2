@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ImageSliderComponent implements OnInit {
 
-  @Input() hotelRoomsImages!:object[]
+  @Input() hotelRoomsImages!:any[]
   constructor() { }
 
   ngOnInit(): void {
