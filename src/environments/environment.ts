@@ -14,8 +14,6 @@ export const environment = {
     appId: '1:986153956513:web:8972b9de27010b5672ece0',
   },
   baseApiUrl: 'http://airbnb-dev.us-east-1.elasticbeanstalk.com/api',
-  baseCategoryApiUrl:
-    'http://airbnb-dev.us-east-1.elasticbeanstalk.com/api/Category',
 };
 
 /*

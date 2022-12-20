@@ -30,7 +30,6 @@ export class FilterByCategoryComponent implements OnInit {
     this.activatedRoute.queryParams.subscribe((response) => {
       if (response) {
         this.categoryItem = response;
-        console.log(response);
         this.filterByIcon();
       }
     });

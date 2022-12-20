@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Hotel } from 'src/app/shared/shared-models/hotel.model';
-import { BaseHttpService } from 'src/app/core/http/base-http.service';
-import { ActivatedRoute } from '@angular/router';
-import { FilterModalDataComunicationService } from 'src/app/shared/shared-services/filter-modal-data-comunication.service';
+import { CategoryService } from 'src/app/shared/shared-services/category.service';
 
 @Component({
   selector: 'app-advanced-filter',
@@ -13,16 +11,21 @@ export class AdvancedFilterComponent implements OnInit {
   cards: any[] = [];
   hotelFilteredArray: Hotel[] = [];
 
-  constructor(
-    private filterModalInfo: FilterModalDataComunicationService,
-    private baseHttpService: BaseHttpService,
-    private activatedRoute: ActivatedRoute
-  ) {}
+  constructor(private categoryService: CategoryService) {}
 
   ngOnInit(): void {
-    this.filterModalInfo.advancedFilterEmitter.subscribe((response) => {
+    this.hotalsArraySubscriber();
+  }
+
+  ngAfterViewInit() {
+    this.hotalsArraySubscriber();
+  }
+
+  hotalsArraySubscriber() {
+    this.categoryService.categoryItemEmitter.subscribe((response) => {
       if (response) {
         this.cards = response;
+        console.log('receved hotels', this.cards);
       }
     });
   }

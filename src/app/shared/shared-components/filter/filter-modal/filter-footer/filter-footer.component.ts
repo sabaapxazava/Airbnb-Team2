@@ -1,39 +1,37 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  AfterViewInit,
+  AfterContentInit,
+  OnChanges,
+} from '@angular/core';
 import { FilterInfo } from 'src/app/shared/shared-models/filterInfo.model';
 import { FilterModalDataComunicationService } from 'src/app/shared/shared-services/filter-modal-data-comunication.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { BaseHttpService } from 'src/app/core/http/base-http.service';
-import { environment } from 'src/environments/environment';
-import { Hotel } from 'src/app/shared/shared-models/hotel.model';
-import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { CategoryService } from 'src/app/shared/shared-services/category.service';
 
 @Component({
   selector: 'app-filter-footer',
   templateUrl: './filter-footer.component.html',
   styleUrls: ['./filter-footer.component.css'],
 })
-export class FilterFooterComponent implements OnInit {
-  cards: any = [];
-
+export class FilterFooterComponent
+  implements OnInit, AfterViewInit, AfterContentInit, OnChanges
+{
   constructor(
-    private baseHttpService: BaseHttpService,
+    private categoryService: CategoryService,
     private filterModalInfo: FilterModalDataComunicationService,
-    private router: Router,
-    private http: HttpClient
+    private router: Router
   ) {}
 
+  ngAfterContentInit(): void {}
+  ngAfterViewInit(): void {}
   ngOnInit(): void {
-    console.log(this.router.url.slice(32));
-    const fullApiUrl = `${environment.baseApiUrl}/Hotel/filter-by-category`;
-    this.http
-      .get(`${fullApiUrl}${this.router.url.slice(32)}`)
-      .subscribe((response) => {
-        if (response) {
-          this.filterModalInfo.advancedFilterEmitter.emit(response);
-          this.cards = response;
-          console.log('advanced-filtered-items', response);
-        }
-      });
+    // this.onShowHomes();
+  }
+  ngOnChanges() {
+    // this.onShowHomes();
+    // this.sendFilterdHotels();
   }
 
   onShowHomes() {
@@ -42,18 +40,9 @@ export class FilterFooterComponent implements OnInit {
       queryParams: {
         PriceFrom: this.filterModalInfo.filterModalInfo.priceRange.minPrice,
         PriceTo: this.filterModalInfo.filterModalInfo.priceRange.maxPrice,
-        TypeOfPlace: this.filterModalInfo.filterModalInfo.typeOfPlace,
-        BedsPerRoomCount:
-          this.filterModalInfo.filterModalInfo.roomsAndBeds.beds,
-        RoomsCount: this.filterModalInfo.filterModalInfo.roomsAndBeds.bedrooms,
-        BathRoomsCount:
-          this.filterModalInfo.filterModalInfo.roomsAndBeds.bathrooms,
-        PropertyType: this.filterModalInfo.filterModalInfo.propertyOfType,
-        HostLanguage: this.filterModalInfo.filterModalInfo.hostLanguage,
-        Amenities: this.filterModalInfo.filterModalInfo.amenities.essentials,
       },
     });
-    console.log(this.router.url);
+    this.sendFilterdHotels();
   }
 
   onClearAll() {
@@ -87,4 +76,24 @@ export class FilterFooterComponent implements OnInit {
     this.filterModalInfo.filterModalInfo = new FilterInfo();
     console.log(this.filterModalInfo.filterModalInfo);
   }
+
+  sendFilterdHotels() {
+    this.categoryService
+      .getFilteredCategoris(this.router.url.slice(32))
+      .subscribe((response) => {
+        if (response) {
+          console.log(response);
+        }
+      });
+  }
 }
+
+// TypeOfPlace: this.filterModalInfo.filterModalInfo.typeOfPlace,
+// BedsPerRoomCount:
+//   this.filterModalInfo.filterModalInfo.roomsAndBeds.beds,
+// RoomsCount: this.filterModalInfo.filterModalInfo.roomsAndBeds.bedrooms,
+// BathRoomsCount:
+//   this.filterModalInfo.filterModalInfo.roomsAndBeds.bathrooms,
+// PropertyType: this.filterModalInfo.filterModalInfo.propertyOfType,
+// HostLanguage: this.filterModalInfo.filterModalInfo.hostLanguage,
+// Amenities: this.filterModalInfo.filterModalInfo.amenities.essentials,
