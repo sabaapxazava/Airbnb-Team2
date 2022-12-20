@@ -21,6 +21,10 @@ import { FilterByCategoryComponent } from './filtered-hotels/filter-by-category/
 import { AdvancedFilterComponent } from './filtered-hotels/advanced-filter/advanced-filter.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ReservationComponent } from './reservation/reservation.component';
+import { HotelDescriptionComponent } from './inner-hotel-pg/hotel-information/hotel-description/hotel-description.component';
+import { HotelNameComponent } from './inner-hotel-pg/hotel-information/hotel-name/hotel-name.component';
+import { HotelAddressComponent } from './inner-hotel-pg/hotel-information/hotel-address/hotel-address.component';
+import { HotelRoomsComponent } from './inner-hotel-pg/hotel-information/hotel-rooms/hotel-rooms.component';
 
 
 const shared: any = [
@@ -60,6 +64,10 @@ const matShared: any = [
     AdvancedFilterComponent,
     ProfileComponent,
     ReservationComponent,
+    HotelDescriptionComponent,
+    HotelNameComponent,
+    HotelAddressComponent,
+    HotelRoomsComponent,
 
   ],
   imports: [SharedModule, [...matShared], RouterModule],

@@ -1,5 +1,5 @@
 .cont-max-width {
-  width: 60% !important;
+  max-width: 60% !important;
 }
 
 .bannerImg {
@@ -10,4 +10,7 @@
 
 h2 {
   margin-right: 30%;
+}
+.description{
+  flex-wrap: wrap;
 }
