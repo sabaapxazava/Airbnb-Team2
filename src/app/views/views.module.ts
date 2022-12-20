@@ -5,7 +5,8 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { MostRequestedHotelsComponent } from './home-page/most-requested-hotels/most-requested-hotels.component';
 import { MostRequestedRegionsComponent } from './home-page/most-requested-regions/most-requested-regions.component';
 import { SharedModule } from '../shared/shared.module';
-import { InnerHotelPgComponent } from './inner-hotel-pg/inner-hotel-pg.component';
+import { InnerHotelPgComponent } from './inner-hotel-pg/inner-hotel-pg.component'
+import {MatTableModule} from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -18,12 +19,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { FilteredHotelsComponent } from './filtered-hotels/filtered-hotels.component';
 import { FilterByCategoryComponent } from './filtered-hotels/filter-by-category/filter-by-category.component';
 import { AdvancedFilterComponent } from './filtered-hotels/advanced-filter/advanced-filter.component';
+import { ProfileComponent } from './profile/profile.component';
+import { ReservationComponent } from './reservation/reservation.component';
+
 
 const shared: any = [
   CommonModule,
   HomePageComponent,
   MostRequestedHotelsComponent,
   MostRequestedRegionsComponent,
+  ProfileComponent,
   FilteredHotelsComponent,
   FilterByCategoryComponent,
   AdvancedFilterComponent,
@@ -39,6 +44,7 @@ const matShared: any = [
   ReactiveFormsModule,
   MatButtonModule,
   NgImageSliderModule,
+  MatTableModule,
 ];
 
 @NgModule({
@@ -52,6 +58,9 @@ const matShared: any = [
     FilteredHotelsComponent,
     FilterByCategoryComponent,
     AdvancedFilterComponent,
+    ProfileComponent,
+    ReservationComponent,
+
   ],
   imports: [SharedModule, [...matShared], RouterModule],
   exports: [[...shared]],

@@ -1,0 +1,66 @@
+<div class="payment-info">
+  <h3 class="pay-title">Credit Card Info</h3>
+  <form>
+    <div class="tab-for">
+      <h5>NAME ON CARD</h5>
+      <input type="text" value="" />
+      <h5>CARD NUMBER</h5>
+      <input
+        class="pay-logo"
+        type="text"
+        value="0000-0000-0000-0000"
+        onfocus="this.value = '';"
+        onblur="if (this.value == '') {this.value = '0000-0000-0000-0000';}"
+        required=""
+      />
+    </div>
+    <div class="transaction">
+      <div class="tab-form-left user-form">
+        <h5>EXPIRATION</h5>
+        <ul>
+          <li>
+            <input
+              type="number"
+              class="text_box"
+              type="text"
+              value="6"
+              min="1"
+            />
+          </li>
+          <li>
+            <input
+              type="number"
+              class="text_box"
+              type="text"
+              value="1988"
+              min="1"
+            />
+          </li>
+        </ul>
+      </div>
+      <div class="tab-form-right user-form-rt">
+        <h5>CVV NUMBER</h5>
+        <input
+          type="text"
+          value="xxxx"
+          onfocus="this.value = '';"
+          onblur="if (this.value == '') {this.value = 'xxxx';}"
+          required=""
+        />
+      </div>
+      <div class="clear"></div>
+    </div>
+    <input type="submit" value="SUBMIT" />
+  </form>
+  <div class="single-bottom">
+    <ul>
+      <li>
+        <input type="checkbox" id="brand" value="" />
+        <label for="brand">
+          By checking this box, I agree to the Terms & Conditions & Privacy
+          Policy.</label
+        >
+      </li>
+    </ul>
+  </div>
+</div>

@@ -5,6 +5,7 @@
   height: 80px;
   padding-left: 10px;
   padding-right: 10px;
+  background-color: rgb(255, 255, 255);
 }
 .buttons-slider {
   display: flex;
@@ -16,4 +17,7 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
+}
+.buttons-slider{
+  background-color: rgba(255, 255, 255, 0.822);
 }

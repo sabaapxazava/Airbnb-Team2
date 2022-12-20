@@ -1,0 +1,75 @@
+<div class="card-group">
+  <div class="card">
+    <div class="carousel-container d-flex">
+      <img
+        *ngFor="let img of card.mainImages; let i = index"
+        [src]="img"
+        alt=""
+        [ngClass]="{ 'image-active': selectedIndex === i }"
+        class="animation-slider"
+      />
+
+      <div class="carousel-dot-container">
+        <span
+          *ngFor="let dot of card.mainImages; let i = index"
+          class="dot"
+          [ngClass]="{ active: selectedIndex === i }"
+          (click)="selectImage(i)"
+        ></span>
+      </div>
+
+      <button class="btn-carousel btn-prev">
+        <i
+          class="fa fa-arrow-circle-left icon-carousel icon-prev"
+          (click)="onPrevClick()"
+        ></i>
+      </button>
+
+      <button class="btn-carousel btn-next">
+        <i
+          class="fa fa-arrow-circle-right icon-carousel icon-next"
+          (click)="onNextClick()"
+        ></i>
+      </button>
+    </div>
+
+    <div class="card-body">
+      <div class="name-price">
+        <p class="card-title">{{ card.name }}</p>
+        <p class="card-text">
+          <b>$ {{ card.rooms[0].price }}</b> nigth
+        </p>
+      </div>
+      <p class="card-text hotel-reiting">
+        <span
+          ><svg
+            viewBox="0 0 32 32"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+            role="presentation"
+            focusable="false"
+            style="
+              display: block;
+              height: 12px;
+              width: 12px;
+              fill: currentcolor;
+            "
+          >
+            <path
+              d="M15.094 1.579l-4.124 8.885-9.86 1.27a1 1 0 0 0-.542 1.736l7.293 6.565-1.965 9.852a1 1 0 0 0 1.483 1.061L16 25.951l8.625 4.997a1 1 0 0 0 1.482-1.06l-1.965-9.853 7.293-6.565a1 1 0 0 0-.541-1.735l-9.86-1.271-4.127-8.885a1 1 0 0 0-1.814 0z"
+              fill-rule="evenodd"
+            ></path></svg
+        ></span>
+        <span> {{ card.starCount }}</span>
+      </p>
+      <div class="pay-info">
+        <hr />
+        <h2>Price details</h2>
+        <p>$234.08 x 2 nights <span>$468.16</span></p>
+        <p>Service fee <span>$78.00</span></p>
+        <hr />
+        <p class="total-price">Total (USD) <span>$547.80</span></p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,7 +1,7 @@
 <aside class="col-md-4">
   <div class="col col-md-12 calculator">
     <p class="price">
-      <b>$ {{ currentHotel.price }}</b> nigth
+      <b>$ {{ currentHotel.rooms[0].price }}</b> nigth
     </p>
 
     <app-date-picker
@@ -9,7 +9,9 @@
       (numberOfDaysEmitter)="numberOfDaysChanged($event)"
     ></app-date-picker>
 
-    <button class="reserve-btn" mat-raised-button color="warn">Reserve</button>
+    <button (click)="reservationBtn()" class="reserve-btn" mat-raised-button color="warn">
+      Reserve
+    </button>
 
     <div class="chooseDays d-flex">
       <p class="daysAndPrice">Number of days:</p>

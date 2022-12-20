@@ -7,6 +7,8 @@ import { FilteredHotelsComponent } from './views/filtered-hotels/filtered-hotels
 
 import { HomePageComponent } from './views/home-page/home-page.component';
 import { InnerHotelPgComponent } from './views/inner-hotel-pg/inner-hotel-pg.component';
+import { ProfileComponent } from './views/profile/profile.component';
+import { ReservationComponent } from './views/reservation/reservation.component';
 
 const routes: Routes = [
   {
@@ -26,6 +28,8 @@ const routes: Routes = [
     component: InnerHotelPgComponent,
     canActivate: [],
   },
+  { path: 'profile', component: ProfileComponent },
+  { path: 'reservation', component: ReservationComponent },
 ];
 
 @NgModule({
