@@ -20,18 +20,18 @@ export class RoomsAndBedsComponent implements OnInit {
     e.target.value != 0
       ? (this.filterModalInfo.filterModalInfo.roomsAndBeds.bedrooms =
           e.target.value)
-      : (this.filterModalInfo.filterModalInfo.roomsAndBeds.bedrooms = 'any');
+      : (this.filterModalInfo.filterModalInfo.roomsAndBeds.bedrooms = '');
   }
   onChangeBeds(e: any) {
     e.target.value != 0
       ? (this.filterModalInfo.filterModalInfo.roomsAndBeds.beds =
           e.target.value)
-      : (this.filterModalInfo.filterModalInfo.roomsAndBeds.beds = 'any');
+      : (this.filterModalInfo.filterModalInfo.roomsAndBeds.beds = '');
   }
   onChangeBathrooms(e: any) {
     e.target.value != 0
       ? (this.filterModalInfo.filterModalInfo.roomsAndBeds.bathrooms =
           e.target.value)
-      : (this.filterModalInfo.filterModalInfo.roomsAndBeds.bathrooms = 'any');
+      : (this.filterModalInfo.filterModalInfo.roomsAndBeds.bathrooms = '');
   }
 }

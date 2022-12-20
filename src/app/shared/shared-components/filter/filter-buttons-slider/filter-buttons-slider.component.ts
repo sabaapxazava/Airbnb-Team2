@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryService } from 'src/app/shared/shared-services/category.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-filter-buttons-slider',
@@ -54,6 +54,10 @@ export class FilterButtonsSliderComponent implements OnInit {
   }
   onCategoriesClick(item: any) {
     this.categoryService.categoryItemEmitter.emit();
-    this.router.navigate(['filtered-hotels', item.name]);
+    this.router.navigate(['filtered-hotels/category-filter'], {
+      queryParams: {
+        name: item.name,
+      },
+    });
   }
 }
