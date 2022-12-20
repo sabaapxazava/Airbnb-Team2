@@ -11,6 +11,15 @@
 h2 {
   margin-right: 30%;
 }
-.description{
-  flex-wrap: wrap;
+@media screen and (max-width: 792px) {
+  .description{
+    flex-wrap: wrap;
+  }
+  .cont-max-width{
+    max-width: 100% !important;
+  }
+  .bannerImg {
+    margin: 3px 0;
+    height: 50%;
+  }
 }
