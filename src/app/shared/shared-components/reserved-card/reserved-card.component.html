@@ -2,7 +2,7 @@
   <div class="card">
     <div class="carousel-container d-flex">
       <img
-        *ngFor="let img of card.mainImages; let i = index"
+        *ngFor="let img of this.card.mainImages; let i = index"
         [src]="img"
         alt=""
         [ngClass]="{ 'image-active': selectedIndex === i }"
@@ -11,7 +11,7 @@
 
       <div class="carousel-dot-container">
         <span
-          *ngFor="let dot of card.mainImages; let i = index"
+          *ngFor="let dot of this.card.mainImages; let i = index"
           class="dot"
           [ngClass]="{ active: selectedIndex === i }"
           (click)="selectImage(i)"
@@ -35,9 +35,9 @@
 
     <div class="card-body">
       <div class="name-price">
-        <p class="card-title">{{ card.name }}</p>
+        <p class="card-title">{{ this.card.name }}</p>
         <p class="card-text">
-          <b>$ {{ card.rooms[0].price }}</b> nigth
+          <b *ngIf="this.card.rooms[0] != undefined">$ {{ this.card.rooms[0].price }}</b> nigth
         </p>
       </div>
       <p class="card-text hotel-reiting">
@@ -60,13 +60,13 @@
               fill-rule="evenodd"
             ></path></svg
         ></span>
-        <span> {{ card.starCount }}</span>
+        <span> {{ this.card.starCount }}</span>
       </p>
       <div class="pay-info">
         <hr />
         <h2>Price details</h2>
-        <p>
-          ${{ card.rooms[0].price }} x {{ numberOfDays }} nights
+        <p *ngIf="this.card.rooms[0] != undefined">
+          ${{ this.card.rooms[0].price }} x {{ numberOfDays }} nights
           <span>${{ cost }}</span>
         </p>
         <p>Service fee <span>$0.00</span></p>

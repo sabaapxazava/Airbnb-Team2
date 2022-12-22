@@ -13,14 +13,13 @@ export class InnerHotelPgComponent implements OnInit {
       this.hotelId = params["id"]
       const fullApiUrl = `${environment.baseApiUrl}/Hotel/${this.hotelId}`;
       this.baseHttpService.getById<Hotel>(fullApiUrl).subscribe((res: any) => {
-        console.log(res);
         this.currentHotel = res
       });
     });
   }
   
   public hotelId!:string;
-  public currentHotel!:Hotel;
+  public currentHotel:Hotel = new Hotel;
   ngOnInit(): void {
   }
 }

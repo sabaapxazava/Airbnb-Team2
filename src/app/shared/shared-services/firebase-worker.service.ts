@@ -3,12 +3,15 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import {
   AngularFirestore,
   AngularFirestoreDocument,
+  DocumentSnapshot,
 } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import * as firebase from 'firebase/auth';
+import * as firebases from 'firebase/app';
 import Swal from 'sweetalert2';
 import { User } from '../shared-models/user.model';
 import { EventManagerService } from './event-manager.service';
+import { observable, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -37,7 +40,7 @@ export class FirebaseWorkerService {
         localStorage['user'] = JSON.stringify(result.user);
       })
       .catch((error) => {
-        Swal.fire(error.message)
+        Swal.fire(error.message);
       });
   }
 
@@ -49,7 +52,7 @@ export class FirebaseWorkerService {
         this.setUserDataSingUp(result.user, user);
       })
       .catch((error) => {
-        Swal.fire(error.message)
+        Swal.fire(error.message);
       });
   }
 
@@ -57,10 +60,10 @@ export class FirebaseWorkerService {
     return this.auth
       .signInWithPopup(new firebase.GoogleAuthProvider())
       .then((result) => {
-        return this.getUserDoc(result.user?.uid ?? '');
+        localStorage['user'] = JSON.stringify(result.user);
       })
       .catch((error) => {
-        Swal.fire(error.message)
+        Swal.fire(error.message);
       });
   }
 
@@ -83,10 +86,10 @@ export class FirebaseWorkerService {
     return this.auth
       .sendPasswordResetEmail(passwordResetEmail)
       .then(() => {
-        Swal.fire('Password reset email sent, check your inbox.')
+        Swal.fire('Password reset email sent, check your inbox.');
       })
       .catch((error) => {
-        Swal.fire(error.message)
+        Swal.fire(error.message);
       });
   }
 
@@ -108,10 +111,25 @@ export class FirebaseWorkerService {
       email: fireUser.email,
       phoneNumber: user.phoneNumber,
       gender: user.gender,
-      verifiedUser: true
+      verifiedUser: true,
     };
     return userRef.set(userData, {
       merge: true,
+    });
+  }
+  getSavedCreditCards(userId: any) {
+    const docRef = this.firestore.collection('users').doc(userId);
+    return new Observable<any>(observer => {
+        docRef.get().subscribe((doc) => {
+          let data:any = doc.data();
+          if(data.creditCards){
+            observer.next(data.creditCards)
+          }
+          else{
+            observer.next(false)
+          }
+        }
+      );
     });
   }
 }
