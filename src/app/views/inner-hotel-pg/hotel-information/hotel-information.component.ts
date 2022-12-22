@@ -11,8 +11,16 @@ export class HotelInformationComponent implements OnInit {
   @Input() currentHotel!:Hotel;
   
   constructor() { }
-
+  images:any[] = [];
   ngOnInit(): void {
+    this.currentHotel.rooms.map(room => {
+      return room.images.map(image => {
+        return {image: image, thumbImage: image,
+                  alt: 'alt of image',
+                  title: room.name
+                }
+      })
+    }).forEach(image => image.forEach(image => this.images.push(image)))
   }
 
 }

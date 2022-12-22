@@ -3,9 +3,9 @@
 
 <section class="col-md-12 cont-max-width cont-max-width m-auto">
   <div class="col col-md-12">
-    <img [src]="currentHotel.mainImages[0]" class="card-img-top bannerImg" alt="..." />
+    <img [src]="currentHotel.mainImages[0]" class="card-img-top bannerImg" alt="..." style="object-fit: cover;" />
   </div>
-  <div class="col-md-12 d-flex">
+  <div class="col-md-12 d-flex description">
 
     <app-hotel-information [currentHotel]="this.currentHotel"></app-hotel-information>
 

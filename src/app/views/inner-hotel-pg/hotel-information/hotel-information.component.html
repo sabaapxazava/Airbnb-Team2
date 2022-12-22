@@ -1,22 +1,14 @@
 <aside class="col-md-7">
-  <div class="d-flex title-star">
-    <h2>{{ currentHotel.name }}</h2>
-    <p class="star">✨✨✨✨✨</p>
-  </div>
-  <p>{{ currentHotel.address }}</p>
+  <app-hotel-name [currentHotel]="this.currentHotel"></app-hotel-name>
 
+  <app-hotel-address [HotelAddress]="this.currentHotel.address"></app-hotel-address>
+  <hr />
+  <app-hotel-description [Hoteldescription]="this.currentHotel.description"></app-hotel-description>
   <hr />
 
-  <h3>Addition Info You Should Know</h3>
-  <p>
-    {{ currentHotel.description }}
-  </p>
+  <app-hotel-rooms [HotelRooms]="this.currentHotel.rooms"></app-hotel-rooms>
   <hr />
-  <!-- start image slider -->
-  <h3>Hotel Rooms</h3>
-  <app-image-slider
-    [hotelRoomsImages]="this.currentHotel.rooms"
-  ></app-image-slider>
-  <!-- finish image slider -->
+  <app-image-slider [hotelRoomsImages]="this.images"></app-image-slider>
   <hr />
+  <app-hotel-map [curentHotel]="this.currentHotel"></app-hotel-map>
 </aside>

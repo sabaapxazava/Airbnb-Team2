@@ -1,0 +1,7 @@
+<google-map height="400px" width="100%" [center]="center" [zoom]="zoom">
+  <map-marker
+    #marker="mapMarker"
+    *ngFor="let markerPosition of markerPositions"
+    [position]="markerPosition"
+  ></map-marker>
+</google-map>
