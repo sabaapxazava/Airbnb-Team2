@@ -1,3 +1,5 @@
+import { creditCard } from "./creditCard.model";
+
 export class User {
   id!: string;
   fullName!:string;
@@ -5,4 +7,5 @@ export class User {
   phoneNumber!: string;
   gender!: string;
   verifiedUser!: boolean;
+  creditCards!: creditCard[]
 }

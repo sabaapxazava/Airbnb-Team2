@@ -12,6 +12,7 @@ import Swal from 'sweetalert2';
 import { User } from '../shared-models/user.model';
 import { EventManagerService } from './event-manager.service';
 import { observable, Observable } from 'rxjs';
+import { creditCard } from '../shared-models/creditCard.model';
 
 @Injectable({
   providedIn: 'root',
@@ -50,6 +51,7 @@ export class FirebaseWorkerService {
       .then((result) => {
         this.sendVerificationMail();
         this.setUserDataSingUp(result.user, user);
+        localStorage['user'] = JSON.stringify(result.user);
       })
       .catch((error) => {
         Swal.fire(error.message);
@@ -112,24 +114,46 @@ export class FirebaseWorkerService {
       phoneNumber: user.phoneNumber,
       gender: user.gender,
       verifiedUser: true,
+      creditCards: [],
     };
     return userRef.set(userData, {
       merge: true,
     });
   }
   getSavedCreditCards(userId: any) {
-    const docRef = this.firestore.collection('users').doc(userId);
     return new Observable<any>(observer => {
+        if(!userId) observer.complete()
+        const docRef = this.firestore.collection('users').doc(userId);
         docRef.get().subscribe((doc) => {
           let data:any = doc.data();
           if(data.creditCards){
             observer.next(data.creditCards)
+            observer.complete()
           }
           else{
             observer.next(false)
+            observer.complete()
           }
         }
       );
     });
+  }
+  addCreditCard(userId: any, creditCard:creditCard) {
+    console.log(userId)
+    if(!userId) return false;
+    const userRef = this.firestore.collection('users').doc(userId);
+    let creditCards:creditCard[] = [creditCard];
+    userRef.get().subscribe((doc) => {
+      let data:any = doc.data();
+      console.log(doc.data())
+      if(data.creditCards){
+        if(data.creditCards.length != 0){
+          creditCards = creditCards.concat(data.creditCards as creditCard)
+        }
+        console.log(creditCards)
+        userRef.update({creditCards: creditCards})
+      }
+    })
+    return true;
   }
 }
