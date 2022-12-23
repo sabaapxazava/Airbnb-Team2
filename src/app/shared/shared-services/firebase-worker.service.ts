@@ -117,7 +117,8 @@ export class FirebaseWorkerService {
       gender: "",
       verifiedUser: true,
       creditCards: [],
-      reservedHotels:[]
+      reservedHotels:[],
+      wishlist: []
     };
     return userRef.set(userData, {
       merge: true,
@@ -135,7 +136,8 @@ export class FirebaseWorkerService {
       gender: user.gender,
       verifiedUser: true,
       creditCards: [],
-      reservedHotels: []
+      reservedHotels: [],
+      wishlist: []
     };
     return userRef.set(userData, {
       merge: true,
@@ -194,5 +196,23 @@ export class FirebaseWorkerService {
     })
     this.router.navigate(['/profile']);
     return true;
+  }
+  getHotelFromWishlist(userId: any) {
+    return new Observable<any>(observer => {
+        if(!userId) observer.complete()
+        const docRef = this.firestore.collection('users').doc(userId);
+        docRef.get().subscribe((doc) => {
+          let data:any = doc.data();
+          if(data.wishlist){
+            observer.next(data.wishlist)
+            observer.complete()
+          }
+          else{
+            observer.next(false)
+            observer.complete()
+          }
+        }
+      );
+    });
   }
 }

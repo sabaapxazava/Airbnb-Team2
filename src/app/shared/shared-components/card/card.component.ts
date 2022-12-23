@@ -51,7 +51,7 @@ export class CardComponent implements OnInit {
 
   addCardInWishlist() {
     if (this.auth) {
-      alert('Added');
+      
     } else {
       this.dialog.open(LoginComponent);
     }
