@@ -185,10 +185,10 @@ export class FirebaseWorkerService {
       let data:any = doc.data();
       if(data.reservedHotels){
         if(data.reservedHotels.length != 0){
-          reservedHotels = reservedHotels.concat(data.creditCards)
+          reservedHotels = reservedHotels.concat(data.reservedHotels)
         }
         console.log(reservedHotels)
-        userRef.update({creditCards: reservedHotels})
+        userRef.update({reservedHotels: reservedHotels})
       }
     })
     return true;
