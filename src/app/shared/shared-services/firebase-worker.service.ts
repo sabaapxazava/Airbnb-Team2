@@ -63,6 +63,7 @@ export class FirebaseWorkerService {
       .signInWithPopup(new firebase.GoogleAuthProvider())
       .then((result) => {
         localStorage['user'] = JSON.stringify(result.user);
+        console.log(result.user)
       })
       .catch((error) => {
         Swal.fire(error.message);
