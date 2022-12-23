@@ -191,6 +191,7 @@ export class FirebaseWorkerService {
         userRef.update({reservedHotels: reservedHotels})
       }
     })
+    this.router.navigate(['/profile']);
     return true;
   }
 }
