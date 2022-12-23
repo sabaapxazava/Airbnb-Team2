@@ -35,7 +35,7 @@ export class PayFormComponent implements OnInit {
       delete this.creditCard.value.saveCreditCard
       this.firebase.addCreditCard(JSON.parse(localStorage["user"]).uid ? JSON.parse(localStorage["user"]).uid : null, this.creditCard.value as creditCard)
     }
-    this.firebase.reserveHotel(JSON.parse(localStorage["user"]).uid ? JSON.parse(localStorage["user"]).uid : null, "s")
+    console.log(this.firebase.reserveHotel(JSON.parse(localStorage["user"]).uid ? JSON.parse(localStorage["user"]).uid : null, this.HotelId))
   }
   onCardChange(card:any){
     if(!card.target.value){
