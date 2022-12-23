@@ -7,5 +7,6 @@ export class User {
   phoneNumber!: string;
   gender!: string;
   verifiedUser!: boolean;
-  creditCards!: creditCard[]
+  creditCards!: creditCard[];
+  reservedHotels!:string[];
 }

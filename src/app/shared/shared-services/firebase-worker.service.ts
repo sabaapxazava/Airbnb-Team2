@@ -63,6 +63,7 @@ export class FirebaseWorkerService {
       .signInWithPopup(new firebase.GoogleAuthProvider())
       .then((result) => {
         localStorage['user'] = JSON.stringify(result.user);
+        this.setUserDataGoogleAuth(result.user)
         console.log(result.user)
       })
       .catch((error) => {
@@ -103,7 +104,24 @@ export class FirebaseWorkerService {
   private getUserDoc(id: string): any {
     return this.firestore.collection('users').doc(id);
   }
-
+  private setUserDataGoogleAuth(fireUser: any) {
+    const userRef: AngularFirestoreDocument<any> = this.firestore.doc(
+      `users/${fireUser.uid}`
+    );
+    const userData: User = {
+      id: fireUser.uid,
+      fullName: fireUser.displayName,
+      email: fireUser.email,
+      phoneNumber: fireUser.phoneNumber,
+      gender: "",
+      verifiedUser: true,
+      creditCards: [],
+      reservedHotels:[]
+    };
+    return userRef.set(userData, {
+      merge: true,
+    });
+  }
   private setUserDataSingUp(fireUser: any, user: User) {
     const userRef: AngularFirestoreDocument<any> = this.firestore.doc(
       `users/${fireUser.uid}`
@@ -116,6 +134,7 @@ export class FirebaseWorkerService {
       gender: user.gender,
       verifiedUser: true,
       creditCards: [],
+      reservedHotels: []
     };
     return userRef.set(userData, {
       merge: true,
@@ -153,6 +172,23 @@ export class FirebaseWorkerService {
         }
         console.log(creditCards)
         userRef.update({creditCards: creditCards})
+      }
+    })
+    return true;
+  }
+  reserveHotel(userId: any, hotelId:string) {
+    console.log(userId)
+    if(!userId) return false;
+    const userRef = this.firestore.collection('users').doc(userId);
+    let reservedHotels:string[] = [hotelId];
+    userRef.get().subscribe((doc) => {
+      let data:any = doc.data();
+      if(data.reservedHotels){
+        if(data.reservedHotels.length != 0){
+          reservedHotels = reservedHotels.concat(data.creditCards)
+        }
+        console.log(reservedHotels)
+        userRef.update({creditCards: reservedHotels})
       }
     })
     return true;
