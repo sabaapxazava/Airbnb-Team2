@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, RequiredValidator } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { creditCard } from '../../shared-models/creditCard.model';
 import { FirebaseWorkerService } from '../../shared-services/firebase-worker.service';
 
@@ -10,14 +11,13 @@ import { FirebaseWorkerService } from '../../shared-services/firebase-worker.ser
 })
 export class PayFormComponent implements OnInit {
 
-  constructor(private firebase: FirebaseWorkerService) {
+  constructor(private firebase: FirebaseWorkerService, private activeroute:ActivatedRoute) {
     this.firebase.getSavedCreditCards(JSON.parse(localStorage["user"]).uid ? JSON.parse(localStorage["user"]).uid : null).subscribe(card => this.Cards = card ? card:[])
     console.log(this.Cards)
    }
-
   ngOnInit(): void {
   }
-
+  @Input() HotelId!:string;
   creditCard = new FormGroup({
     cardName: new FormControl(''),
     cardNumber: new FormControl(''),
@@ -35,6 +35,7 @@ export class PayFormComponent implements OnInit {
       delete this.creditCard.value.saveCreditCard
       this.firebase.addCreditCard(JSON.parse(localStorage["user"]).uid ? JSON.parse(localStorage["user"]).uid : null, this.creditCard.value as creditCard)
     }
+    this.firebase.reserveHotel(JSON.parse(localStorage["user"]).uid ? JSON.parse(localStorage["user"]).uid : null, "s")
   }
   onCardChange(card:any){
     if(!card.target.value){

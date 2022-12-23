@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BaseHttpService } from 'src/app/core/http/base-http.service';
 import { Hotel } from 'src/app/shared/shared-models/hotel.model';
-import { FirebaseWorkerService } from 'src/app/shared/shared-services/firebase-worker.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
