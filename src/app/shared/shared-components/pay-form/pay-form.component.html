@@ -4,6 +4,7 @@
     <div class="tab-for">
       <h5 *ngIf="this.Cards.length != 0">Your Cards:</h5>
       <select *ngIf="this.Cards.length != 0"  name="" id="" (change)="onCardChange($event)">
+        <option value="">New Card</option>
         <option *ngFor="let item of this.Cards" [value]="item | json">***{{item.cardNumber.toString().substring(item.cardNumber.toString().length -4) }}</option>
       </select>
       <h5>NAME ON CARD</h5>
@@ -14,8 +15,6 @@
         class="pay-logo"
         type="text"
         value="0000-0000-0000-0000"
-        onfocus="this.value = '';"
-        onblur="if (this.value == '') {this.value = '0000-0000-0000-0000';}"
         required=""
       />
     </div>
@@ -51,8 +50,6 @@
         formControlName="cvv"
           type="text"
           value="xxxx"
-          onfocus="this.value = '';"
-          onblur="if (this.value == '') {this.value = 'xxxx';}"
           required=""
         />
       </div>

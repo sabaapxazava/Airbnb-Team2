@@ -37,8 +37,13 @@ export class PayFormComponent implements OnInit {
     }
   }
   onCardChange(card:any){
-    console.log(card.target.value)
-    this.creditCard.patchValue(JSON.parse(card.target.value))
-    console.log(this.creditCard.value)
+    if(!card.target.value){
+      this.creditCard.reset();
+    }
+    else{
+      console.log(card.target.value)
+      this.creditCard.patchValue(JSON.parse(card.target.value))
+      console.log(this.creditCard.value)
+    }
   }
 }
