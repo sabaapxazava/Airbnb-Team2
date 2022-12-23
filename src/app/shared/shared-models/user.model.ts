@@ -9,4 +9,5 @@ export class User {
   verifiedUser!: boolean;
   creditCards!: creditCard[];
   reservedHotels!:string[];
+  wishlist!:string[]
 }

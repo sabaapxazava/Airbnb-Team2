@@ -20,7 +20,7 @@ import { reservedHotel } from '../shared-models/reservedHotel.model';
 })
 export class FirebaseWorkerService {
   signInEmitter: EventEmitter<any> = new EventEmitter();
-
+  wishlistEmitter: EventEmitter<any> = new EventEmitter();
   constructor(
     private firestore: AngularFirestore,
     private auth: AngularFireAuth,
@@ -64,8 +64,8 @@ export class FirebaseWorkerService {
       .signInWithPopup(new firebase.GoogleAuthProvider())
       .then((result) => {
         localStorage['user'] = JSON.stringify(result.user);
-        this.setUserDataGoogleAuth(result.user)
-        console.log(result.user)
+        this.setUserDataGoogleAuth(result.user);
+        console.log(result.user);
       })
       .catch((error) => {
         Swal.fire(error.message);
@@ -114,10 +114,11 @@ export class FirebaseWorkerService {
       fullName: fireUser.displayName,
       email: fireUser.email,
       phoneNumber: fireUser.phoneNumber,
-      gender: "",
+      gender: '',
       verifiedUser: true,
       creditCards: [],
-      reservedHotels:[]
+      reservedHotels: [],
+      wishlist: [],
     };
     return userRef.set(userData, {
       merge: true,
@@ -135,64 +136,86 @@ export class FirebaseWorkerService {
       gender: user.gender,
       verifiedUser: true,
       creditCards: [],
-      reservedHotels: []
+      reservedHotels: [],
+      wishlist: [],
     };
     return userRef.set(userData, {
       merge: true,
     });
   }
   getSavedCreditCards(userId: any) {
-    return new Observable<any>(observer => {
-        if(!userId) observer.complete()
-        const docRef = this.firestore.collection('users').doc(userId);
-        docRef.get().subscribe((doc) => {
-          let data:any = doc.data();
-          if(data.creditCards){
-            observer.next(data.creditCards)
-            observer.complete()
-          }
-          else{
-            observer.next(false)
-            observer.complete()
-          }
+    return new Observable<any>((observer) => {
+      if (!userId) observer.complete();
+      const docRef = this.firestore.collection('users').doc(userId);
+      docRef.get().subscribe((doc) => {
+        let data: any = doc.data();
+        if (data.creditCards) {
+          observer.next(data.creditCards);
+          observer.complete();
+        } else {
+          observer.next(false);
+          observer.complete();
         }
-      );
+      });
     });
   }
-  addCreditCard(userId: any, creditCard:creditCard) {
-    console.log(userId)
-    if(!userId) return false;
+  addCreditCard(userId: any, creditCard: creditCard) {
+    console.log(userId);
+    if (!userId) return false;
     const userRef = this.firestore.collection('users').doc(userId);
-    let creditCards:creditCard[] = [creditCard];
+    let creditCards: creditCard[] = [creditCard];
     userRef.get().subscribe((doc) => {
-      let data:any = doc.data();
-      console.log(doc.data())
-      if(data.creditCards){
-        if(data.creditCards.length != 0){
-          creditCards = creditCards.concat(data.creditCards as creditCard)
+      let data: any = doc.data();
+      console.log(doc.data());
+      if (data.creditCards) {
+        if (data.creditCards.length != 0) {
+          creditCards = creditCards.concat(data.creditCards as creditCard);
         }
-        console.log(creditCards)
-        userRef.update({creditCards: creditCards})
+        console.log(creditCards);
+        userRef.update({ creditCards: creditCards });
       }
-    })
+    });
     return true;
   }
-  reserveHotel(userId: any, hotel:reservedHotel) {
-    console.log(userId)
-    if(!userId) return false;
+  reserveHotel(userId: any, hotel: reservedHotel) {
+    if (!userId) return false;
     const userRef = this.firestore.collection('users').doc(userId);
-    let reservedHotels:reservedHotel[] = [hotel];
+    let reservedHotels: reservedHotel[] = [hotel];
     userRef.get().subscribe((doc) => {
-      let data:any = doc.data();
-      if(data.reservedHotels){
-        if(data.reservedHotels.length != 0){
-          reservedHotels = reservedHotels.concat(data.reservedHotels)
+      let data: any = doc.data();
+      if (data.reservedHotels) {
+        if (data.reservedHotels.length != 0) {
+          reservedHotels = reservedHotels.concat(data.reservedHotels);
         }
-        console.log(reservedHotels)
-        userRef.update({reservedHotels: reservedHotels})
+        console.log(reservedHotels);
+        userRef.update({ reservedHotels: reservedHotels });
       }
-    })
+    });
     this.router.navigate(['/profile']);
+    return true;
+  }
+  getHotelFromWishlist(userId: any, hotelId: string) {
+      const docRef = this.firestore.collection('users').doc(userId);
+      docRef.get().subscribe((doc) => {
+        let data: any = doc.data();
+        this.wishlistEmitter.emit({Date:data.wishlist.includes(hotelId), id:hotelId});
+      });
+  }
+  AddRemoveFromWishlist(userId: any, hotelId: string) {
+    const docRef = this.firestore.collection('users').doc(userId);
+    docRef.get().subscribe((doc) => {
+      let data: any = doc.data();
+      if (data.wishlist) {
+        if (data.wishlist.includes(hotelId)) {
+          data.wishlist.splice(data.wishlist.indexOf(hotelId), 1);
+        } else {
+          data.wishlist.push(hotelId);
+        }
+        console.log(data.wishlist);
+        docRef.update({ wishlist: data.wishlist });
+        this.wishlistEmitter.emit({Date:data.wishlist.includes(hotelId), id:hotelId});
+      }
+    });
     return true;
   }
 }
