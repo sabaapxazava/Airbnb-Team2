@@ -13,6 +13,8 @@ export class ReservationComponent implements OnInit {
   cost: any;
   numberOfDays: any;
   currentHotelId: any;
+  startDate!: Date;
+  endDate!: Date;
   card:Hotel = new Hotel;
 
   constructor(private activatedRoute: ActivatedRoute, private baseHttpService: BaseHttpService) {
@@ -20,6 +22,9 @@ export class ReservationComponent implements OnInit {
       this.cost = params['cost'];
       this.numberOfDays = params['numberOfDays'];
       this.currentHotelId = params['currentHotelId'];
+      let startDateEndDate = JSON.parse(params['startDateEndDate'])
+      this.startDate = startDateEndDate.startDate;
+      this.endDate = startDateEndDate.endDate;
       const fullApiUrl = `${environment.baseApiUrl}/Hotel/${this.currentHotelId}`;
       this.baseHttpService.getById<Hotel>(fullApiUrl).subscribe((res: any) => {
         this.card = res

@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, RequiredValidator } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { creditCard } from '../../shared-models/creditCard.model';
+import { reservedHotel } from '../../shared-models/reservedHotel.model';
 import { FirebaseWorkerService } from '../../shared-services/firebase-worker.service';
 
 @Component({
@@ -18,6 +19,9 @@ export class PayFormComponent implements OnInit {
   ngOnInit(): void {
   }
   @Input() HotelId!:string;
+  @Input() startDate!:Date;
+  @Input() endDate!:Date;
+  @Input() pricePaid!:number;
   creditCard = new FormGroup({
     cardName: new FormControl(''),
     cardNumber: new FormControl(''),
@@ -30,12 +34,20 @@ export class PayFormComponent implements OnInit {
   Cards:any[] = [];
 
   onSubmit(){
+    let reserveDate = new Date()
     console.log(this.creditCard.value)
     if(this.creditCard.value.saveCreditCard){
       delete this.creditCard.value.saveCreditCard
       this.firebase.addCreditCard(JSON.parse(localStorage["user"]).uid ? JSON.parse(localStorage["user"]).uid : null, this.creditCard.value as creditCard)
     }
-    console.log(this.firebase.reserveHotel(JSON.parse(localStorage["user"]).uid ? JSON.parse(localStorage["user"]).uid : null, this.HotelId))
+    let reservedHotel:reservedHotel = {
+      hotelId:this.HotelId,
+      startDate: this.startDate,
+      endDate: this.endDate,
+      pricePaid: this.pricePaid,
+      reserveDate: reserveDate
+    }
+    console.log(this.firebase.reserveHotel(JSON.parse(localStorage["user"]).uid ? JSON.parse(localStorage["user"]).uid : null, reservedHotel))
   }
   onCardChange(card:any){
     if(!card.target.value){

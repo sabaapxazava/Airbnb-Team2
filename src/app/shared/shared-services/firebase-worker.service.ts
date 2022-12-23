@@ -13,6 +13,7 @@ import { User } from '../shared-models/user.model';
 import { EventManagerService } from './event-manager.service';
 import { observable, Observable } from 'rxjs';
 import { creditCard } from '../shared-models/creditCard.model';
+import { reservedHotel } from '../shared-models/reservedHotel.model';
 
 @Injectable({
   providedIn: 'root',
@@ -176,11 +177,11 @@ export class FirebaseWorkerService {
     })
     return true;
   }
-  reserveHotel(userId: any, hotelId:string) {
+  reserveHotel(userId: any, hotel:reservedHotel) {
     console.log(userId)
     if(!userId) return false;
     const userRef = this.firestore.collection('users').doc(userId);
-    let reservedHotels:string[] = [hotelId];
+    let reservedHotels:reservedHotel[] = [hotel];
     userRef.get().subscribe((doc) => {
       let data:any = doc.data();
       if(data.reservedHotels){
