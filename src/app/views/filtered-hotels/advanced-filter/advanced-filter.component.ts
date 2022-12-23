@@ -32,10 +32,10 @@ export class AdvancedFilterComponent
 
   ngOnInit(): void {
     this.objToString();
-    this.sendFilterdHotels();
-    this.filterModalInfo.advancedFilterEmitter.subscribe(() => {
-      this.sendFilterdHotels();
-    });
+    this.sendFilterdHotels(this.queryString);
+    // this.filterModalInfo.advancedFilterEmitter.subscribe(() => {
+    //   this.sendFilterdHotels();
+    // });
   }
 
   ngOnChanges(): void {}
@@ -45,18 +45,18 @@ export class AdvancedFilterComponent
   ngDoCheck() {}
 
   objToString() {
-    this.activatedRoute.queryParams.subscribe((response) => {
-      this.queryString = Object.keys(response)
+    this.activatedRoute.queryParams.subscribe(async (response) => {
+      let TmpqueryString = Object.keys(response)
         .map((key) => key + '=' + response[key])
         .join('&');
       console.log('querystring', this.queryString);
-      this.sendFilterdHotels();
+      this.sendFilterdHotels(TmpqueryString);
     });
   }
 
-  sendFilterdHotels() {
+  sendFilterdHotels(queryString:string) {
     this.categoryService
-      .getFilteredCategoris(`?${this.queryString}`)
+      .getFilteredCategoris(`?${queryString}`)
       .subscribe((response) => {
         // console.log('response axali', response);
         this.cards = response;
