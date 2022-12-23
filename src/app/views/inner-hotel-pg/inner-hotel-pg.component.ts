@@ -19,7 +19,7 @@ export class InnerHotelPgComponent implements OnInit {
   }
   
   public hotelId!:string;
-  public currentHotel:Hotel = new Hotel;
+  public currentHotel!:Hotel;
   ngOnInit(): void {
   }
 }

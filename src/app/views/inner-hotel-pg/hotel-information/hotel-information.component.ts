@@ -21,6 +21,7 @@ export class HotelInformationComponent implements OnInit {
                 }
       })
     }).forEach(image => image.forEach(image => this.images.push(image)))
+    console.log(this.currentHotel)
   }
 
 }
