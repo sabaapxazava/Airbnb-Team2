@@ -1,32 +1,65 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  OnChanges,
+  AfterContentChecked,
+} from '@angular/core';
 import { Hotel } from 'src/app/shared/shared-models/hotel.model';
 import { CategoryService } from 'src/app/shared/shared-services/category.service';
+import { ActivatedRoute, NavigationEnd } from '@angular/router';
+import { FilterModalDataComunicationService } from 'src/app/shared/shared-services/filter-modal-data-comunication.service';
+import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-advanced-filter',
   templateUrl: './advanced-filter.component.html',
   styleUrls: ['./advanced-filter.component.scss'],
 })
-export class AdvancedFilterComponent implements OnInit {
+export class AdvancedFilterComponent
+  implements OnInit, OnChanges, AfterContentChecked
+{
   cards: any[] = [];
   hotelFilteredArray: Hotel[] = [];
+  queryString!: string;
 
-  constructor(private categoryService: CategoryService) {}
+  constructor(
+    private categoryService: CategoryService,
+    private filterModalInfo: FilterModalDataComunicationService,
+    public activatedRoute: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    this.hotalsArraySubscriber();
-  }
-
-  ngAfterViewInit() {
-    this.hotalsArraySubscriber();
-  }
-
-  hotalsArraySubscriber() {
-    this.categoryService.categoryItemEmitter.subscribe((response) => {
-      if (response) {
-        this.cards = response;
-        console.log('receved hotels', this.cards);
-      }
+    this.objToString();
+    this.sendFilterdHotels();
+    this.filterModalInfo.advancedFilterEmitter.subscribe(() => {
+      this.sendFilterdHotels();
     });
+  }
+
+  ngOnChanges(): void {}
+  ngAfterViewInit(): void {}
+  ngAfterViewChecked() {}
+  ngAfterContentChecked() {}
+  ngDoCheck() {}
+
+  objToString() {
+    this.activatedRoute.queryParams.subscribe((response) => {
+      this.queryString = Object.keys(response)
+        .map((key) => key + '=' + response[key])
+        .join('&');
+      console.log('querystring', this.queryString);
+      this.sendFilterdHotels();
+    });
+  }
+
+  sendFilterdHotels() {
+    this.categoryService
+      .getFilteredCategoris(`?${this.queryString}`)
+      .subscribe((response) => {
+        // console.log('response axali', response);
+        this.cards = response;
+      });
   }
 }

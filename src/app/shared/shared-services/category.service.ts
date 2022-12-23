@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { EventEmitter } from '@angular/core';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -22,13 +22,12 @@ export class CategoryService {
   }
 
   getFilteredCategoris(link: string): Observable<any> {
+    // console.log(`${this.apiUrl}/Hotel/filter-by-category${link}`);
     return this.httpClient
-      .get(`${this.apiUrl}/Hotel/filter-by-category/${link}`)
+      .get(`${this.apiUrl}/Hotel/filter-by-category${link}`)
       .pipe(
-        map((res) => {
-          console.log('resp', res);
+        tap((res) => {
           this.categoryItemEmitter.emit(res);
-          return res;
         })
       );
   }

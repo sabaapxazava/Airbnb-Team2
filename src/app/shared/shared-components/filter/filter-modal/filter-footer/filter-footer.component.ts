@@ -1,13 +1,7 @@
-import {
-  Component,
-  OnInit,
-  AfterViewInit,
-  AfterContentInit,
-  OnChanges,
-} from '@angular/core';
+import { Component, OnInit, OnChanges, Input } from '@angular/core';
 import { FilterInfo } from 'src/app/shared/shared-models/filterInfo.model';
 import { FilterModalDataComunicationService } from 'src/app/shared/shared-services/filter-modal-data-comunication.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CategoryService } from 'src/app/shared/shared-services/category.service';
 
 @Component({
@@ -15,35 +9,51 @@ import { CategoryService } from 'src/app/shared/shared-services/category.service
   templateUrl: './filter-footer.component.html',
   styleUrls: ['./filter-footer.component.css'],
 })
-export class FilterFooterComponent
-  implements OnInit, AfterViewInit, AfterContentInit, OnChanges
-{
+export class FilterFooterComponent implements OnInit {
   constructor(
     private categoryService: CategoryService,
     private filterModalInfo: FilterModalDataComunicationService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
-  ngAfterContentInit(): void {}
-  ngAfterViewInit(): void {}
-  ngOnInit(): void {
-    // this.onShowHomes();
-  }
-  ngOnChanges() {
-    // this.onShowHomes();
-    // this.sendFilterdHotels();
-  }
+  ngOnInit(): void {}
+
+  ngAfterContentChecked() {}
 
   onShowHomes() {
-    console.log(this.filterModalInfo.filterModalInfo);
     this.router.navigate(['filtered-hotels/advanced-filter'], {
       queryParams: {
         PriceFrom: this.filterModalInfo.filterModalInfo.priceRange.minPrice,
         PriceTo: this.filterModalInfo.filterModalInfo.priceRange.maxPrice,
+        // TypeOfPlace: this.filterModalInfo.filterModalInfo.typeOfPlace,
+        // BedsPerRoomCount:
+        //   this.filterModalInfo.filterModalInfo.roomsAndBeds.beds,
       },
     });
-    this.sendFilterdHotels();
+    this.filterModalInfo.advancedFilterEmitter.emit();
   }
+
+  // onShowHomes() {
+  //   this.testbul = !this.testbul;
+  //   console.log((this.testbul = !this.testbul));
+  //   // console.log(this.filterModalInfo.filterModalInfo);
+  //   if ((this.testbul = !this.testbul)) {
+  //     this.router.navigate(['filtered-hotels/advanced-filter'], {
+  //       queryParams: {
+  //         PriceFrom: this.filterModalInfo.filterModalInfo.priceRange.minPrice,
+  //         PriceTo: this.filterModalInfo.filterModalInfo.priceRange.maxPrice,
+  //         TypeOfPlace: this.filterModalInfo.filterModalInfo.typeOfPlace,
+  //         BedsPerRoomCount:
+  //           this.filterModalInfo.filterModalInfo.roomsAndBeds.beds,
+  //       },
+  //     });
+  //     this.sendFilterdHotels();
+  //     this.filterModalInfo.advancedFilterEmitter.emit();
+  //   } else {
+  //     // this.testbul = false;
+  //   }
+  // }
 
   onClearAll() {
     // this.filterModalInfo.filterModalInfo = {
@@ -76,19 +86,8 @@ export class FilterFooterComponent
     this.filterModalInfo.filterModalInfo = new FilterInfo();
     console.log(this.filterModalInfo.filterModalInfo);
   }
-
-  sendFilterdHotels() {
-    this.categoryService
-      .getFilteredCategoris(this.router.url.slice(32))
-      .subscribe((response) => {
-        if (response) {
-          console.log(response);
-        }
-      });
-  }
 }
 
-// TypeOfPlace: this.filterModalInfo.filterModalInfo.typeOfPlace,
 // BedsPerRoomCount:
 //   this.filterModalInfo.filterModalInfo.roomsAndBeds.beds,
 // RoomsCount: this.filterModalInfo.filterModalInfo.roomsAndBeds.bedrooms,
