@@ -3,12 +3,17 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import {
   AngularFirestore,
   AngularFirestoreDocument,
+  DocumentSnapshot,
 } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import * as firebase from 'firebase/auth';
+import * as firebases from 'firebase/app';
 import Swal from 'sweetalert2';
 import { User } from '../shared-models/user.model';
 import { EventManagerService } from './event-manager.service';
+import { observable, Observable } from 'rxjs';
+import { creditCard } from '../shared-models/creditCard.model';
+import { reservedHotel } from '../shared-models/reservedHotel.model';
 
 @Injectable({
   providedIn: 'root',
@@ -37,7 +42,7 @@ export class FirebaseWorkerService {
         localStorage['user'] = JSON.stringify(result.user);
       })
       .catch((error) => {
-        Swal.fire(error.message)
+        Swal.fire(error.message);
       });
   }
 
@@ -47,9 +52,10 @@ export class FirebaseWorkerService {
       .then((result) => {
         this.sendVerificationMail();
         this.setUserDataSingUp(result.user, user);
+        localStorage['user'] = JSON.stringify(result.user);
       })
       .catch((error) => {
-        Swal.fire(error.message)
+        Swal.fire(error.message);
       });
   }
 
@@ -57,10 +63,12 @@ export class FirebaseWorkerService {
     return this.auth
       .signInWithPopup(new firebase.GoogleAuthProvider())
       .then((result) => {
-        return this.getUserDoc(result.user?.uid ?? '');
+        localStorage['user'] = JSON.stringify(result.user);
+        this.setUserDataGoogleAuth(result.user)
+        console.log(result.user)
       })
       .catch((error) => {
-        Swal.fire(error.message)
+        Swal.fire(error.message);
       });
   }
 
@@ -83,10 +91,10 @@ export class FirebaseWorkerService {
     return this.auth
       .sendPasswordResetEmail(passwordResetEmail)
       .then(() => {
-        Swal.fire('Password reset email sent, check your inbox.')
+        Swal.fire('Password reset email sent, check your inbox.');
       })
       .catch((error) => {
-        Swal.fire(error.message)
+        Swal.fire(error.message);
       });
   }
 
@@ -97,7 +105,24 @@ export class FirebaseWorkerService {
   private getUserDoc(id: string): any {
     return this.firestore.collection('users').doc(id);
   }
-
+  private setUserDataGoogleAuth(fireUser: any) {
+    const userRef: AngularFirestoreDocument<any> = this.firestore.doc(
+      `users/${fireUser.uid}`
+    );
+    const userData: User = {
+      id: fireUser.uid,
+      fullName: fireUser.displayName,
+      email: fireUser.email,
+      phoneNumber: fireUser.phoneNumber,
+      gender: "",
+      verifiedUser: true,
+      creditCards: [],
+      reservedHotels:[]
+    };
+    return userRef.set(userData, {
+      merge: true,
+    });
+  }
   private setUserDataSingUp(fireUser: any, user: User) {
     const userRef: AngularFirestoreDocument<any> = this.firestore.doc(
       `users/${fireUser.uid}`
@@ -108,10 +133,66 @@ export class FirebaseWorkerService {
       email: fireUser.email,
       phoneNumber: user.phoneNumber,
       gender: user.gender,
-      verifiedUser: true
+      verifiedUser: true,
+      creditCards: [],
+      reservedHotels: []
     };
     return userRef.set(userData, {
       merge: true,
     });
+  }
+  getSavedCreditCards(userId: any) {
+    return new Observable<any>(observer => {
+        if(!userId) observer.complete()
+        const docRef = this.firestore.collection('users').doc(userId);
+        docRef.get().subscribe((doc) => {
+          let data:any = doc.data();
+          if(data.creditCards){
+            observer.next(data.creditCards)
+            observer.complete()
+          }
+          else{
+            observer.next(false)
+            observer.complete()
+          }
+        }
+      );
+    });
+  }
+  addCreditCard(userId: any, creditCard:creditCard) {
+    console.log(userId)
+    if(!userId) return false;
+    const userRef = this.firestore.collection('users').doc(userId);
+    let creditCards:creditCard[] = [creditCard];
+    userRef.get().subscribe((doc) => {
+      let data:any = doc.data();
+      console.log(doc.data())
+      if(data.creditCards){
+        if(data.creditCards.length != 0){
+          creditCards = creditCards.concat(data.creditCards as creditCard)
+        }
+        console.log(creditCards)
+        userRef.update({creditCards: creditCards})
+      }
+    })
+    return true;
+  }
+  reserveHotel(userId: any, hotel:reservedHotel) {
+    console.log(userId)
+    if(!userId) return false;
+    const userRef = this.firestore.collection('users').doc(userId);
+    let reservedHotels:reservedHotel[] = [hotel];
+    userRef.get().subscribe((doc) => {
+      let data:any = doc.data();
+      if(data.reservedHotels){
+        if(data.reservedHotels.length != 0){
+          reservedHotels = reservedHotels.concat(data.reservedHotels)
+        }
+        console.log(reservedHotels)
+        userRef.update({reservedHotels: reservedHotels})
+      }
+    })
+    this.router.navigate(['/profile']);
+    return true;
   }
 }

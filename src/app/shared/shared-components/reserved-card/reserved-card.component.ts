@@ -1,4 +1,5 @@
 import { JsonPipe } from '@angular/common';
+import { computeMsgId } from '@angular/compiler';
 import { Component, Input, OnInit } from '@angular/core';
 import { BaseHttpService } from 'src/app/core/http/base-http.service';
 import { environment } from 'src/environments/environment';
@@ -48,7 +49,9 @@ export class ReservedCardComponent implements OnInit {
   //     },
   //   ],
   // };
-  card!: any;
+  curentCardImages: any = [];
+  @Input()
+  card!: Hotel;
   @Input()
   cost!: any;
   @Input()
@@ -56,17 +59,14 @@ export class ReservedCardComponent implements OnInit {
   @Input()
   currentHotelId!: string;
 
-  constructor(private baseHttpService: BaseHttpService) {}
+  constructor() {
+  }
 
   ngOnInit(): void {
     console.log(this.cost, 'reserved-card');
     console.log(this.numberOfDays, 'reserved-card');
     console.log(this.currentHotelId, 'reserved-card');
-    this.baseHttpService
-      .getById(`${environment.baseApiUrl}/Hotel/${this.currentHotelId}`)
-      .subscribe((res) => {
-       this.card = res
-      });
+    console.log(this.card.mainImages)
   }
 
   selectImage(index: number) {

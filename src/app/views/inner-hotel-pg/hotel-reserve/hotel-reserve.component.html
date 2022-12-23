@@ -7,6 +7,7 @@
     <app-date-picker
       [currentHotel]="this.currentHotel"
       (numberOfDaysEmitter)="numberOfDaysChanged($event)"
+      (StartDateEndDate)="StartDateEndDate($event)"
     ></app-date-picker>
 
     <button (click)="reservationBtn()" class="reserve-btn" mat-raised-button color="warn">

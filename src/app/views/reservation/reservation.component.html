@@ -1,9 +1,15 @@
 <article>
   <aside>
-    <app-pay-form></app-pay-form>
+    <app-pay-form
+      [HotelId]="this.currentHotelId"
+      [pricePaid]="cost"
+      [endDate]="this.endDate"
+      [startDate]="this.startDate"
+    ></app-pay-form>
   </aside>
   <aside>
     <app-reserved-card
+      [card]="this.card"
       [cost]="cost"
       [numberOfDays]="numberOfDays"
       [currentHotelId]="currentHotelId"

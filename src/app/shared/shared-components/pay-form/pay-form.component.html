@@ -1,16 +1,20 @@
 <div class="payment-info">
   <h3 class="pay-title">Credit Card Info</h3>
-  <form>
+  <form [formGroup]="creditCard" (ngSubmit)="onSubmit()" >
     <div class="tab-for">
+      <h5 *ngIf="this.Cards.length != 0">Your Cards:</h5>
+      <select *ngIf="this.Cards.length != 0"  name="" id="" (change)="onCardChange($event)">
+        <option value="">New Card</option>
+        <option *ngFor="let item of this.Cards" [value]="item | json">***{{item.cardNumber.toString().substring(item.cardNumber.toString().length -4) }}</option>
+      </select>
       <h5>NAME ON CARD</h5>
-      <input type="text" value="" />
+      <input formControlName="cardName" type="text" value="" />
       <h5>CARD NUMBER</h5>
       <input
+        formControlName="cardNumber"
         class="pay-logo"
         type="text"
         value="0000-0000-0000-0000"
-        onfocus="this.value = '';"
-        onblur="if (this.value == '') {this.value = '0000-0000-0000-0000';}"
         required=""
       />
     </div>
@@ -20,6 +24,7 @@
         <ul>
           <li>
             <input
+              formControlName="expirationDay"
               type="number"
               class="text_box"
               type="text"
@@ -29,6 +34,7 @@
           </li>
           <li>
             <input
+              formControlName="expirationMonth"
               type="number"
               class="text_box"
               type="text"
@@ -41,26 +47,24 @@
       <div class="tab-form-right user-form-rt">
         <h5>CVV NUMBER</h5>
         <input
+        formControlName="cvv"
           type="text"
           value="xxxx"
-          onfocus="this.value = '';"
-          onblur="if (this.value == '') {this.value = 'xxxx';}"
           required=""
         />
       </div>
       <div class="clear"></div>
     </div>
     <input type="submit" value="SUBMIT" />
+    <div class="single-bottom">
+      <ul>
+        <li>
+          <input formControlName="saveCreditCard" type="checkbox" id="brand" value="" />
+          <label for="brand">
+            Save Credit Card.</label
+          >
+        </li>
+      </ul>
+    </div>
   </form>
-  <div class="single-bottom">
-    <ul>
-      <li>
-        <input type="checkbox" id="brand" value="" />
-        <label for="brand">
-          By checking this box, I agree to the Terms & Conditions & Privacy
-          Policy.</label
-        >
-      </li>
-    </ul>
-  </div>
 </div>

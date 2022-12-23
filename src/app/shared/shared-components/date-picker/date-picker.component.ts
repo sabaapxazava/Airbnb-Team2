@@ -12,7 +12,7 @@ export class DatePickerComponent implements OnInit {
   @Input()
   currentHotel!:Hotel;
   @Output() numberOfDaysEmitter : EventEmitter<any> = new EventEmitter();
-
+  @Output() StartDateEndDate : EventEmitter<any> = new EventEmitter();
   range = new FormGroup({
     start: new FormControl<Date | null>(null),
     end: new FormControl<Date | null>(null),
@@ -26,24 +26,27 @@ export class DatePickerComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  dayDifference(date1:any, date2:any) {
+    const oneDay = 24 * 60 * 60 * 1000;
+    const diffDays = Math.round(Math.abs((date1 - date2) / oneDay));
+    return diffDays;
+  }
+
   ngAfterViewChecked(): void {
     if (
       this.range.controls.start.value != null &&
       this.range.controls.end.value != null
     ) {
-      this.startDate = this.range.controls.start.value.getDate();
-      this.endDate = this.range.controls.end.value.getDate();
-      this.numberOfDays = this.endDate - this.startDate;
+      this.startDate = this.range.value.start;
+      this.endDate = this.range.value.end;
+     
+      this.numberOfDays = this.dayDifference(this.startDate, this.endDate);
       this.cost = this.numberOfDays * this.currentHotel.rooms[0].price;
 
-      console.log('start date', this.startDate);
-      console.log('end date', this.endDate);
-      console.log(this.numberOfDays);
-
+      this.numberOfDaysEmitter.emit(this.numberOfDays)
+      this.StartDateEndDate.emit({startDate: this.startDate, endDate: this.endDate})
       this.endDate = null;
       this.startDate = null;
-
-      this.numberOfDaysEmitter.emit(this.numberOfDays)
 
     }
   }
