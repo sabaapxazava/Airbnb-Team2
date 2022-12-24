@@ -109,6 +109,16 @@ export class FirebaseWorkerService {
     const userRef: AngularFirestoreDocument<any> = this.firestore.doc(
       `users/${fireUser.uid}`
     );
+    let accountExists = false;
+    userRef.get().subscribe((doc) => {
+      let data: any = doc.data();
+      if(data.uid == fireUser.uid){
+        accountExists = true
+      }
+    });
+    if(accountExists){
+      return true
+    }
     const userData: User = {
       id: fireUser.uid,
       fullName: fireUser.displayName,
