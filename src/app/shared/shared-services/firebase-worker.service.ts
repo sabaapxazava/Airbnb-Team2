@@ -204,28 +204,4 @@ export class FirebaseWorkerService {
     this.router.navigate(['/profile']);
     return true;
   }
-  getHotelFromWishlist(userId: any, hotelId: string) {
-      const docRef = this.firestore.collection('users').doc(userId);
-      docRef.get().subscribe((doc) => {
-        let data: any = doc.data();
-        this.wishlistEmitter.emit({Date:data.wishlist.includes(hotelId), id:hotelId});
-      });
-  }
-  AddRemoveFromWishlist(userId: any, hotelId: string) {
-    const docRef = this.firestore.collection('users').doc(userId);
-    docRef.get().subscribe((doc) => {
-      let data: any = doc.data();
-      if (data.wishlist) {
-        if (data.wishlist.includes(hotelId)) {
-          data.wishlist.splice(data.wishlist.indexOf(hotelId), 1);
-        } else {
-          data.wishlist.push(hotelId);
-        }
-        console.log(data.wishlist);
-        docRef.update({ wishlist: data.wishlist });
-        this.wishlistEmitter.emit({Date:data.wishlist.includes(hotelId), id:hotelId});
-      }
-    });
-    return true;
-  }
 }
