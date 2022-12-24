@@ -153,40 +153,6 @@ export class FirebaseWorkerService {
       merge: true,
     });
   }
-  getSavedCreditCards(userId: any) {
-    return new Observable<any>((observer) => {
-      if (!userId) observer.complete();
-      const docRef = this.firestore.collection('users').doc(userId);
-      docRef.get().subscribe((doc) => {
-        let data: any = doc.data();
-        if (data.creditCards) {
-          observer.next(data.creditCards);
-          observer.complete();
-        } else {
-          observer.next(false);
-          observer.complete();
-        }
-      });
-    });
-  }
-  addCreditCard(userId: any, creditCard: creditCard) {
-    console.log(userId);
-    if (!userId) return false;
-    const userRef = this.firestore.collection('users').doc(userId);
-    let creditCards: creditCard[] = [creditCard];
-    userRef.get().subscribe((doc) => {
-      let data: any = doc.data();
-      console.log(doc.data());
-      if (data.creditCards) {
-        if (data.creditCards.length != 0) {
-          creditCards = creditCards.concat(data.creditCards as creditCard);
-        }
-        console.log(creditCards);
-        userRef.update({ creditCards: creditCards });
-      }
-    });
-    return true;
-  }
   reserveHotel(userId: any, hotel: reservedHotel) {
     if (!userId) return false;
     const userRef = this.firestore.collection('users').doc(userId);

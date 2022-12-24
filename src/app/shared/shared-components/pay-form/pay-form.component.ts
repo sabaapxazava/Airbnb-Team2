@@ -3,8 +3,9 @@ import { FormControl, FormGroup, RequiredValidator } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { creditCard } from '../../shared-models/creditCard.model';
 import { reservedHotel } from '../../shared-models/reservedHotel.model';
+import { CreditCardService } from '../../shared-services/credit-card.service';
 import { FirebaseWorkerService } from '../../shared-services/firebase-worker.service';
-
+import { User } from '../../shared-models/user.model'
 @Component({
   selector: 'app-pay-form',
   templateUrl: './pay-form.component.html',
@@ -12,8 +13,8 @@ import { FirebaseWorkerService } from '../../shared-services/firebase-worker.ser
 })
 export class PayFormComponent implements OnInit {
 
-  constructor(private firebase: FirebaseWorkerService, private activeroute:ActivatedRoute) {
-    this.firebase.getSavedCreditCards(JSON.parse(localStorage["user"]).uid ? JSON.parse(localStorage["user"]).uid : null).subscribe(card => this.Cards = card ? card:[])
+  constructor(private creditCardService: CreditCardService, private activeroute:ActivatedRoute, private firebase:FirebaseWorkerService) {
+    this.creditCardService.getSavedCreditCards().subscribe(data => this.Cards = data.creditCards as creditCard[])
     console.log(this.Cards)
    }
   ngOnInit(): void {
@@ -38,7 +39,7 @@ export class PayFormComponent implements OnInit {
     console.log(this.creditCard.value)
     if(this.creditCard.value.saveCreditCard){
       delete this.creditCard.value.saveCreditCard
-      this.firebase.addCreditCard(JSON.parse(localStorage["user"]).uid ? JSON.parse(localStorage["user"]).uid : null, this.creditCard.value as creditCard)
+      this.creditCardService.addCreditCard(JSON.parse(localStorage["user"]).uid ? JSON.parse(localStorage["user"]).uid : null, this.creditCard.value as creditCard)
     }
     let reservedHotel:reservedHotel = {
       hotelId:this.HotelId,
