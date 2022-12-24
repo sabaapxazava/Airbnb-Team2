@@ -7,8 +7,8 @@ import { User } from '../shared-models/user.model';
 })
 export class WishlistService{
   constructor(private firestore: AngularFirestore) {
-    let d = this.getWishlist();
-    d.subscribe(data => {
+    let getWishlist = this.getWishlist();
+    getWishlist.subscribe(data => {
       this.wishlistEmitter.emit({
         Data: data.wishlist,
       });
