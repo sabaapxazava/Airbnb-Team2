@@ -17,6 +17,7 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { environment } from 'src/environments/environment';
+import { NgxGoogleAnalyticsModule } from 'ngx-google-analytics';
 
 @NgModule({
   declarations: [AppComponent],
@@ -36,6 +37,7 @@ import { environment } from 'src/environments/environment';
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireDatabaseModule,
+    NgxGoogleAnalyticsModule.forRoot('G-GQDPD35H0M')
   ],
   providers: [],
   bootstrap: [AppComponent],
