@@ -37,7 +37,6 @@ import { NgxGoogleAnalyticsModule } from 'ngx-google-analytics';
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireDatabaseModule,
-    NgxGoogleAnalyticsModule.forRoot('G-GQDPD35H0M')
   ],
   providers: [],
   bootstrap: [AppComponent],
