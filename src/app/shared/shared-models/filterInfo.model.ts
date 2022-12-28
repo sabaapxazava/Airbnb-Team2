@@ -5,9 +5,9 @@ export class FilterInfo {
   };
   typeOfPlace!: string[];
   roomsAndBeds!: {
-    bedrooms: string;
-    beds: string;
-    bathrooms: string;
+    bedrooms: number;
+    beds: number;
+    bathrooms: number;
   };
   propertyOfType!: string[];
   amenities!: {
@@ -25,9 +25,9 @@ export class FilterInfo {
     };
     this.typeOfPlace = [];
     this.roomsAndBeds = {
-      bedrooms: '',
-      beds: '',
-      bathrooms: '',
+      bedrooms: 0,
+      beds: 0,
+      bathrooms: 0,
     };
     this.propertyOfType = [];
     this.amenities = {
