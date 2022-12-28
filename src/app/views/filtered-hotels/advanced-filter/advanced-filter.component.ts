@@ -1,24 +1,15 @@
-import {
-  Component,
-  OnInit,
-  OnChanges,
-  AfterContentChecked,
-} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Hotel } from 'src/app/shared/shared-models/hotel.model';
 import { CategoryService } from 'src/app/shared/shared-services/category.service';
-import { ActivatedRoute, NavigationEnd } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FilterModalDataComunicationService } from 'src/app/shared/shared-services/filter-modal-data-comunication.service';
-import { Router } from '@angular/router';
-import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-advanced-filter',
   templateUrl: './advanced-filter.component.html',
   styleUrls: ['./advanced-filter.component.scss'],
 })
-export class AdvancedFilterComponent
-  implements OnInit, OnChanges, AfterContentChecked
-{
+export class AdvancedFilterComponent implements OnInit {
   cards: any[] = [];
   hotelFilteredArray: Hotel[] = [];
   queryString!: string;
@@ -38,23 +29,18 @@ export class AdvancedFilterComponent
     // });
   }
 
-  ngOnChanges(): void {}
-  ngAfterViewInit(): void {}
-  ngAfterViewChecked() {}
-  ngAfterContentChecked() {}
-  ngDoCheck() {}
-
   objToString() {
-    this.activatedRoute.queryParams.subscribe(async (response) => {
+    this.activatedRoute.queryParams.subscribe(async (response: any) => {
       let TmpqueryString = Object.keys(response)
         .map((key) => key + '=' + response[key])
         .join('&');
-      console.log('querystring', this.queryString);
+
       this.sendFilterdHotels(TmpqueryString);
+      console.log(response);
     });
   }
 
-  sendFilterdHotels(queryString:string) {
+  sendFilterdHotels(queryString: string) {
     this.categoryService
       .getFilteredCategoris(`?${queryString}`)
       .subscribe((response) => {

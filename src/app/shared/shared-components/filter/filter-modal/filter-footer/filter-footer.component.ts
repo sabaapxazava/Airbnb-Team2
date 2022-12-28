@@ -26,9 +26,18 @@ export class FilterFooterComponent implements OnInit {
       queryParams: {
         PriceFrom: this.filterModalInfo.filterModalInfo.priceRange.minPrice,
         PriceTo: this.filterModalInfo.filterModalInfo.priceRange.maxPrice,
-        // TypeOfPlace: this.filterModalInfo.filterModalInfo.typeOfPlace,
+        TypeOfPlace:
+          this.filterModalInfo.filterModalInfo.typeOfPlace.toString(),
+        BedsPerRoomCount:
+          this.filterModalInfo.filterModalInfo.roomsAndBeds.beds,
         // BedsPerRoomCount:
         //   this.filterModalInfo.filterModalInfo.roomsAndBeds.beds,
+        // RoomsCount: this.filterModalInfo.filterModalInfo.roomsAndBeds.bedrooms,
+        // BathRoomsCount:
+        //   this.filterModalInfo.filterModalInfo.roomsAndBeds.bathrooms,
+        // PropertyType: this.filterModalInfo.filterModalInfo.propertyOfType,
+        // HostLanguage: this.filterModalInfo.filterModalInfo.hostLanguage,
+        // Amenities: this.filterModalInfo.filterModalInfo.amenities.essentials,
       },
     });
     this.filterModalInfo.advancedFilterEmitter.emit();
@@ -87,12 +96,3 @@ export class FilterFooterComponent implements OnInit {
     console.log(this.filterModalInfo.filterModalInfo);
   }
 }
-
-// BedsPerRoomCount:
-//   this.filterModalInfo.filterModalInfo.roomsAndBeds.beds,
-// RoomsCount: this.filterModalInfo.filterModalInfo.roomsAndBeds.bedrooms,
-// BathRoomsCount:
-//   this.filterModalInfo.filterModalInfo.roomsAndBeds.bathrooms,
-// PropertyType: this.filterModalInfo.filterModalInfo.propertyOfType,
-// HostLanguage: this.filterModalInfo.filterModalInfo.hostLanguage,
-// Amenities: this.filterModalInfo.filterModalInfo.amenities.essentials,
