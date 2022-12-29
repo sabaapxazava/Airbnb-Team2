@@ -1,4 +1,5 @@
 import { EventEmitter, Injectable, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import { map, Observable } from 'rxjs';
 import { User } from '../shared-models/user.model';
@@ -6,14 +7,29 @@ import { User } from '../shared-models/user.model';
   providedIn: 'root',
 })
 export class WishlistService{
-  constructor(private firestore: AngularFirestore) {
-    let getWishlist = this.getWishlist();
-    getWishlist.subscribe(data => {
-      this.wishlistEmitter.emit({
-        Data: data.wishlist,
-      });
-      console.log(data)
-    })
+  constructor(private firestore: AngularFirestore, private angularFireAuth: AngularFireAuth) {
+    let self = this
+    this.angularFireAuth.onAuthStateChanged(function (user) {
+      let id = localStorage['user']
+        ? JSON.parse(localStorage['user']).uid
+        : null;
+      let getWishlist = self.getWishlist(id);
+      let tmp;
+      if(getWishlist){
+        tmp = getWishlist.subscribe((data :any) => {
+          self.wishlistEmitter.emit({
+            Data: data.wishlist,
+          });
+          console.log(data)
+        })
+        if(!user){
+          tmp.unsubscribe()
+          self.wishlistEmitter.emit({
+            Data: [],
+          });
+        }
+      }
+    });
   }
 
   ngOnInit(): void {
@@ -36,10 +52,8 @@ export class WishlistService{
     });
     return true;
   }
-  getWishlist():Observable<any>{
-    let id = JSON.parse(localStorage['user']).uid
-      ? JSON.parse(localStorage['user']).uid
-      : null;
+  getWishlist(id: any){
+    if(!id) return null
     return this.firestore.collection('users').doc(id).valueChanges();
   }
 }
