@@ -1,11 +1,24 @@
 <article class="profile-page">
-  <div class="col-md-12">
-    <h2>Reserved Hotels</h2>
+  <div class="reserved">
+    <div class="col-md-12">
+      <h2>Reserved Hotels</h2>
+    </div>
+    <div class="reserved-hotel-card">
+      <app-profile-reserved-card
+        *ngFor="let hotel of reservedHotelArray"
+        [card]="hotel.hotel"
+        [startDate]="hotel.startDate"
+        [endDate]="hotel.endDate"
+        [reservedDate]="hotel.reservedDate"
+        [price]="hotel.price"
+      ></app-profile-reserved-card>
+    </div>
   </div>
-  <div class="reserved-hotel-card">
-    <app-card
-      *ngFor="let reservedHotel of reservedHotelArray"
-      [card]="reservedHotel"
-    ></app-card>
+
+  <div class="wishlist">
+    <div class="col-md-12">
+      <h2>Favourite Hotels</h2>
+    </div>
+    <div class="reserved-hotel-card"></div>
   </div>
 </article>
