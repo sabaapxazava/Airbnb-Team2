@@ -10,28 +10,30 @@ export class WishlistService{
   constructor(private firestore: AngularFirestore, private angularFireAuth: AngularFireAuth) {
     let self = this
     this.angularFireAuth.onAuthStateChanged(function (user) {
-      let id = localStorage['user']
+      if(user){
+        let id = localStorage['user']
         ? JSON.parse(localStorage['user']).uid
         : null;
-      let getWishlist = self.getWishlist(id);
-      let tmp;
-      if(getWishlist){
-        tmp = getWishlist.subscribe((data :any) => {
-          self.wishlistEmitter.emit({
-            Data: data.wishlist,
-          });
-          console.log(data)
-        })
-        if(!user){
-          tmp.unsubscribe()
-          self.wishlistEmitter.emit({
-            Data: [],
-          });
+        self.getWishlistFunc = self.getWishlist(id);
+        if(self.getWishlistFunc){
+          self.getWishlistSubscriber = self.getWishlistFunc.subscribe((data :any) => {
+            self.wishlistEmitter.emit({
+              Data: data.wishlist,
+            });
+          })
         }
+        console.log(1)
+      }
+      if(!user){
+        self.getWishlistSubscriber.unsubscribe()
+        self.wishlistEmitter.emit({
+          Data: [],
+        });
       }
     });
   }
-
+  getWishlistSubscriber!:any
+  getWishlistFunc!:any;
   ngOnInit(): void {
   }
   wishlistEmitter: EventEmitter<any> = new EventEmitter();
