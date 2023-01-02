@@ -65,7 +65,6 @@ export class FirebaseWorkerService {
       .then((result) => {
         localStorage['user'] = JSON.stringify(result.user);
         this.setUserDataGoogleAuth(result.user);
-        console.log(result.user);
       })
       .catch((error) => {
         Swal.fire(error.message);
@@ -105,33 +104,34 @@ export class FirebaseWorkerService {
   private getUserDoc(id: string): any {
     return this.firestore.collection('users').doc(id);
   }
-  private setUserDataGoogleAuth(fireUser: any) {
+  private async setUserDataGoogleAuth(fireUser: any) {
     const userRef: AngularFirestoreDocument<any> = this.firestore.doc(
       `users/${fireUser.uid}`
     );
     let accountExists = false;
-    userRef.get().subscribe((doc) => {
+    await userRef.get().subscribe((doc) => {
       let data: any = doc.data();
-      if(data.uid == fireUser.uid){
-        accountExists = true
+      if(data.email){
+         accountExists = true
       }
-    });
-    if(accountExists){
-      return true
-    }
-    const userData: User = {
-      id: fireUser.uid,
-      fullName: fireUser.displayName,
-      email: fireUser.email,
-      phoneNumber: fireUser.phoneNumber,
-      gender: '',
-      verifiedUser: true,
-      creditCards: [],
-      reservedHotels: [],
-      wishlist: [],
-    };
-    return userRef.set(userData, {
-      merge: true,
+      if(accountExists){
+        return true
+      }
+      console.log(data)
+      const userData: User = {
+        id: fireUser.uid,
+        fullName: fireUser.displayName,
+        email: fireUser.email,
+        phoneNumber: fireUser.phoneNumber,
+        gender: '',
+        verifiedUser: true,
+        creditCards: [],
+        reservedHotels: [],
+        wishlist: [],
+      };
+      return userRef.set(userData, {
+        merge: true,
+      });
     });
   }
   private setUserDataSingUp(fireUser: any, user: User) {
@@ -163,7 +163,6 @@ export class FirebaseWorkerService {
         if (data.reservedHotels.length != 0) {
           reservedHotels = reservedHotels.concat(data.reservedHotels);
         }
-        console.log(reservedHotels);
         userRef.update({ reservedHotels: reservedHotels });
       }
     });
