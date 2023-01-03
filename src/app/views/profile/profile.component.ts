@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { BaseHttpService } from 'src/app/core/http/base-http.service';
 import { Hotel } from 'src/app/shared/shared-models/hotel.model';
+import { User } from 'src/app/shared/shared-models/user.model';
+import { ReservedService } from 'src/app/shared/shared-services/reserved.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -9,14 +12,40 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
-  reservedHotelArray: Hotel[] = [];
-
-  constructor(private baseHttpService: BaseHttpService) {}
+  reservedHotelArray: any[] = [];
+  constructor(
+    private baseHttpService: BaseHttpService,
+    private reservedService: ReservedService
+  ) {}
 
   ngOnInit(): void {
-    let fullApiUrl = `${environment.baseApiUrl}/Hotel/ef4ce06a-bb68-47bb-9c06-1e9b6e39ce8f`;
-    this.baseHttpService.getById<Hotel>(fullApiUrl).subscribe((res: Hotel) => {
-      this.reservedHotelArray.push(res);
-    });
+    let activeUserId = JSON.parse(localStorage['user']).uid
+      ? JSON.parse(localStorage['user']).uid
+      : null;
+
+    if (activeUserId != null) {
+      this.reservedService
+        .getReservedHotel(activeUserId)
+        .subscribe((res: any) => {
+          this.reservedHotelArray = [];
+
+          res.reservedHotels.forEach((el: any, index: any) => {
+            this.baseHttpService
+              .getById(`${environment.baseApiUrl}/Hotel/${el.hotelId}`)
+              .subscribe((res: any) => {
+                let fullReservedHotelInfo = {
+                  startDate: el.startDate,
+                  endDate: el.endDate,
+                  price: el.pricePaid,
+                  reservedDate: el.reserveDate,
+                  hotel: res,
+                  index: index,
+                };
+                this.reservedHotelArray.push(fullReservedHotelInfo);
+              });
+          });
+        });
+    }
+    // console.log(this.reservedHotelArray, 'reservedHotelArray');
   }
 }
