@@ -68,10 +68,9 @@
       </p>
       <hr />
       <div class="pay-info">
-        <p>Reservation time:</p>
-        <p>startDate: {{ startDate | date }}</p>
-        <p>endDate: {{ endDate | date }}</p>
-        <h3><b>total price:</b> {{ price }}</h3>
+        <p>Reservation time: {{reservedDate.toDate() | date}}</p>
+        <p><b>Days:</b> {{ startDate | date }} - {{ endDate | date }}</p>
+        <h3><b>Total price:</b> {{ price }}</h3>
       </div>
     </div>
   </div>

@@ -26,6 +26,11 @@ export class ProfileComponent implements OnInit {
 
     if (activeUserId != null) {
       this.reservedService.getUser(activeUserId).subscribe((res: any) => {
+        this.reservedHotelArray = [];
+        console.log(this.reservedHotelArray, 'reservedArr');
+
+        console.log(res.reservedHotels, ' res');
+
         res.reservedHotels.forEach((el: any) => {
           this.baseHttpService
             .getById(`${environment.baseApiUrl}/Hotel/${el.hotelId}`)
@@ -42,6 +47,6 @@ export class ProfileComponent implements OnInit {
         });
       });
     }
-    console.log(this.reservedHotelArray, 'reservedHotelArray');
+    // console.log(this.reservedHotelArray, 'reservedHotelArray');
   }
 }
