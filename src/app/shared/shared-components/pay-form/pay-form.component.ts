@@ -6,6 +6,8 @@ import { reservedHotel } from '../../shared-models/reservedHotel.model';
 import { CreditCardService } from '../../shared-services/credit-card.service';
 import { FirebaseWorkerService } from '../../shared-services/firebase-worker.service';
 import { User } from '../../shared-models/user.model'
+import { ReservedService } from '../../shared-services/reserved.service';
+import { Hotel } from '../../shared-models/hotel.model';
 @Component({
   selector: 'app-pay-form',
   templateUrl: './pay-form.component.html',
@@ -13,7 +15,7 @@ import { User } from '../../shared-models/user.model'
 })
 export class PayFormComponent implements OnInit {
 
-  constructor(private creditCardService: CreditCardService, private activeroute:ActivatedRoute, private firebase:FirebaseWorkerService) {
+  constructor(private creditCardService: CreditCardService, private activeroute:ActivatedRoute, private reserve:ReservedService) {
     this.creditCardService.getSavedCreditCards().subscribe(data => this.Cards = data.creditCards as creditCard[])
     console.log(this.Cards)
    }
@@ -23,6 +25,7 @@ export class PayFormComponent implements OnInit {
   @Input() startDate!:Date;
   @Input() endDate!:Date;
   @Input() pricePaid!:number;
+  @Input() Hotel!:Hotel;
   creditCard = new FormGroup({
     cardName: new FormControl(''),
     cardNumber: new FormControl(''),
@@ -46,9 +49,10 @@ export class PayFormComponent implements OnInit {
       startDate: this.startDate,
       endDate: this.endDate,
       pricePaid: this.pricePaid,
-      reserveDate: reserveDate
+      reserveDate: reserveDate,
+      hotel:this.Hotel
     }
-    console.log(this.firebase.reserveHotel(JSON.parse(localStorage["user"]).uid ? JSON.parse(localStorage["user"]).uid : null, reservedHotel))
+    console.log(this.reserve.reserveHotel(JSON.parse(localStorage["user"]).uid ? JSON.parse(localStorage["user"]).uid : null, reservedHotel))
   }
   onCardChange(card:any){
     if(!card.target.value){

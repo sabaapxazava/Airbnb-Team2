@@ -153,20 +153,4 @@ export class FirebaseWorkerService {
       merge: true,
     });
   }
-  reserveHotel(userId: any, hotel: reservedHotel) {
-    if (!userId) return false;
-    const userRef = this.firestore.collection('users').doc(userId);
-    let reservedHotels: reservedHotel[] = [hotel];
-    userRef.get().subscribe((doc) => {
-      let data: any = doc.data();
-      if (data.reservedHotels) {
-        if (data.reservedHotels.length != 0) {
-          reservedHotels = reservedHotels.concat(data.reservedHotels);
-        }
-        userRef.update({ reservedHotels: reservedHotels });
-      }
-    });
-    this.router.navigate(['/trip']);
-    return true;
-  }
 }
