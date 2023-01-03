@@ -19,7 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FilteredHotelsComponent } from './filtered-hotels/filtered-hotels.component';
 import { FilterByCategoryComponent } from './filtered-hotels/filter-by-category/filter-by-category.component';
 import { AdvancedFilterComponent } from './filtered-hotels/advanced-filter/advanced-filter.component';
-import { ProfileComponent } from './profile/profile.component';
+import { TripComponent } from './trip/trip.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { HotelDescriptionComponent } from './inner-hotel-pg/hotel-information/hotel-description/hotel-description.component';
 import { HotelNameComponent } from './inner-hotel-pg/hotel-information/hotel-name/hotel-name.component';
@@ -34,7 +34,7 @@ const shared: any = [
   HomePageComponent,
   MostRequestedHotelsComponent,
   MostRequestedRegionsComponent,
-  ProfileComponent,
+  TripComponent,
   FilteredHotelsComponent,
   FilterByCategoryComponent,
   AdvancedFilterComponent,
@@ -64,7 +64,7 @@ const matShared: any = [
     FilteredHotelsComponent,
     FilterByCategoryComponent,
     AdvancedFilterComponent,
-    ProfileComponent,
+    TripComponent,
     ReservationComponent,
     HotelDescriptionComponent,
     HotelNameComponent,
