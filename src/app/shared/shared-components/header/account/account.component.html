@@ -23,6 +23,9 @@
     <li *ngIf="user != null" routerLink="/trip">
       <a class="dropdown-item">Trip</a>
     </li>
+    <li *ngIf="user != null" routerLink="/profile">
+      <a class="dropdown-item">Profile</a>
+    </li>
     <li *ngIf="user != null">
       <a class="dropdown-item" (click)="singOut()">Sign out</a>
     </li>
