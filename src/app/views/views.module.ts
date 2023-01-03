@@ -27,6 +27,7 @@ import { HotelAddressComponent } from './inner-hotel-pg/hotel-information/hotel-
 import { HotelRoomsComponent } from './inner-hotel-pg/hotel-information/hotel-rooms/hotel-rooms.component';
 import { HotelMapComponent } from './inner-hotel-pg/hotel-information/hotel-map/hotel-map.component';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { ProfileComponent } from './profile/profile.component';
 
 
 const shared: any = [
@@ -71,6 +72,7 @@ const matShared: any = [
     HotelAddressComponent,
     HotelRoomsComponent,
     HotelMapComponent,
+    ProfileComponent,
 
   ],
   imports: [SharedModule, [...matShared], RouterModule, GoogleMapsModule],

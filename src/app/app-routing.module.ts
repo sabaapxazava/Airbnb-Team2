@@ -9,6 +9,7 @@ import { HomePageComponent } from './views/home-page/home-page.component';
 import { InnerHotelPgComponent } from './views/inner-hotel-pg/inner-hotel-pg.component';
 import { TripComponent } from './views/trip/trip.component';
 import { ReservationComponent } from './views/reservation/reservation.component';
+import { ProfileComponent } from './views/profile/profile.component';
 
 const routes: Routes = [
   {
@@ -29,6 +30,7 @@ const routes: Routes = [
     canActivate: [],
   },
   { path: 'trip', component: TripComponent },
+  { path: 'profile', component: ProfileComponent },
   { path: 'reservation', component: ReservationComponent },
 ];
 
