@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Hotel } from '../../shared-models/hotel.model';
+import { ReservedService } from '../../shared-services/reserved.service';
 
 @Component({
   selector: 'app-profile-reserved-card',
@@ -22,9 +23,12 @@ export class ProfileReservedCardComponent implements OnInit {
   @Input()
   price!: any;
 
+  @Input()
+  index!: any;
+
   selectedIndex = 0;
 
-  constructor() {}
+  constructor(private reservedService: ReservedService) {}
 
   ngOnInit(): void {}
 
@@ -46,5 +50,15 @@ export class ProfileReservedCardComponent implements OnInit {
     } else {
       this.selectedIndex++;
     }
+  }
+
+  deleteHotel() {
+    let activeUserId = JSON.parse(localStorage['user']).uid
+      ? JSON.parse(localStorage['user']).uid
+      : null;
+
+    console.log(this.index);
+
+    this.reservedService.deleteReservedHotel(activeUserId, this.index);
   }
 }

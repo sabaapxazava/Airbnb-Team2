@@ -8,7 +8,18 @@ import { Observable } from 'rxjs';
 export class ReservedService {
   constructor(private firestore: AngularFirestore) {}
 
-  getUser(id: string): Observable<any> {
+  getReservedHotel(id: string): Observable<any> {
     return this.firestore.collection('users').doc(id).valueChanges();
+  }
+
+  deleteReservedHotel(userid: any, index: any) {
+    const userRef = this.firestore.collection('users').doc(userid);
+    userRef.get().subscribe((res) => {
+      let data: any = res.data();
+      console.log(data.reservedHotels, '<---');
+
+      data.reservedHotels.splice(index, 1);
+      userRef.update({ reservedHotels: data.reservedHotels });
+    });
   }
 }

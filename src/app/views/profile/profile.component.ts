@@ -13,7 +13,6 @@ import { environment } from 'src/environments/environment';
 })
 export class ProfileComponent implements OnInit {
   reservedHotelArray: any[] = [];
-
   constructor(
     private baseHttpService: BaseHttpService,
     private reservedService: ReservedService
@@ -25,27 +24,27 @@ export class ProfileComponent implements OnInit {
       : null;
 
     if (activeUserId != null) {
-      this.reservedService.getUser(activeUserId).subscribe((res: any) => {
-        this.reservedHotelArray = [];
-        console.log(this.reservedHotelArray, 'reservedArr');
+      this.reservedService
+        .getReservedHotel(activeUserId)
+        .subscribe((res: any) => {
+          this.reservedHotelArray = [];
 
-        console.log(res.reservedHotels, ' res');
-
-        res.reservedHotels.forEach((el: any) => {
-          this.baseHttpService
-            .getById(`${environment.baseApiUrl}/Hotel/${el.hotelId}`)
-            .subscribe((res: any) => {
-              let fullReservedHotelInfo = {
-                startDate: el.startDate,
-                endDate: el.endDate,
-                price: el.pricePaid,
-                reservedDate: el.reserveDate,
-                hotel: res,
-              };
-              this.reservedHotelArray.push(fullReservedHotelInfo);
-            });
+          res.reservedHotels.forEach((el: any, index: any) => {
+            this.baseHttpService
+              .getById(`${environment.baseApiUrl}/Hotel/${el.hotelId}`)
+              .subscribe((res: any) => {
+                let fullReservedHotelInfo = {
+                  startDate: el.startDate,
+                  endDate: el.endDate,
+                  price: el.pricePaid,
+                  reservedDate: el.reserveDate,
+                  hotel: res,
+                  index: index,
+                };
+                this.reservedHotelArray.push(fullReservedHotelInfo);
+              });
+          });
         });
-      });
     }
     // console.log(this.reservedHotelArray, 'reservedHotelArray');
   }
