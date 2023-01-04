@@ -5,13 +5,13 @@
     </div>
     <div class="reserved-hotel-card">
       <app-profile-reserved-card
-        *ngFor="let hotel of reservedHotelArray"
+        *ngFor="let hotel of reservedHotelArray; let index = index"
         [card]="hotel.hotel"
         [startDate]="hotel.startDate"
         [endDate]="hotel.endDate"
-        [reservedDate]="hotel.reservedDate"
-        [price]="hotel.price"
-        [index]="hotel.index"
+        [reservedDate]="hotel.reserveDate"
+        [price]="hotel.pricePaid"
+        [index]="index"
       ></app-profile-reserved-card>
     </div>
   </div>

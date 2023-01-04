@@ -57,8 +57,6 @@ export class ProfileReservedCardComponent implements OnInit {
       ? JSON.parse(localStorage['user']).uid
       : null;
 
-    console.log(this.index);
-
     this.reservedService.deleteReservedHotel(activeUserId, this.index);
   }
 }

@@ -18,7 +18,6 @@ export class ReservedService {
     const userRef = this.firestore.collection('users').doc(userid);
     userRef.get().subscribe((res) => {
       let data: any = res.data();
-      console.log(data.reservedHotels, '<---');
 
       data.reservedHotels.splice(index, 1);
       userRef.update({ reservedHotels: data.reservedHotels });
