@@ -28,15 +28,13 @@ export class FilterFooterComponent implements OnInit {
         PriceTo: this.filterModalInfo.filterModalInfo.priceRange.maxPrice,
         TypeOfPlace:
           this.filterModalInfo.filterModalInfo.typeOfPlace.toString(),
+        RoomsCount: this.filterModalInfo.filterModalInfo.roomsAndBeds.bedrooms,
         BedsPerRoomCount:
           this.filterModalInfo.filterModalInfo.roomsAndBeds.beds,
-        // BedsPerRoomCount:
-        //   this.filterModalInfo.filterModalInfo.roomsAndBeds.beds,
-        // RoomsCount: this.filterModalInfo.filterModalInfo.roomsAndBeds.bedrooms,
-        // BathRoomsCount:
-        //   this.filterModalInfo.filterModalInfo.roomsAndBeds.bathrooms,
-        // PropertyType: this.filterModalInfo.filterModalInfo.propertyOfType,
-        // HostLanguage: this.filterModalInfo.filterModalInfo.hostLanguage,
+        BathRoomsCount:
+          this.filterModalInfo.filterModalInfo.roomsAndBeds.bathrooms,
+        PropertyType: [...this.filterModalInfo.filterModalInfo.propertyOfType],
+        HostLanguage: this.filterModalInfo.filterModalInfo.hostLanguage,
         // Amenities: this.filterModalInfo.filterModalInfo.amenities.essentials,
       },
     });

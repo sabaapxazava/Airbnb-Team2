@@ -23,7 +23,7 @@ export class AdvancedFilterComponent implements OnInit {
 
   ngOnInit(): void {
     this.objToString();
-    this.sendFilterdHotels(this.queryString);
+    // this.sendFilterdHotels(this.queryString);
     // this.filterModalInfo.advancedFilterEmitter.subscribe(() => {
     //   this.sendFilterdHotels();
     // });
@@ -32,7 +32,8 @@ export class AdvancedFilterComponent implements OnInit {
   objToString() {
     this.activatedRoute.queryParams.subscribe(async (response: any) => {
       let TmpqueryString = Object.keys(response)
-        .map((key) => key + '=' + response[key])
+        .filter((key: any) => Number(response[key]) != 0)
+        .map((key: any) => key + '=' + response[key])
         .join('&');
 
       this.sendFilterdHotels(TmpqueryString);
