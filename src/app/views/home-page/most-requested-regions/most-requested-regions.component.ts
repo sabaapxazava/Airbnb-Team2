@@ -1,4 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { BaseHttpService } from 'src/app/core/http/base-http.service';
+import { Hotel } from 'src/app/shared/shared-models/hotel.model';
+import { CategoryService } from 'src/app/shared/shared-services/category.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-most-requested-regions',
@@ -6,90 +10,24 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./most-requested-regions.component.scss'],
 })
 export class MostRequestedRegionsComponent implements OnInit {
-  cards = [
-    {
-      img: [
-        'https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg',
-        'https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'https://images.pexels.com/photos/2017802/pexels-photo-2017802.jpeg?auto=compress&cs=tinysrgb&w=1600',
-      ],
-      title: 'Los Veneros, Punta Mita, Mexico',
-      reiting: '4.5',
-      price: 380,
-    },
-    {
-      img: [
-        'https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg',
-        'https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'https://images.pexels.com/photos/2017802/pexels-photo-2017802.jpeg?auto=compress&cs=tinysrgb&w=1600',
-      ],
-      title: 'Los Veneros, Punta Mita, Mexico',
-      reiting: '4.5',
-      price: 380,
-    },
-    {
-      img: [
-        'https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg',
-        'https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'https://images.pexels.com/photos/2017802/pexels-photo-2017802.jpeg?auto=compress&cs=tinysrgb&w=1600',
-      ],
-      title: 'Los Veneros, Punta Mita, Mexico',
-      reiting: '4.5',
-      price: 380,
-    },
-    {
-      img: [
-        'https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg',
-        'https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'https://images.pexels.com/photos/2017802/pexels-photo-2017802.jpeg?auto=compress&cs=tinysrgb&w=1600',
-      ],
-      title: 'Los Veneros, Punta Mita, Mexico',
-      reiting: '4.5',
-      price: 380,
-    },
-    {
-      img: [
-        'https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg',
-        'https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'https://images.pexels.com/photos/2017802/pexels-photo-2017802.jpeg?auto=compress&cs=tinysrgb&w=1600',
-      ],
-      title: 'Los Veneros, Punta Mita, Mexico',
-      reiting: '4.5',
-      price: 380,
-    },
-    {
-      img: [
-        'https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg',
-        'https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'https://images.pexels.com/photos/2017802/pexels-photo-2017802.jpeg?auto=compress&cs=tinysrgb&w=1600',
-      ],
-      title: 'Los Veneros, Punta Mita, Mexico',
-      reiting: '4.5',
-      price: 380,
-    },
-    {
-      img: [
-        'https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg',
-        'https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'https://images.pexels.com/photos/2017802/pexels-photo-2017802.jpeg?auto=compress&cs=tinysrgb&w=1600',
-      ],
-      title: 'Los Veneros, Punta Mita, Mexico',
-      reiting: '4.5',
-      price: 380,
-    },
-    {
-      img: [
-        'https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg',
-        'https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'https://images.pexels.com/photos/2017802/pexels-photo-2017802.jpeg?auto=compress&cs=tinysrgb&w=1600',
-      ],
-      title: 'Los Veneros, Punta Mita, Mexico',
-      reiting: '4.5',
-      price: 380,
-    },
-  ];
+  cards: any[] = [];
+  hotelFilteredArray: Hotel[] = [];
+  hotelItem!: any;
 
-  constructor() {}
+  constructor(
+    private baseHttpService: BaseHttpService,
+    private categoryService: CategoryService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    const fullApiUrl = `${environment.baseApiUrl}/Hotel`;
+    this.baseHttpService.getAll<Hotel>(fullApiUrl).subscribe((res: any) => {
+      this.cards = res;
+      this.hotelFilteredArray = this.cards;
+      console.log(this.cards);
+    });
+    this.categoryService.categoryItemEmitter.subscribe((response) => {
+      this.hotelItem = response;
+    });
+  }
 }
