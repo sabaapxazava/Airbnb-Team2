@@ -5,8 +5,8 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { MostRequestedHotelsComponent } from './home-page/most-requested-hotels/most-requested-hotels.component';
 import { MostRequestedRegionsComponent } from './home-page/most-requested-regions/most-requested-regions.component';
 import { SharedModule } from '../shared/shared.module';
-import { InnerHotelPgComponent } from './inner-hotel-pg/inner-hotel-pg.component'
-import {MatTableModule} from '@angular/material/table';
+import { InnerHotelPgComponent } from './inner-hotel-pg/inner-hotel-pg.component';
+import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -29,7 +29,6 @@ import { HotelMapComponent } from './inner-hotel-pg/hotel-information/hotel-map/
 import { GoogleMapsModule } from '@angular/google-maps';
 import { ProfileComponent } from './profile/profile.component';
 import { PaymentComponent } from './profile/payment/payment.component';
-
 
 const shared: any = [
   CommonModule,
@@ -75,7 +74,6 @@ const matShared: any = [
     HotelMapComponent,
     ProfileComponent,
     PaymentComponent,
-
   ],
   imports: [SharedModule, [...matShared], RouterModule, GoogleMapsModule],
   exports: [[...shared]],
