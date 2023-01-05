@@ -22,7 +22,6 @@ export class CategoryService {
   }
 
   getFilteredCategoris(link: string): Observable<any> {
-    // console.log(`${this.apiUrl}/Hotel/filter-by-category${link}`);
     return this.httpClient
       .get(`${this.apiUrl}/Hotel/filter-by-category${link}`)
       .pipe(

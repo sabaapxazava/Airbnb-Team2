@@ -3,9 +3,8 @@
     <h3>Amenities</h3>
   </header>
   <div class="essentials">
-    <h4>Essentials</h4>
     <div class="checkbox-wrapper">
-      <div class="form-check" *ngFor="let item of amenities.essentials">
+      <div class="form-check" *ngFor="let item of amenities">
         <label class="form-check-label" for="{{ item }}">
           <span>{{ item }}</span>
         </label>
@@ -14,12 +13,12 @@
           type="checkbox"
           id="{{ item }}"
           value="{{ item }}"
-          (change)="onEssntials($event)"
+          (change)="onAmenities($event)"
         />
       </div>
     </div>
   </div>
-  <ng-container *ngIf="!showMore">
+  <!-- <ng-container *ngIf="!showMore">
     <div class="features">
       <h4>Features</h4>
       <div class="checkbox-wrapper">
@@ -70,8 +69,8 @@
         </div>
       </div>
     </div>
-  </ng-container>
-  <button type="button" class="more-less" (click)="onShowMore()">
+  </ng-container> -->
+  <!-- <button type="button" class="more-less" (click)="onShowMore()">
     {{ showMore ? "Show more" : "Show less" }}
-  </button>
+  </button> -->
 </section>

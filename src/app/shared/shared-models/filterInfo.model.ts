@@ -10,12 +10,7 @@ export class FilterInfo {
     bathrooms: number;
   };
   propertyOfType!: string[];
-  amenities!: {
-    essentials: string[];
-    features: string[];
-    location: string[];
-    safety: string[];
-  };
+  amenities!: string[];
   hostLanguage!: string[];
 
   constructor() {
@@ -30,12 +25,7 @@ export class FilterInfo {
       bathrooms: 0,
     };
     this.propertyOfType = [];
-    this.amenities = {
-      essentials: [],
-      features: [],
-      location: [],
-      safety: [],
-    };
+    this.amenities = [];
     this.hostLanguage = [];
   }
 }

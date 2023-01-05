@@ -35,7 +35,7 @@ export class FilterFooterComponent implements OnInit {
           this.filterModalInfo.filterModalInfo.roomsAndBeds.bathrooms,
         PropertyType: [...this.filterModalInfo.filterModalInfo.propertyOfType],
         HostLanguage: this.filterModalInfo.filterModalInfo.hostLanguage,
-        // Amenities: this.filterModalInfo.filterModalInfo.amenities.essentials,
+        Amenities: this.filterModalInfo.filterModalInfo.amenities,
       },
     });
     this.filterModalInfo.advancedFilterEmitter.emit();

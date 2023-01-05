@@ -23,10 +23,6 @@ export class AdvancedFilterComponent implements OnInit {
 
   ngOnInit(): void {
     this.objToString();
-    // this.sendFilterdHotels(this.queryString);
-    // this.filterModalInfo.advancedFilterEmitter.subscribe(() => {
-    //   this.sendFilterdHotels();
-    // });
   }
 
   objToString() {
