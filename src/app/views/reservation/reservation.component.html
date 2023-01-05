@@ -1,11 +1,7 @@
 <article>
   <aside>
     <app-pay-form
-      [HotelId]="this.currentHotelId"
-      [Hotel]="this.card"
-      [pricePaid]="cost"
-      [endDate]="this.endDate"
-      [startDate]="this.startDate"
+      (onSubmitEmitter)="onSubmit($event)"
     ></app-pay-form>
   </aside>
   <aside>

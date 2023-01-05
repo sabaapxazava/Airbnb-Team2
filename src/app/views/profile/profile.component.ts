@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { creditCard } from 'src/app/shared/shared-models/creditCard.model';
+import { CreditCardService } from 'src/app/shared/shared-services/credit-card.service';
 import { ProfileService } from 'src/app/shared/shared-services/profile.service';
 import { ReservedService } from 'src/app/shared/shared-services/reserved.service';
 
@@ -12,8 +14,10 @@ import { ReservedService } from 'src/app/shared/shared-services/reserved.service
 export class ProfileComponent implements OnInit {
   constructor(
     private reservedService: ReservedService,
+    private creditCard: CreditCardService,
     private profileService: ProfileService,
-    private router: Router
+    private router: Router,
+    private CreditCardService: CreditCardService
   ) {}
 
   userInfo = new FormGroup({
@@ -22,7 +26,7 @@ export class ProfileComponent implements OnInit {
     phoneNumber: new FormControl(''),
     gender: new FormControl(''),
   });
-
+  creditCards:creditCard[] = [];
   ngOnInit(): void {
     let activeUserId = JSON.parse(localStorage['user']).uid
       ? JSON.parse(localStorage['user']).uid
