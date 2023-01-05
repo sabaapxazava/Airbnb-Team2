@@ -16,9 +16,7 @@ export class AdvancedFilterComponent implements OnInit {
 
   constructor(
     private categoryService: CategoryService,
-    private filterModalInfo: FilterModalDataComunicationService,
-    public activatedRoute: ActivatedRoute,
-    private router: Router
+    public activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -41,7 +39,6 @@ export class AdvancedFilterComponent implements OnInit {
     this.categoryService
       .getFilteredCategoris(`?${queryString}`)
       .subscribe((response) => {
-        // console.log('response axali', response);
         this.cards = response;
       });
   }

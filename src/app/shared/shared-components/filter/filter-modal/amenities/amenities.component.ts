@@ -10,31 +10,6 @@ import { FilterModalDataComunicationService } from 'src/app/shared/shared-servic
 export class AmenitiesComponent implements OnInit {
   showMore = true;
   amenities: [] = [];
-  // amenities: any = {
-  //   essentials: [
-  //     'wifi',
-  //     'washer',
-  //     'air conditioning',
-  //     'kitchen',
-  //     'dryer',
-  //     'heating',
-  //     'dedicated workspace',
-  //     'tv',
-  //     'hair dryer',
-  //     'iron',
-  //   ],
-  //   features: [
-  //     'pool',
-  //     'hot tub',
-  //     'free parking on premises',
-  //     'ev charger',
-  //     'crib',
-  //     'gym',
-  //     'breakfest',
-  //   ],
-  //   location: ['beachfront', 'waterfront', 'ski-in/ski-out'],
-  //   safety: ['smoke alarm', 'carbon monoxide alarm'],
-  // };
 
   onShowMore() {
     this.showMore = !this.showMore;
