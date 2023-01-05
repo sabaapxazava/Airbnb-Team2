@@ -51,21 +51,6 @@
   </aside>
   <aside>
     <h2>Payment Form</h2>
-    <div class="credit-cards">
-      <div class="cc" *ngFor="let item of this.creditCards; index as i">
-        <span class="chip"></span>
-        <span class="cc-number">{{ item.cardNumber }}</span>
-        <span class="cc-date expedition"
-          >{{ item.expirationDay }}/{{ item.expirationMonth }}</span
-        >
-        <span class="cc-name">{{ item.cardName }}</span>
-        <button class="btn btn-danger" (click)="delete(i)">Delete</button>
-      </div>
-    </div>
-    <div class="add-credit-card">
-      <app-save-credit-card
-        (onSubmitEmitter)="onSubmitCreditCard($event)"
-      ></app-save-credit-card>
-    </div>
+    <app-payment></app-payment>
   </aside>
 </article>
