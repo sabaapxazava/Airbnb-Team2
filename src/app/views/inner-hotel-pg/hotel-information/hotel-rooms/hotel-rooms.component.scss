@@ -1,0 +1,17 @@
+.card{
+    width: 200px;
+}
+.row{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin-left: auto;
+    margin-right: auto;
+}
+img{
+    object-fit: cover !important;
+    height: 100px;
+}
+.card-title{
+    margin-bottom: inherit !important;
+}

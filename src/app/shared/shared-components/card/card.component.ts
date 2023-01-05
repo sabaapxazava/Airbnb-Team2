@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { MatDialog } from '@angular/material/dialog';
 import { Hotel } from '../../shared-models/hotel.model';
+import { WishlistService } from '../../shared-services/wishlist.service';
 import { LoginComponent } from '../auth/login/login.component';
 
 @Component({
@@ -13,9 +14,9 @@ export class CardComponent implements OnInit {
   @Input() card!: Hotel;
 
   selectedIndex = 0;
-
+  inWishlist:boolean = false;
   auth!: boolean;
-  constructor(private angularFireAuth: AngularFireAuth,private dialog: MatDialog,) {
+  constructor(private angularFireAuth: AngularFireAuth,private dialog: MatDialog, private wishlist: WishlistService) {
     var self = this;
     this.angularFireAuth.onAuthStateChanged(function (user) {
       if (user) {
@@ -26,7 +27,16 @@ export class CardComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.wishlist.wishlistEmitter.subscribe(data => {
+      if(data.Data.includes(this.card.id)){
+        this.inWishlist = true;
+      }
+      else{
+        this.inWishlist = false;
+      }
+    })
+  }
 
   // dot click
   selectImage(index: number) {
@@ -49,9 +59,9 @@ export class CardComponent implements OnInit {
     }
   }
 
-  addCardInWishlist() {
+  async addCardInWishlist() {
     if (this.auth) {
-      alert('Added');
+      this.wishlist.AddRemoveFromWishlist(JSON.parse(localStorage["user"]).uid ? JSON.parse(localStorage["user"]).uid : null, this.card.id);
     } else {
       this.dialog.open(LoginComponent);
     }

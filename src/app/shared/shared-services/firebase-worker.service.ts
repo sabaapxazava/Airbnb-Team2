@@ -3,19 +3,24 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import {
   AngularFirestore,
   AngularFirestoreDocument,
+  DocumentSnapshot,
 } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import * as firebase from 'firebase/auth';
+import * as firebases from 'firebase/app';
 import Swal from 'sweetalert2';
 import { User } from '../shared-models/user.model';
 import { EventManagerService } from './event-manager.service';
+import { observable, Observable } from 'rxjs';
+import { creditCard } from '../shared-models/creditCard.model';
+import { reservedHotel } from '../shared-models/reservedHotel.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FirebaseWorkerService {
   signInEmitter: EventEmitter<any> = new EventEmitter();
-
+  wishlistEmitter: EventEmitter<any> = new EventEmitter();
   constructor(
     private firestore: AngularFirestore,
     private auth: AngularFireAuth,
@@ -37,7 +42,7 @@ export class FirebaseWorkerService {
         localStorage['user'] = JSON.stringify(result.user);
       })
       .catch((error) => {
-        Swal.fire(error.message)
+        Swal.fire(error.message);
       });
   }
 
@@ -47,9 +52,10 @@ export class FirebaseWorkerService {
       .then((result) => {
         this.sendVerificationMail();
         this.setUserDataSingUp(result.user, user);
+        localStorage['user'] = JSON.stringify(result.user);
       })
       .catch((error) => {
-        Swal.fire(error.message)
+        Swal.fire(error.message);
       });
   }
 
@@ -57,10 +63,11 @@ export class FirebaseWorkerService {
     return this.auth
       .signInWithPopup(new firebase.GoogleAuthProvider())
       .then((result) => {
-        return this.getUserDoc(result.user?.uid ?? '');
+        localStorage['user'] = JSON.stringify(result.user);
+        this.setUserDataGoogleAuth(result.user);
       })
       .catch((error) => {
-        Swal.fire(error.message)
+        Swal.fire(error.message);
       });
   }
 
@@ -83,10 +90,10 @@ export class FirebaseWorkerService {
     return this.auth
       .sendPasswordResetEmail(passwordResetEmail)
       .then(() => {
-        Swal.fire('Password reset email sent, check your inbox.')
+        Swal.fire('Password reset email sent, check your inbox.');
       })
       .catch((error) => {
-        Swal.fire(error.message)
+        Swal.fire(error.message);
       });
   }
 
@@ -97,7 +104,32 @@ export class FirebaseWorkerService {
   private getUserDoc(id: string): any {
     return this.firestore.collection('users').doc(id);
   }
-
+  private async setUserDataGoogleAuth(fireUser: any) {
+    const userRef: AngularFirestoreDocument<any> = this.firestore.doc(
+      `users/${fireUser.uid}`
+    );
+    userRef.get().subscribe((doc) => {
+      let data: any = doc.data();
+      if(data){
+        return true
+      }
+      console.log(data)
+      const userData: User = {
+        id: fireUser.uid,
+        fullName: fireUser.displayName,
+        email: fireUser.email,
+        phoneNumber: fireUser.phoneNumber,
+        gender: '',
+        verifiedUser: true,
+        creditCards: [],
+        reservedHotels: [],
+        wishlist: [],
+      };
+      return userRef.set(userData, {
+        merge: true,
+      });
+    });
+  }
   private setUserDataSingUp(fireUser: any, user: User) {
     const userRef: AngularFirestoreDocument<any> = this.firestore.doc(
       `users/${fireUser.uid}`
@@ -108,7 +140,10 @@ export class FirebaseWorkerService {
       email: fireUser.email,
       phoneNumber: user.phoneNumber,
       gender: user.gender,
-      verifiedUser: true
+      verifiedUser: true,
+      creditCards: [],
+      reservedHotels: [],
+      wishlist: [],
     };
     return userRef.set(userData, {
       merge: true,

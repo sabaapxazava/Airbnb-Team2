@@ -1,0 +1,11 @@
+<div class="d-flex title-star">
+    <h2>{{ currentHotel.name }}</h2>
+    <div [ngSwitch]="currentHotel.starCount">
+      <p class="star" *ngSwitchCase="1">✨</p>
+      <p class="star" *ngSwitchCase="2">✨✨</p>
+      <p class="star" *ngSwitchCase="3">✨✨✨</p>
+      <p class="star" *ngSwitchCase="4">✨✨✨✨</p>
+      <p class="star" *ngSwitchCase="5">✨✨✨✨✨</p>
+      <p class="star" *ngSwitchDefault>✨✨✨✨✨</p>
+    </div>
+  </div>

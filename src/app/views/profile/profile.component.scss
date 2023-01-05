@@ -1,14 +1,16 @@
-.profile-page{
-    h2{
-        display: flex;
-        justify-content: center !important;
-        font-size: 30px !important;
-        margin: 30px 0 50px 0 !important;
-    }
+aside{
+    margin: 50px auto;
+    height: auto ; 
+    padding-bottom: 10px;
 }
-.reserved-hotel-card{
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(278px, 1fr));
-    grid-gap: 15px;
-  
+.personal-info {
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 20px;
+  padding: 20px;
+}
+.form-group {
+  margin-bottom: 15px;
+  label {
+    margin-bottom: 5px;
+  }
 }

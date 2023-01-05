@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AmenitiesService } from 'src/app/shared/shared-services/amenities.service';
 import { FilterModalDataComunicationService } from 'src/app/shared/shared-services/filter-modal-data-comunication.service';
 
 @Component({
@@ -8,92 +9,32 @@ import { FilterModalDataComunicationService } from 'src/app/shared/shared-servic
 })
 export class AmenitiesComponent implements OnInit {
   showMore = true;
-  amenities: any = {
-    essentials: [
-      'wifi',
-      'washer',
-      'air conditioning',
-      'kitchen',
-      'dryer',
-      'heating',
-      'dedicated workspace',
-      'tv',
-      'hair dryer',
-      'iron',
-    ],
-    features: [
-      'pool',
-      'hot tub',
-      'free parking on premises',
-      'ev charger',
-      'crib',
-      'gym',
-      'breakfest',
-    ],
-    location: ['beachfront', 'waterfront', 'ski-in/ski-out'],
-    safety: ['smoke alarm', 'carbon monoxide alarm'],
-  };
+  amenities: [] = [];
 
   onShowMore() {
     this.showMore = !this.showMore;
   }
 
-  constructor(private filterModalInfo: FilterModalDataComunicationService) {}
+  constructor(
+    private filterModalInfo: FilterModalDataComunicationService,
+    private amenitiesService: AmenitiesService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.amenitiesService.getAllAmenities().subscribe((response) => {
+      this.amenities = response;
+    });
+  }
 
-  onEssntials(e: any) {
+  onAmenities(e: any) {
     if (e.target.checked) {
-      this.filterModalInfo.filterModalInfo.amenities.essentials.push(
-        e.target.value
-      );
+      this.filterModalInfo.filterModalInfo.amenities.push(e.target.value);
     } else {
-      let index =
-        this.filterModalInfo.filterModalInfo.amenities.essentials.indexOf(
-          e.target.value
-        );
-      this.filterModalInfo.filterModalInfo.amenities.essentials.splice(
-        index,
-        1
-      );
-    }
-  }
-  onFeatures(e: any) {
-    if (e.target.checked) {
-      this.filterModalInfo.filterModalInfo.amenities.features.push(
+      let index = this.filterModalInfo.filterModalInfo.amenities.indexOf(
         e.target.value
       );
-    } else {
-      let index =
-        this.filterModalInfo.filterModalInfo.amenities.features.indexOf(
-          e.target.value
-        );
-      this.filterModalInfo.filterModalInfo.amenities.features.splice(index, 1);
+      this.filterModalInfo.filterModalInfo.amenities.splice(index, 1);
     }
-  }
-  onLocation(e: any) {
-    if (e.target.checked) {
-      this.filterModalInfo.filterModalInfo.amenities.location.push(
-        e.target.value
-      );
-    } else {
-      let index =
-        this.filterModalInfo.filterModalInfo.amenities.location.indexOf(
-          e.target.value
-        );
-      this.filterModalInfo.filterModalInfo.amenities.location.splice(index, 1);
-    }
-  }
-  onSafety(e: any) {
-    if (e.target.checked) {
-      this.filterModalInfo.filterModalInfo.amenities.safety.push(
-        e.target.value
-      );
-    } else {
-      let index = this.filterModalInfo.filterModalInfo.amenities.safety.indexOf(
-        e.target.value
-      );
-      this.filterModalInfo.filterModalInfo.amenities.safety.splice(index, 1);
-    }
+    console.log(this.filterModalInfo.filterModalInfo.amenities)
   }
 }

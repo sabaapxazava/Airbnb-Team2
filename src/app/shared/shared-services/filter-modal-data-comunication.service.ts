@@ -7,7 +7,10 @@ import { FilterInfo } from '../shared-models/filterInfo.model';
 export class FilterModalDataComunicationService {
   advancedFilterEmitter: EventEmitter<any> = new EventEmitter();
 
+  paramsUrl!: string;
+
   public filterModalInfo = new FilterInfo();
+  public aa!: any;
 
   // public minPrice!: number;
   // public maxPrice!: number;

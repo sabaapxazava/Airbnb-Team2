@@ -1,6 +1,6 @@
 export class Hotel {
   'id': 'string';
-  'mainImages': ['string'];
+  'mainImages': string[] = [];
   'name': 'string';
   'description': 'string';
   'rooms': [
@@ -12,6 +12,16 @@ export class Hotel {
       personsCount: 0;
       childPolicy: true;
       bathRoomsCount: 0;
+    }
+  ]=[
+    {
+      images: ['string'],
+      name: 'string',
+      bedsCount: 0,
+      price: 0,
+      personsCount: 0,
+      childPolicy: true,
+      bathRoomsCount: 0,
     }
   ];
   'categories': [

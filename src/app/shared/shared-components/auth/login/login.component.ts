@@ -28,12 +28,7 @@ export class LoginComponent implements OnInit {
   }
 
   signInWithGoogle() {
-    this.fireWorker.googleAuth().then((res) => {
-      res.subscribe((user: any) => {
-        console.log(user);
-        this.fireWorker.signInEmitter.emit(user);
-      });
-    });
+    this.fireWorker.googleAuth()
   }
 
   forgotPassword() {

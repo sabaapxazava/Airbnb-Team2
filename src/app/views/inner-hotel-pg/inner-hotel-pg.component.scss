@@ -1,6 +1,4 @@
-.cont-max-width {
-  width: 60% !important;
-}
+
 
 .bannerImg {
   margin: 20px 0;
@@ -10,4 +8,22 @@
 
 h2 {
   margin-right: 30%;
+}
+@media screen and (max-width: 792px) {
+  .description{
+    flex-wrap: wrap;
+  }
+  .cont-max-width{
+    max-width: 100% !important;
+  }
+  .bannerImg {
+    margin: 3px 0;
+    height: 50%;
+  }
+  app-hotel-information{
+    width: 100% !important;
+  }
+}
+app-hotel-reserve{
+  width: 100%;
 }

@@ -30,10 +30,16 @@
   border: 1px solid rgb(167, 159, 159);
   border-radius: 15px;
   height: 380px;
-  width: max-content !important;
+  width: max-content;
 }
 app-date-picker {
   align-items: center;
   margin-left: auto;
   margin-right: 20%;
+}
+@media screen and (max-width: 792px) {
+  aside{
+    width: 100% !important;
+    margin-left: 0 !important;
+  }
 }

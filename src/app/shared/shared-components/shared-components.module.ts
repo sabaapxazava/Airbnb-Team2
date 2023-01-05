@@ -25,6 +25,8 @@ import { RegistrationComponent } from './auth/registration/registration.componen
 import { LoginComponent } from './auth/login/login.component';
 import { PayFormComponent } from './pay-form/pay-form.component';
 import { ReservedCardComponent } from './reserved-card/reserved-card.component';
+import { ProfileReservedCardComponent } from './profile-reserved-card/profile-reserved-card.component';
+import { SaveCreditCardComponent } from './save-credit-card/save-credit-card.component';
 
 const shared: any = [
   CommonModule,
@@ -47,6 +49,8 @@ const shared: any = [
   DatePickerComponent,
   PayFormComponent,
   ReservedCardComponent,
+  ProfileReservedCardComponent,
+  SaveCreditCardComponent
 ];
 
 @NgModule({
@@ -72,6 +76,8 @@ const shared: any = [
     LoginComponent,
     PayFormComponent,
     ReservedCardComponent,
+    ProfileReservedCardComponent,
+    SaveCreditCardComponent,
   ],
   imports: [MaterialModule, FormsModule, NgxSliderModule, AppRoutingModule],
   exports: [[...shared]],

@@ -5,17 +5,12 @@ export class FilterInfo {
   };
   typeOfPlace!: string[];
   roomsAndBeds!: {
-    bedrooms: string;
-    beds: string;
-    bathrooms: string;
+    bedrooms: number;
+    beds: number;
+    bathrooms: number;
   };
-  propertyOfType!: string[];
-  amenities!: {
-    essentials: string[];
-    features: string[];
-    location: string[];
-    safety: string[];
-  };
+  propertyOfType!: string;
+  amenities!: string[];
   hostLanguage!: string[];
 
   constructor() {
@@ -25,17 +20,12 @@ export class FilterInfo {
     };
     this.typeOfPlace = [];
     this.roomsAndBeds = {
-      bedrooms: '',
-      beds: '',
-      bathrooms: '',
+      bedrooms: 0,
+      beds: 0,
+      bathrooms: 0,
     };
-    this.propertyOfType = [];
-    this.amenities = {
-      essentials: [],
-      features: [],
-      location: [],
-      safety: [],
-    };
+    this.propertyOfType = "";
+    this.amenities = [];
     this.hostLanguage = [];
   }
 }

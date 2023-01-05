@@ -1,0 +1,11 @@
+<div class="description">
+  <h3>Addition Info You Should Know</h3>
+  <p>
+    {{ currentHotel.description }}
+  </p>
+</div>
+<div class="place-offers">
+  <h3>Place Offers</h3>
+  <p>{{currentHotel.placeOffers.join(", ")}}</p> 
+</div>
+<h3>Child Policy: {{currentHotel.rooms[0].childPolicy}}</h3>
