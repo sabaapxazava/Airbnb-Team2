@@ -16,7 +16,7 @@
   width: 8.5rem;
   position: relative;
 }
-input[type="checkbox"] {
+input[type="radio"] {
   -webkit-appearance: none;
   position: relative;
   height: 100%;
@@ -28,10 +28,10 @@ input[type="checkbox"] {
   transition: all 0.5s;
 }
 
-input[type="checkbox"]:hover {
+input[type="radio"]:hover {
   border: 0.1rem solid rgb(102, 98, 98);
 }
-input[type="checkbox"]:checked {
+input[type="radio"]:checked {
   border: 0.1rem solid rgb(102, 98, 98);
   background-color: rgba(218, 217, 217, 0.381);
 }

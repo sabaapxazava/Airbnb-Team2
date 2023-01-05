@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { FilterModalDataComunicationService } from 'src/app/shared/shared-services/filter-modal-data-comunication.service';
 
 @Component({
@@ -10,44 +11,40 @@ export class PropertyTypeComponent implements OnInit {
   constructor(private filterModalInfo: FilterModalDataComunicationService) {}
 
   ngOnInit(): void {}
+
+  propertyOfType = new FormGroup({
+    house: new FormControl(''),
+    apartament: new FormControl(''),
+    guesthouse: new FormControl(''),
+    hotel: new FormControl(''),
+  });
   onChangeHouse(e: any) {
     if (e.target.checked) {
-      this.filterModalInfo.filterModalInfo.propertyOfType.push(e.target.value);
+      this.filterModalInfo.filterModalInfo.propertyOfType = e.target.value
     } else {
-      let index = this.filterModalInfo.filterModalInfo.propertyOfType.indexOf(
-        e.target.value
-      );
-      this.filterModalInfo.filterModalInfo.propertyOfType.splice(index, 1);
+      this.filterModalInfo.filterModalInfo.propertyOfType = "0"
     }
   }
   onChangeApartament(e: any) {
     if (e.target.checked) {
-      this.filterModalInfo.filterModalInfo.propertyOfType.push(e.target.value);
+      this.filterModalInfo.filterModalInfo.propertyOfType = e.target.value
     } else {
-      let elIndex = this.filterModalInfo.filterModalInfo.propertyOfType.indexOf(
-        e.target.value
-      );
-      this.filterModalInfo.filterModalInfo.propertyOfType.splice(elIndex, 1);
+      this.filterModalInfo.filterModalInfo.propertyOfType = "0"
     }
+    
   }
   onChangeGuesthouse(e: any) {
     if (e.target.checked) {
-      this.filterModalInfo.filterModalInfo.propertyOfType.push(e.target.value);
+      this.filterModalInfo.filterModalInfo.propertyOfType = e.target.value
     } else {
-      let elIndex = this.filterModalInfo.filterModalInfo.propertyOfType.indexOf(
-        e.target.value
-      );
-      this.filterModalInfo.filterModalInfo.propertyOfType.splice(elIndex, 1);
+      this.filterModalInfo.filterModalInfo.propertyOfType = "0"
     }
   }
   onChangeHotel(e: any) {
     if (e.target.checked) {
-      this.filterModalInfo.filterModalInfo.propertyOfType.push(e.target.value);
+      this.filterModalInfo.filterModalInfo.propertyOfType = e.target.value
     } else {
-      let elIndex = this.filterModalInfo.filterModalInfo.propertyOfType.indexOf(
-        e.target.value
-      );
-      this.filterModalInfo.filterModalInfo.propertyOfType.splice(elIndex, 1);
+      this.filterModalInfo.filterModalInfo.propertyOfType = "0"
     }
   }
 }

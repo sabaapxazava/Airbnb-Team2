@@ -5,10 +5,10 @@
   <div class="hagt-wrapper">
     <div class="hagt">
       <input
-        type="checkbox"
-        name="house"
+        type="radio"
+        name="propertyOfType"
         id="house"
-        value="house"
+        value="Home"
         (change)="onChangeHouse($event)"
       />
       <label for="house">
@@ -23,8 +23,8 @@
     </div>
     <div class="hagt">
       <input
-        type="checkbox"
-        name="apartament"
+        type="radio"
+        name="propertyOfType"
         id="apartament"
         value="apartament"
         (change)="onChangeApartament($event)"
@@ -41,10 +41,10 @@
     </div>
     <div class="hagt">
       <input
-        type="checkbox"
-        name="guesthouse"
+        type="radio"
+        name="propertyOfType"
         id="guesthouse"
-        value="guesthouse"
+        value="Villa"
         (change)="onChangeGuesthouse($event)"
       />
       <label for="guesthouse">
@@ -52,15 +52,15 @@
           class="hagt-img"
           src="https://a0.muscache.com/pictures/6f261426-2e47-4c91-8b1a-7a847da2b21b.jpg
           "
-          alt="guesthouse"
+          alt="Villa"
         />
-        <h5>Guesthouse</h5>
+        <h5>Villa</h5>
       </label>
     </div>
     <div class="hagt">
       <input
-        type="checkbox"
-        name="hotel"
+        type="radio"
+        name="propertyOfType"
         id="hotel"
         value="hotel"
         (change)="onChangeHotel($event)"

@@ -35,5 +35,6 @@ export class AmenitiesComponent implements OnInit {
       );
       this.filterModalInfo.filterModalInfo.amenities.splice(index, 1);
     }
+    console.log(this.filterModalInfo.filterModalInfo.amenities)
   }
 }

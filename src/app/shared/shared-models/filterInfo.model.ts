@@ -9,7 +9,7 @@ export class FilterInfo {
     beds: number;
     bathrooms: number;
   };
-  propertyOfType!: string[];
+  propertyOfType!: string;
   amenities!: string[];
   hostLanguage!: string[];
 
@@ -24,7 +24,7 @@ export class FilterInfo {
       beds: 0,
       bathrooms: 0,
     };
-    this.propertyOfType = [];
+    this.propertyOfType = "";
     this.amenities = [];
     this.hostLanguage = [];
   }

@@ -33,8 +33,8 @@ export class FilterFooterComponent implements OnInit {
           this.filterModalInfo.filterModalInfo.roomsAndBeds.beds,
         BathRoomsCount:
           this.filterModalInfo.filterModalInfo.roomsAndBeds.bathrooms,
-        PropertyType: [...this.filterModalInfo.filterModalInfo.propertyOfType],
-        HostLanguage: this.filterModalInfo.filterModalInfo.hostLanguage,
+        PropertyType: this.filterModalInfo.filterModalInfo.propertyOfType,
+        HostLanguages: this.filterModalInfo.filterModalInfo.hostLanguage,
         Amenities: this.filterModalInfo.filterModalInfo.amenities,
       },
     });
@@ -53,7 +53,7 @@ export class FilterFooterComponent implements OnInit {
         beds: 0,
         bathrooms: 0,
       },
-      propertyOfType: [],
+      propertyOfType: "",
       amenities: [],
       hostLanguage: [],
     };

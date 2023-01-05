@@ -27,10 +27,21 @@ export class AdvancedFilterComponent implements OnInit {
     this.activatedRoute.queryParams.subscribe(async (response: any) => {
       let TmpqueryString = Object.keys(response)
         .filter((key: any) => Number(response[key]) != 0)
-        .map((key: any) => key + '=' + response[key])
+        .map((key: any) => {
+          if(Array.isArray(response[key])){
+            let tmpArray:any[] = []
+            response[key].forEach((item: any) => {
+              tmpArray.push(key + '=' + item);
+            })
+            return tmpArray.join('&');
+          }
+          else{
+            return key + '=' + response[key];
+          }
+        })
         .join('&');
-
       this.sendFilterdHotels(TmpqueryString);
+      console.log(TmpqueryString);
       console.log(response);
     });
   }

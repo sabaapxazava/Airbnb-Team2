@@ -17,21 +17,12 @@ export class RoomsAndBedsComponent implements OnInit {
   ngOnInit(): void {}
 
   onChangeBedrooms(e: any) {
-    e.target.value != 0
-      ? (this.filterModalInfo.filterModalInfo.roomsAndBeds.bedrooms =
-          e.target.value)
-      : this.filterModalInfo.filterModalInfo.roomsAndBeds.bedrooms;
+    this.filterModalInfo.filterModalInfo.roomsAndBeds.bedrooms = e.target.value
   }
   onChangeBeds(e: any) {
-    e.target.value != 0
-      ? (this.filterModalInfo.filterModalInfo.roomsAndBeds.beds =
-          e.target.value)
-      : this.filterModalInfo.filterModalInfo.roomsAndBeds.beds;
+    this.filterModalInfo.filterModalInfo.roomsAndBeds.beds = e.target.value
   }
   onChangeBathrooms(e: any) {
-    e.target.value != 0
-      ? (this.filterModalInfo.filterModalInfo.roomsAndBeds.bathrooms =
-          e.target.value)
-      : this.filterModalInfo.filterModalInfo.roomsAndBeds.bathrooms;
+    this.filterModalInfo.filterModalInfo.roomsAndBeds.bathrooms = e.target.value
   }
 }
