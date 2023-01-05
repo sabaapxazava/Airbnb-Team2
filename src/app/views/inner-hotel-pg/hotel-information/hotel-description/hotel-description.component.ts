@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Hotel } from 'src/app/shared/shared-models/hotel.model';
 
 @Component({
   selector: 'app-hotel-description',
@@ -7,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class HotelDescriptionComponent implements OnInit {
 
-  @Input() Hoteldescription!:any;
+  @Input() currentHotel!:Hotel;
   constructor() { }
 
   ngOnInit(): void {
