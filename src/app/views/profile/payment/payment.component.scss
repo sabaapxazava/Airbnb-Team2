@@ -1,0 +1,77 @@
+.credit-cards {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 10px;
+}
+.cc {
+  background-color: #6e2b77;
+  border-radius: 10px;
+  display: block;
+  height: 195px;
+  letter-spacing: 0.1rem;
+  position: relative;
+  text-align: left;
+  text-transform: uppercase;
+  width: 325px;
+  margin-bottom: 100px;
+  margin-left: 10px;
+  button {
+    margin-left: 5px;
+    margin-top: 5px;
+  }
+}
+
+.chip {
+  background: #efb77f;
+  border-radius: 5px;
+  display: block;
+  height: 30px;
+  left: 30px;
+  position: absolute;
+  top: 50px;
+  width: 40px;
+}
+
+.cc-name {
+  background: linear-gradient(#eee, #999);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  bottom: 15px;
+  left: 30px;
+  position: absolute;
+}
+.cc-number {
+  background: linear-gradient(#eee, #999);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  bottom: 75px;
+  font-size: 20px;
+  left: 30px;
+  position: absolute;
+}
+
+.cc-date {
+  background: linear-gradient(#eee, #999);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  bottom: 40px;
+  left: 30px;
+  position: absolute;
+}
+
+.cc-date.expiry {
+  left: 125px;
+}
+.cc-date.expiry:after {
+  -webkit-text-fill-color: #52185b;
+  content: "Valid thru";
+  font-size: 8px;
+  left: -30px;
+  position: absolute;
+  text-transform: none;
+  top: -10px;
+}
+.add-credit-card {
+  margin-bottom: 100px;
+  margin: 90px 90px 90px 90px;
+}

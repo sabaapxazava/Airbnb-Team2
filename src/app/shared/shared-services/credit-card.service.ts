@@ -36,4 +36,16 @@ export class CreditCardService {
     });
     return true;
   }
+  async removeCreditCard(userId: any, index: number) {
+    console.log(userId);
+    if (!userId) return false;
+    const userRef = await this.firestore.collection('users').doc(userId);
+    userRef.get().subscribe(async (doc) => {
+      let data: any = await doc.data();
+      console.log(data.creditCards)
+      data.creditCards.splice(index, 1)
+      userRef.update({ creditCards: data.creditCards });
+    });
+    return true;
+  }
 }

@@ -1,0 +1,56 @@
+<div class="payment-info">
+    <h3 class="pay-title">Credit Card Info</h3>
+    <form [formGroup]="creditCard" (ngSubmit)="onSubmit()" >
+      <div class="tab-for">
+        <h5>NAME ON CARD</h5>
+        <input formControlName="cardName" type="text" value="" />
+        <h5>CARD NUMBER</h5>
+        <input
+          formControlName="cardNumber"
+          class="pay-logo"
+          type="text"
+          value="0000-0000-0000-0000"
+          required=""
+        />
+      </div>
+      <div class="transaction">
+        <div class="tab-form-left user-form">
+          <h5>EXPIRATION</h5>
+          <ul>
+            <li>
+              <input
+                formControlName="expirationDay"
+                type="number"
+                class="text_box"
+                type="text"
+                value="6"
+                min="1"
+              />
+            </li>
+            <li>
+              <input
+                formControlName="expirationMonth"
+                type="number"
+                class="text_box"
+                type="text"
+                value="1988"
+                min="1"
+              />
+            </li>
+          </ul>
+        </div>
+        <div class="tab-form-right user-form-rt">
+          <h5>CVV NUMBER</h5>
+          <input
+          formControlName="cvv"
+            type="text"
+            value="xxxx"
+            required=""
+          />
+        </div>
+        <div class="clear"></div>
+      </div>
+      <input type="submit" value="Save" />
+    </form>
+  </div>
+  

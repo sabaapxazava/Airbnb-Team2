@@ -1,0 +1,153 @@
+li {
+    list-style: none;
+  }
+  .payment-info h3 {
+    font-size: 26px;
+    text-align: center;
+    margin-bottom: 15px;
+    color: #3ad5a0;
+    font-weight: 500;
+    /* font-family: 'Alegreya Sans', sans-serif; */
+  }
+  .tab-for h5,
+  .tab-form-left h5,
+  .tab-form-right h5 {
+    color: #435964;
+    font-size: 13px;
+    text-transform: uppercase;
+    margin: 0 0 8px 0;
+    font-weight: 600;
+  }
+  .tab-for input[type="text"] {
+    width: 96%;
+    padding: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    border: 1px solid #e7ebee;
+    outline: none;
+    color: #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+  }
+  input.pay-logo {
+    width: 89.5% !important;
+    padding: 8px 45px 8px 8px !important;
+    // background: url(../images/visa.png) no-repeat 507px 5px;
+  }
+  
+  .tab-form-left {
+    float: left;
+    width: 48%;
+  }
+  input.text_box {
+    background: #fcfcfc;
+    border: 1px solid #ebeced;
+  }
+  .text_box {
+    display: inline;
+    width: 60px;
+    padding: 3px 5px;
+    outline: none;
+    margin-left: 1%;
+    font-size: 20px;
+    color: #444;
+    width: 100%;
+    color: #606060;
+    font-size: 15px;
+    padding: 8px 0 8px 10px;
+    border: none;
+    outline: none;
+    background: #fff;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+  }
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+  .user-form ul li {
+    list-style-type: none;
+    display: inline-block;
+    width: 23%;
+    margin-right: 9%;
+  }
+  .tab-form-right {
+    float: right;
+    width: 48%;
+  }
+  .tab-form-right input[type="text"] {
+    width: 92%;
+    padding: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    border: 1px solid #e7ebee;
+    outline: none;
+    color: #ccc;
+    border-radius: 5px;
+    margin-bottom: 30px;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+  }
+  .clear {
+    clear: both;
+  }
+  .payment-info form input[type="submit"] {
+    background: #b3e03f;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px 0;
+    border: none;
+    font-size: 16px;
+    outline: none;
+    width: 22%;
+    cursor: pointer;
+    font-weight: 600;
+    margin-bottom: 30px;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+  }
+  
+  ul[_ngcontent-rky-c146] {
+    margin: 0;
+    padding: 0;
+  }
+  .payment-info form input[type="submit"]:hover {
+    background: #3ad5a0;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+  }
+  #brand {
+    filter: hue-rotate(240deg);
+  }
+  input[type="checkbox"] {
+    transform: scale(1);
+    cursor: pointer;
+  }
+  .single-bottom ul li input[type="checkbox"] + label {
+    position: relative;
+    padding-left: 31px;
+    border: none;
+    outline: none;
+    font-size: 13px;
+    color: #2d3e50;
+    font-weight: 600;
+    line-height: 1.8em;
+  }
+  
