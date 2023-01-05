@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, RequiredValidator } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { creditCard } from '../../shared-models/creditCard.model';
@@ -21,11 +21,7 @@ export class PayFormComponent implements OnInit {
    }
   ngOnInit(): void {
   }
-  @Input() HotelId!:string;
-  @Input() startDate!:Date;
-  @Input() endDate!:Date;
-  @Input() pricePaid!:number;
-  @Input() Hotel!:Hotel;
+  @Output() onSubmitEmitter: EventEmitter<any> = new EventEmitter()
   creditCard = new FormGroup({
     cardName: new FormControl(''),
     cardNumber: new FormControl(''),
@@ -38,21 +34,7 @@ export class PayFormComponent implements OnInit {
   Cards:any[] = [];
 
   onSubmit(){
-    let reserveDate = new Date()
-    console.log(this.creditCard.value)
-    if(this.creditCard.value.saveCreditCard){
-      delete this.creditCard.value.saveCreditCard
-      this.creditCardService.addCreditCard(JSON.parse(localStorage["user"]).uid ? JSON.parse(localStorage["user"]).uid : null, this.creditCard.value as creditCard)
-    }
-    let reservedHotel:reservedHotel = {
-      hotelId:this.HotelId,
-      startDate: this.startDate,
-      endDate: this.endDate,
-      pricePaid: this.pricePaid,
-      reserveDate: reserveDate,
-      hotel:this.Hotel
-    }
-    console.log(this.reserve.reserveHotel(JSON.parse(localStorage["user"]).uid ? JSON.parse(localStorage["user"]).uid : null, reservedHotel))
+    this.onSubmitEmitter.emit(this.creditCard)
   }
   onCardChange(card:any){
     if(!card.target.value){

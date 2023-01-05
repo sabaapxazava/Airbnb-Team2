@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { creditCard } from 'src/app/shared/shared-models/creditCard.model';
+import { CreditCardService } from 'src/app/shared/shared-services/credit-card.service';
 import { ProfileService } from 'src/app/shared/shared-services/profile.service';
 import { ReservedService } from 'src/app/shared/shared-services/reserved.service';
 
@@ -12,8 +14,10 @@ import { ReservedService } from 'src/app/shared/shared-services/reserved.service
 export class ProfileComponent implements OnInit {
   constructor(
     private reservedService: ReservedService,
+    private creditCard: CreditCardService,
     private profileService: ProfileService,
-    private router: Router
+    private router: Router,
+    private CreditCardService: CreditCardService
   ) {}
 
   userInfo = new FormGroup({
@@ -22,7 +26,7 @@ export class ProfileComponent implements OnInit {
     phoneNumber: new FormControl(''),
     gender: new FormControl(''),
   });
-
+  creditCards:creditCard[] = [];
   ngOnInit(): void {
     let activeUserId = JSON.parse(localStorage['user']).uid
       ? JSON.parse(localStorage['user']).uid
@@ -38,6 +42,10 @@ export class ProfileComponent implements OnInit {
         gender: new FormControl(res.gender),
       });
     });
+    this.creditCard.getSavedCreditCards().subscribe((res) => {
+      console.log(res);
+      this.creditCards = res.creditCards;
+    });
   }
 
   onSubmit() {
@@ -48,5 +56,21 @@ export class ProfileComponent implements OnInit {
     let formInfo: any = this.userInfo.value;
     this.profileService.updateUser(formInfo, activeUserId);
     this.router.navigate(['/']);
+  }
+  delete(index:number){
+    console.log(index)
+    let activeUserId = JSON.parse(localStorage['user']).uid
+      ? JSON.parse(localStorage['user']).uid
+      : null;
+    this.creditCard.removeCreditCard(activeUserId, index)
+  }
+  onSubmitCreditCard(card:any){
+    delete card.value.saveCreditCard;
+    this.CreditCardService.addCreditCard(
+      JSON.parse(localStorage['user']).uid
+        ? JSON.parse(localStorage['user']).uid
+        : null,
+      card.value as creditCard
+    );
   }
 }
