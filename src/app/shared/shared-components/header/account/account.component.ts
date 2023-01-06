@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
-import {FirebaseWorkerService} from 'src/app/shared/shared-services/firebase-worker.service';
+import {FirebaseAuthService} from 'src/app/shared/shared-services/firebase-auth.service';
 import {LoginComponent} from '../../auth/login/login.component';
 import {RegistrationComponent} from '../../auth/registration/registration.component';
 import {EventManagerService} from "../../../shared-services/event-manager.service";
@@ -15,7 +15,7 @@ export class AccountComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
-    private firebaseWorker: FirebaseWorkerService,
+    private firebaseWorker: FirebaseAuthService,
     private angularFireAuth: AngularFireAuth,
     private eventManagerService: EventManagerService
   ) {
