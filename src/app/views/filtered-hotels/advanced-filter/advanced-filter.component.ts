@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Hotel } from 'src/app/shared/shared-models/hotel.model';
 import { CategoryService } from 'src/app/shared/shared-services/category.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { FilterModalDataComunicationService } from 'src/app/shared/shared-services/filter-modal-data-comunication.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-advanced-filter',
@@ -28,21 +27,18 @@ export class AdvancedFilterComponent implements OnInit {
       let TmpqueryString = Object.keys(response)
         .filter((key: any) => Number(response[key]) != 0)
         .map((key: any) => {
-          if(Array.isArray(response[key])){
-            let tmpArray:any[] = []
+          if (Array.isArray(response[key])) {
+            let tmpArray: any[] = [];
             response[key].forEach((item: any) => {
               tmpArray.push(key + '=' + item);
-            })
+            });
             return tmpArray.join('&');
-          }
-          else{
+          } else {
             return key + '=' + response[key];
           }
         })
         .join('&');
       this.sendFilterdHotels(TmpqueryString);
-      console.log(TmpqueryString);
-      console.log(response);
     });
   }
 

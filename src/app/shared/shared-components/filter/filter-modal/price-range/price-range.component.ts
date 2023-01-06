@@ -20,8 +20,8 @@ export class PriceRangeComponent implements OnInit, AfterContentChecked {
     private router: Router
   ) {}
   ngAfterContentChecked(): void {
-    this.filterInfo.filterModalInfo.priceRange.minPrice = this.minValue;
-    this.filterInfo.filterModalInfo.priceRange.maxPrice = this.maxValue;
+    this.filterInfo.filterModalInfo.PriceFrom = this.minValue;
+    this.filterInfo.filterModalInfo.PriceTo = this.maxValue;
   }
 
   ngOnInit(): void {}

@@ -50,7 +50,7 @@ const shared: any = [
   PayFormComponent,
   ReservedCardComponent,
   ProfileReservedCardComponent,
-  SaveCreditCardComponent
+  SaveCreditCardComponent,
 ];
 
 @NgModule({
