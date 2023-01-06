@@ -13,12 +13,17 @@
   text-align: left;
   text-transform: uppercase;
   width: 325px;
-  margin-bottom: 100px;
-  margin-left: 10px;
+  margin-bottom: 50px;
+  margin-right: 10px;
   button {
     margin-left: 5px;
     margin-top: 5px;
   }
+}
+.btn-danger{
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
 }
 
 .chip {
@@ -72,6 +77,4 @@
   top: -10px;
 }
 .add-credit-card {
-  margin-bottom: 100px;
-  margin: 90px 90px 90px 90px;
 }
