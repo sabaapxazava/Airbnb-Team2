@@ -1,7 +1,6 @@
-import { EventEmitter, Injectable, OnInit } from '@angular/core';
-import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
-import { map, Observable } from 'rxjs';
-import { User } from '../shared-models/user.model';
+import { Injectable } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Observable } from 'rxjs';
 import { creditCard } from '../shared-models/creditCard.model'
 @Injectable({
   providedIn: 'root'

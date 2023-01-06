@@ -3,17 +3,12 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import {
   AngularFirestore,
   AngularFirestoreDocument,
-  DocumentSnapshot,
+  // DocumentSnapshot,
 } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import * as firebase from 'firebase/auth';
-import * as firebases from 'firebase/app';
 import Swal from 'sweetalert2';
 import { User } from '../shared-models/user.model';
-import { EventManagerService } from './event-manager.service';
-import { observable, Observable } from 'rxjs';
-import { creditCard } from '../shared-models/creditCard.model';
-import { reservedHotel } from '../shared-models/reservedHotel.model';
 
 @Injectable({
   providedIn: 'root',
@@ -24,7 +19,6 @@ export class FirebaseAuthService {
   constructor(
     private firestore: AngularFirestore,
     private auth: AngularFireAuth,
-    private readonly eventManagerService: EventManagerService,
     private router: Router
   ) {}
 
@@ -36,8 +30,6 @@ export class FirebaseAuthService {
           type: 'login',
           body: result.user,
         };
-
-        this.eventManagerService.autEventHandler.emit(loginEventMessage);
 
         localStorage['user'] = JSON.stringify(result.user);
       })
@@ -79,8 +71,6 @@ export class FirebaseAuthService {
       };
 
       localStorage.removeItem('user');
-
-      this.eventManagerService.autEventHandler.emit(logoutEventMessage);
 
       this.router.navigate(['/']);
     });

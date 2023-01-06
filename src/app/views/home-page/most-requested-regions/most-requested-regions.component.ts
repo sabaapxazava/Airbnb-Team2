@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { BaseHttpService } from 'src/app/core/http/base-http.service';
+import { BaseHttpService } from 'src/app/shared/shared-services/base-http.service';
 import { Hotel } from 'src/app/shared/shared-models/hotel.model';
 import { CategoryService } from 'src/app/shared/shared-services/category.service';
 import { environment } from 'src/environments/environment';

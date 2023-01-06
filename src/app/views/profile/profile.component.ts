@@ -14,10 +14,8 @@ import { ReservedService } from 'src/app/shared/shared-services/reserved.service
 export class ProfileComponent implements OnInit {
   constructor(
     private reservedService: ReservedService,
-    private creditCard: CreditCardService,
     private profileService: ProfileService,
     private router: Router,
-    private CreditCardService: CreditCardService
   ) {}
 
   userInfo = new FormGroup({
