@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/shared/shared-models/user.model';
-import { FirebaseWorkerService } from 'src/app/shared/shared-services/firebase-worker.service';
+import { FirebaseAuthService } from 'src/app/shared/shared-services/firebase-auth.service';
 
 @Component({
   selector: 'app-registration',
@@ -12,7 +12,7 @@ import { FirebaseWorkerService } from 'src/app/shared/shared-services/firebase-w
 })
 export class RegistrationComponent implements OnInit {
   constructor(
-    private fireWorker: FirebaseWorkerService,
+    private fireWorker: FirebaseAuthService,
     private router: Router
   ) {}
 

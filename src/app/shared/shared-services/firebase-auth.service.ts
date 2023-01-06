@@ -18,7 +18,7 @@ import { reservedHotel } from '../shared-models/reservedHotel.model';
 @Injectable({
   providedIn: 'root',
 })
-export class FirebaseWorkerService {
+export class FirebaseAuthService {
   signInEmitter: EventEmitter<any> = new EventEmitter();
   wishlistEmitter: EventEmitter<any> = new EventEmitter();
   constructor(
