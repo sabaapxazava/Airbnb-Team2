@@ -1,0 +1,47 @@
+<div class="personal-info">
+    <form [formGroup]="userInfo" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input
+          formControlName="email"
+          type="email"
+          class="form-control"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+          placeholder="email"
+        />
+      </div>
+      <div class="form-group">
+        <label for="exampleInputFullName">Full Name</label>
+        <input
+          formControlName="fullName"
+          type="text"
+          class="form-control"
+          id="exampleInputFullName"
+          placeholder="Full Name"
+        />
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPhoneNumber">Phone Number</label>
+        <input
+          formControlName="phoneNumber"
+          type="number"
+          class="form-control"
+          id="exampleInputPhoneNumber"
+          placeholder="Phone Number"
+        />
+      </div>
+      <div class="form-group">
+        <label for="exampleInputGender">Gender</label>
+        <input
+          formControlName="gender"
+          type="text"
+          class="form-control"
+          id="exampleInputGender"
+          placeholder="Gender"
+        />
+      </div>
+
+      <button type="submit" class="btn btn-primary col-md-12">Save</button>
+    </form>
+  </div>
