@@ -1,42 +1,47 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import {  Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class WishlistService{
-  constructor(private firestore: AngularFirestore, private angularFireAuth: AngularFireAuth) {
-    let self = this
+export class WishlistService {
+  constructor(
+    private firestore: AngularFirestore,
+    private angularFireAuth: AngularFireAuth
+  ) {
+    let self = this;
     this.angularFireAuth.onAuthStateChanged(function (user) {
-      if(user){
+      if (user) {
         let id = localStorage['user']
-        ? JSON.parse(localStorage['user']).uid
-        : null;
+          ? JSON.parse(localStorage['user']).uid
+          : null;
         self.getWishlistFunc = self.getWishlist(id);
-        if(self.getWishlistFunc){
-          self.getWishlistSubscriber = self.getWishlistFunc.subscribe((data :any) => {
-            self.wishlistEmitter.emit({
-              Data: data.wishlist,
-            });
-          })
+        if (self.getWishlistFunc) {
+          self.getWishlistSubscriber = self.getWishlistFunc.subscribe(
+            (data: any) => {
+              self.wishlistEmitter.emit({
+                Data: data.wishlist,
+              });
+            }
+          );
         }
-        console.log(1)
       }
-      if(!user){
-        self.getWishlistSubscriber.unsubscribe()
+      if (!user) {
+        if (typeof self.getWishlistSubscriber == 'object') {
+          self.getWishlistSubscriber.unsubscribe();
+        }
         self.wishlistEmitter.emit({
           Data: [],
         });
       }
     });
   }
-  getWishlistSubscriber!:any
-  getWishlistFunc!:any;
-  ngOnInit(): void {
-  }
+  getWishlistSubscriber!: any;
+  getWishlistFunc!: any;
+  ngOnInit(): void {}
   wishlistEmitter: EventEmitter<any> = new EventEmitter();
-  ss!:Observable<any>;
+  ss!: Observable<any>;
   AddRemoveFromWishlist(userId: any, hotelId: string) {
     const docRef = this.firestore.collection('users').doc(userId);
     docRef.get().subscribe((doc) => {
@@ -53,8 +58,8 @@ export class WishlistService{
     });
     return true;
   }
-  getWishlist(id: any){
-    if(!id) return null
+  getWishlist(id: any) {
+    if (!id) return null;
     return this.firestore.collection('users').doc(id).valueChanges();
   }
 }
