@@ -1,12 +1,29 @@
 .example-form {
-    min-width: 150px;
-    max-width: 500px;
-    width: 100%;
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
 }
 
 .example-full-width {
-    width: 100%;
+  width: 100%;
 }
-form{
-    width:400px;
+form {
+  width: 400px;
+}
+.btn-primary {
+  background: #b3e03f !important;
+  border: none;
+  &:hover {
+    background: #3ad5a0 !important;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+  }
+}
+input:focus {
+  outline: none !important;
+  border-color: #b3e03f;
+  box-shadow: 0 0 5px #3ad5a0;
 }
