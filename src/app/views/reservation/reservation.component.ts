@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { BaseHttpService } from 'src/app/core/http/base-http.service';
+import { BaseHttpService } from 'src/app/shared/shared-services/base-http.service';
 import { creditCard } from 'src/app/shared/shared-models/creditCard.model';
 import { Hotel } from 'src/app/shared/shared-models/hotel.model';
 import { reservedHotel } from 'src/app/shared/shared-models/reservedHotel.model';

@@ -1,7 +1,7 @@
 import {AfterContentChecked,AfterViewChecked,Component,OnChanges,OnInit,Output,SimpleChanges} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Hotel } from 'src/app/shared/shared-models/hotel.model';
-import { BaseHttpService } from 'src/app/core/http/base-http.service';
+import { BaseHttpService } from 'src/app/shared/shared-services/base-http.service';
 import { environment } from 'src/environments/environment';@Component({
   selector: 'app-inner-hotel-pg',
   templateUrl: './inner-hotel-pg.component.html',
