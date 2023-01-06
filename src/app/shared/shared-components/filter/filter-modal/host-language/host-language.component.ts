@@ -8,25 +8,13 @@ import { FilterModalDataComunicationService } from 'src/app/shared/shared-servic
 })
 export class HostLanguageComponent implements OnInit {
   showMore = true;
-  hostLanguage: string[] = [
-    'english',
-    'german',
-    'french',
-    'japanese',
-    'italian',
-    'russian',
-    'spanish',
-    'chinese',
-    'arabic',
-    'hindi',
-    'turkish',
-    'korean',
-    'polish',
-    'danish',
-    'greek',
-    'ukrainian',
-    'swedish',
-    'norwegian',
+  HostLanguage: string[] = [
+    'English',
+    'German',
+    'French',
+    'Japanese',
+    'Italyan',
+    'Georgian',
   ];
 
   constructor(private filterModalInfo: FilterModalDataComunicationService) {}
@@ -38,12 +26,12 @@ export class HostLanguageComponent implements OnInit {
 
   onHostLanguage(e: any) {
     if (e.target.checked) {
-      this.filterModalInfo.filterModalInfo.hostLanguage.push(e.target.value);
+      this.filterModalInfo.filterModalInfo.HostLanguage.push(e.target.value);
     } else {
-      let index = this.filterModalInfo.filterModalInfo.hostLanguage.indexOf(
+      let index = this.filterModalInfo.filterModalInfo.HostLanguage.indexOf(
         e.target.value
       );
-      this.filterModalInfo.filterModalInfo.hostLanguage.splice(index, 1);
+      this.filterModalInfo.filterModalInfo.HostLanguage.splice(index, 1);
     }
   }
 }

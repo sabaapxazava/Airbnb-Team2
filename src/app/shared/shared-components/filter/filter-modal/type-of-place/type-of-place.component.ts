@@ -13,32 +13,32 @@ export class TypeOfPlaceComponent implements OnInit {
 
   onEntryPlace(e: any) {
     if (e.target.checked) {
-      this.filterModalInfo.filterModalInfo.typeOfPlace.push(e.target.value);
+      this.filterModalInfo.filterModalInfo.TypeOfPlace.push(e.target.value);
     } else {
-      let index = this.filterModalInfo.filterModalInfo.typeOfPlace.indexOf(
+      let index = this.filterModalInfo.filterModalInfo.TypeOfPlace.indexOf(
         e.target.value
       );
-      this.filterModalInfo.filterModalInfo.typeOfPlace.splice(index, 1);
+      this.filterModalInfo.filterModalInfo.TypeOfPlace.splice(index, 1);
     }
   }
   onPrivateRoom(e: any) {
     if (e.target.checked) {
-      this.filterModalInfo.filterModalInfo.typeOfPlace.push(e.target.value);
+      this.filterModalInfo.filterModalInfo.TypeOfPlace.push(e.target.value);
     } else {
-      let index = this.filterModalInfo.filterModalInfo.typeOfPlace.indexOf(
+      let index = this.filterModalInfo.filterModalInfo.TypeOfPlace.indexOf(
         e.target.value
       );
-      this.filterModalInfo.filterModalInfo.typeOfPlace.splice(index, 1);
+      this.filterModalInfo.filterModalInfo.TypeOfPlace.splice(index, 1);
     }
   }
   onSharedRoom(e: any) {
     if (e.target.checked) {
-      this.filterModalInfo.filterModalInfo.typeOfPlace.push(e.target.value);
+      this.filterModalInfo.filterModalInfo.TypeOfPlace.push(e.target.value);
     } else {
-      let index = this.filterModalInfo.filterModalInfo.typeOfPlace.indexOf(
+      let index = this.filterModalInfo.filterModalInfo.TypeOfPlace.indexOf(
         e.target.value
       );
-      this.filterModalInfo.filterModalInfo.typeOfPlace.splice(index, 1);
+      this.filterModalInfo.filterModalInfo.TypeOfPlace.splice(index, 1);
     }
   }
 }

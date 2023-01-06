@@ -9,7 +9,7 @@ import { FilterModalDataComunicationService } from 'src/app/shared/shared-servic
 })
 export class AmenitiesComponent implements OnInit {
   showMore = true;
-  amenities: [] = [];
+  Amenities: [] = [];
 
   onShowMore() {
     this.showMore = !this.showMore;
@@ -22,19 +22,22 @@ export class AmenitiesComponent implements OnInit {
 
   ngOnInit(): void {
     this.amenitiesService.getAllAmenities().subscribe((response) => {
-      this.amenities = response;
+      this.Amenities = response;
+    });
+
+    this.filterModalInfo.resetValueEmitter.subscribe(() => {
+      console.log(event);
     });
   }
 
   onAmenities(e: any) {
     if (e.target.checked) {
-      this.filterModalInfo.filterModalInfo.amenities.push(e.target.value);
+      this.filterModalInfo.filterModalInfo.Amenities.push(e.target.value);
     } else {
-      let index = this.filterModalInfo.filterModalInfo.amenities.indexOf(
+      let index = this.filterModalInfo.filterModalInfo.Amenities.indexOf(
         e.target.value
       );
-      this.filterModalInfo.filterModalInfo.amenities.splice(index, 1);
+      this.filterModalInfo.filterModalInfo.Amenities.splice(index, 1);
     }
-    console.log(this.filterModalInfo.filterModalInfo.amenities)
   }
 }
