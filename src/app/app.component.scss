@@ -2,6 +2,7 @@
 main {
   padding-left: 3%;
   padding-right: 3%;
+  min-height: calc(100vh - 130px);
 }
 @media screen and (max-width: 792px) {
   main{

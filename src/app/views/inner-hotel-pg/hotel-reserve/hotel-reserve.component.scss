@@ -25,7 +25,7 @@
   margin: 20px 0 10px 20px;
   font-size: 20px;
 }
-.col-md-4 {
+.calendar {
   margin-left: 8%;
   border: 1px solid rgb(167, 159, 159);
   border-radius: 15px;
@@ -38,7 +38,7 @@ app-date-picker {
   margin-right: 20%;
 }
 @media screen and (max-width: 792px) {
-  aside{
+  aside {
     width: 100% !important;
     margin-left: 0 !important;
   }

@@ -1,16 +1,18 @@
-.account{
-    margin-top: 10px;
-    border-radius: 50px;
-    border: 1px solid rgb(221, 221, 221);
-    height: 50px !important;
+.account {
+  margin-top: 10px;
+  border-radius: 50px;
+  border: 1px solid rgb(221, 221, 221);
+  height: 50px !important;
+  display: flex;
+  align-items: center;
 }
-.dropdown-menu{
-    inset: 6px auto auto -75px !important;
-    li{
-        cursor: pointer;
-        padding: 2px;
-    }
+.dropdown-menu {
+  inset: 6px auto auto -75px !important;
+  li {
+    cursor: pointer;
+    padding: 2px;
+  }
 }
-.ng-star-inserted{
-    margin: 0px !important;
+.ng-star-inserted {
+  margin: 0px 0px 15px 0px !important;
 }

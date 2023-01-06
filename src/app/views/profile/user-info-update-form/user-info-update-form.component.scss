@@ -1,11 +1,23 @@
 .personal-info {
-    border: 1px solid rgb(221, 221, 221);
-    border-radius: 20px;
-    padding: 20px;
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 20px;
+  padding: 20px;
+}
+.form-group {
+  margin-bottom: 15px;
+  label {
+    margin-bottom: 5px;
   }
-  .form-group {
-    margin-bottom: 15px;
-    label {
-      margin-bottom: 5px;
-    }
+}
+.btn-primary {
+  background: #b3e03f !important;
+  border: none;
+  &:hover{
+    background: #3ad5a0 !important;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
   }
+}

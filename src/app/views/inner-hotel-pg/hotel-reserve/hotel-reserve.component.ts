@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { HotelModelModule } from 'src/app/shared/shared-models/hotel-model.model';
+import { LoginComponent } from 'src/app/shared/shared-components/auth/login/login.component';
 import { Hotel } from 'src/app/shared/shared-models/hotel.model';
 
 @Component({
@@ -13,9 +14,8 @@ export class HotelReserveComponent implements OnInit {
   cost: any = 0;
   numberOfDays: any = 0;
   startDateEndDate: any = 0;
-  // currentHotelId:string = this.currentHotel.id;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private dialog: MatDialog) {}
 
   ngOnInit(): void {}
   numberOfDaysChanged(numberofdays: any) {
@@ -24,16 +24,21 @@ export class HotelReserveComponent implements OnInit {
   }
 
   reservationBtn() {
-    this.router.navigate(['/reservation'], {
-      queryParams: {
-        numberOfDays: this.numberOfDays,
-        cost: this.cost,
-        currentHotelId: this.currentHotel.id,
-        startDateEndDate: JSON.stringify(this.startDateEndDate)
-      },
-    });
+    let id = localStorage['user'] ? JSON.parse(localStorage['user']).uid : null;
+    if (id) {
+      this.router.navigate(['/reservation'], {
+        queryParams: {
+          numberOfDays: this.numberOfDays,
+          cost: this.cost,
+          currentHotelId: this.currentHotel.id,
+          startDateEndDate: JSON.stringify(this.startDateEndDate),
+        },
+      });
+    } else {
+      this.dialog.open(LoginComponent);
+    }
   }
-  StartDateEndDate(dates:any){
+  StartDateEndDate(dates: any) {
     this.startDateEndDate = dates;
   }
 }
