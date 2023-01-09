@@ -8,8 +8,9 @@ import { NgImageSliderModule } from 'ng-image-slider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatInputModule} from '@angular/material/input';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 const materialModules = [
   CommonModule,
@@ -21,6 +22,7 @@ const materialModules = [
   MatFormFieldModule,
   MatNativeDateModule,
   ReactiveFormsModule,
+  MatProgressSpinnerModule,
 ];
 
 @NgModule({
@@ -33,9 +35,9 @@ const materialModules = [
     MatDialogModule,
     MatInputModule,
     ReactiveFormsModule,
-    [...materialModules]
+    [...materialModules],
   ],
-  exports:[
+  exports: [
     CommonModule,
     MatIconModule,
     MatButtonModule,
@@ -43,7 +45,7 @@ const materialModules = [
     MatDialogModule,
     MatInputModule,
     ReactiveFormsModule,
-    [...materialModules]
-  ]
+    [...materialModules],
+  ],
 })
 export class MaterialModule {}
