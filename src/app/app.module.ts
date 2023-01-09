@@ -18,6 +18,8 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { environment } from 'src/environments/environment';
 import { NgxGoogleAnalyticsModule } from 'ngx-google-analytics';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LoadingInterceptor } from './shared/shared-interceptors/loading.interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -38,7 +40,13 @@ import { NgxGoogleAnalyticsModule } from 'ngx-google-analytics';
     AngularFireStorageModule,
     AngularFireDatabaseModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoadingInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
