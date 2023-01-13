@@ -30,7 +30,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Modules
 
-#AppModule
+# AppModule
 ![image](https://user-images.githubusercontent.com/60016171/211928081-8ad2fe11-5a17-43fb-8ac4-925a54a1b111.png)
 
 ## What's included
