@@ -28,6 +28,31 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
+## Short Description
+
+This is analog application of Airbnb.com. On this platform you can register and log in to the system to rent a hotel,
+add a credit card or add hotels in your wishlist. on this platform you can filter hotels with any data that the hotel may have.
+Below you can see some screenshots of the application and the technologies that make up the project.
+
+## Homepage screenshot
+
+![homepage](https://user-images.githubusercontent.com/56683170/212626434-ffb62b18-0194-4a85-88d2-377fe7b357c6.PNG)
+
+## Inner page screenshots for one hotel
+
+![inner1](https://user-images.githubusercontent.com/56683170/212634908-ae9bc870-bd73-4d19-ad19-dfcc88294257.PNG)
+
+![inner2](https://user-images.githubusercontent.com/56683170/212634925-cca95ae4-ee57-47c4-9426-054b05f05407.PNG)
+
+## User's personal information page
+
+![personal info](https://user-images.githubusercontent.com/56683170/212636046-42de19d5-a285-417b-8768-be8ea0397288.PNG)
+
+## Reserved and favourite hotel for user
+
+![reserved](https://user-images.githubusercontent.com/56683170/212636370-f863f98e-53d7-43c2-8060-5127607f5fbc.PNG)
+
+
 ## Modules
 
 # AppModule
@@ -53,7 +78,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 - [x] Google Analytics
 - [x] SweetAlert2
 
-# Dependencies
+## Dependencies
 - @angular-slider/ngx-slider : ^2.0.4
 - @angular/animations : ^14.2.0
 - @angular/cdk : ^14.2.7
