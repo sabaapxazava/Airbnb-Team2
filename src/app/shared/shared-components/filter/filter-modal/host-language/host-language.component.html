@@ -1,9 +1,9 @@
 <section class="host-language">
   <header>
-    <h4>Host language</h4>
+    <h3>Host language</h3>
   </header>
   <div class="checkbox-wrapper">
-    <div class="form-check" *ngFor="let item of hostLanguage.slice(0, 4)">
+    <div class="form-check" *ngFor="let item of HostLanguage.slice(0, 4)">
       <ng-container>
         <label class="form-check-label" for="{{ item }}">
           <span>{{ item }}</span>
@@ -20,7 +20,7 @@
     <ng-container *ngIf="!showMore">
       <div
         class="form-check"
-        *ngFor="let item of hostLanguage.slice(4, hostLanguage.length)"
+        *ngFor="let item of HostLanguage.slice(4, HostLanguage.length)"
       >
         <label class="form-check-label" for="{{ item }}">
           <span>{{ item }}</span>

@@ -3,13 +3,13 @@
     <h3>Rooms and beds</h3>
   </header>
   <div class="title-and-buttons">
-    <h4>Bedrooms</h4>
+    <h4>Rooms</h4>
     <div
       class="btn-group"
       role="group"
       aria-label="Basic radio toggle button group"
     >
-      <div *ngFor="let item of bedrooms; let i = index">
+      <div *ngFor="let item of RoomsCount; let i = index">
         <input
           type="radio"
           class="btn-check"
@@ -27,13 +27,13 @@
   </div>
 
   <div class="title-and-buttons">
-    <h4>Beds</h4>
+    <h4>BedsPerRoom</h4>
     <div
       class="btn-group"
       role="group"
       aria-label="Basic radio toggle button group"
     >
-      <div *ngFor="let item of beds; let i = index">
+      <div *ngFor="let item of BedsPerRoomCount; let i = index">
         <input
           type="radio"
           class="btn-check"
@@ -51,13 +51,13 @@
   </div>
 
   <div class="title-and-buttons">
-    <h4>Bathrooms</h4>
+    <h4>BathRooms</h4>
     <div
       class="btn-group"
       role="group"
       aria-label="Basic radio toggle button group"
     >
-      <div *ngFor="let item of bathrooms; let i = index">
+      <div *ngFor="let item of BathRoomsCount; let i = index">
         <input
           type="radio"
           class="btn-check"

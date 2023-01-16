@@ -6,18 +6,9 @@ import { FilterInfo } from '../shared-models/filterInfo.model';
 })
 export class FilterModalDataComunicationService {
   advancedFilterEmitter: EventEmitter<any> = new EventEmitter();
+  resetValueEmitter: EventEmitter<any> = new EventEmitter();
 
   paramsUrl!: string;
 
   public filterModalInfo = new FilterInfo();
-  public aa!: any;
-
-  // public minPrice!: number;
-  // public maxPrice!: number;
-  // public TypeOfPlace: string[] = [];
-  // public bedrooms!: number;
-  // public beds!: number;
-  // public bathrooms!: number;
-
-  constructor() {}
 }

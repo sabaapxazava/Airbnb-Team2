@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { FirebaseWorkerService } from 'src/app/shared/shared-services/firebase-worker.service';
+import { FirebaseAuthService } from 'src/app/shared/shared-services/firebase-auth.service';
 
 @Component({
   selector: 'app-login',
@@ -8,7 +8,7 @@ import { FirebaseWorkerService } from 'src/app/shared/shared-services/firebase-w
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  constructor(private fireWorker: FirebaseWorkerService) {}
+  constructor(private fireWorker: FirebaseAuthService) {}
 
   ngOnInit(): void {}
   LoginForm = new FormGroup({
@@ -33,8 +33,6 @@ export class LoginComponent implements OnInit {
 
   forgotPassword() {
     let userEmail: any = this.LoginForm.value.email;
-    this.fireWorker.forgotPassword(userEmail).then(res =>{
-      console.log(res);
-    });
+    this.fireWorker.forgotPassword(userEmail)
   }
 }

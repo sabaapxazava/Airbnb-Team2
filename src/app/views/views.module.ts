@@ -30,6 +30,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { ProfileComponent } from './profile/profile.component';
 import { PaymentComponent } from './profile/payment/payment.component';
 import { HostInformationComponent } from './inner-hotel-pg/hotel-information/host-information/host-information.component';
+import { UserInfoUpdateFormComponent } from './profile/user-info-update-form/user-info-update-form.component';
 
 
 const shared: any = [
@@ -77,6 +78,7 @@ const matShared: any = [
     ProfileComponent,
     PaymentComponent,
     HostInformationComponent,
+    UserInfoUpdateFormComponent,
 
   ],
   imports: [SharedModule, [...matShared], RouterModule, GoogleMapsModule],

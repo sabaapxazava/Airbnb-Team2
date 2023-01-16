@@ -1,19 +1,18 @@
-.example-form {
-  min-width: 150px;
-  max-width: 500px;
-  width: 100%;
+.personal-info {
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 20px;
+  padding: 20px;
 }
-
-.example-full-width {
-  width: 100%;
-}
-form {
-  width: 400px;
+.form-group {
+  margin-bottom: 15px;
+  label {
+    margin-bottom: 5px;
+  }
 }
 .btn-primary {
   background: #b3e03f !important;
   border: none;
-  &:hover {
+  &:hover{
     background: #3ad5a0 !important;
     transition: 0.5s all;
     -webkit-transition: 0.5s all;
@@ -21,9 +20,4 @@ form {
     -o-transition: 0.5s all;
     -ms-transition: 0.5s all;
   }
-}
-input:focus {
-  outline: none !important;
-  border-color: #b3e03f;
-  box-shadow: 0 0 5px #3ad5a0;
 }

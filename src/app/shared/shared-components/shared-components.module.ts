@@ -27,6 +27,7 @@ import { PayFormComponent } from './pay-form/pay-form.component';
 import { ReservedCardComponent } from './reserved-card/reserved-card.component';
 import { ProfileReservedCardComponent } from './profile-reserved-card/profile-reserved-card.component';
 import { SaveCreditCardComponent } from './save-credit-card/save-credit-card.component';
+import { LoaderComponent } from './loader/loader.component';
 
 const shared: any = [
   CommonModule,
@@ -50,7 +51,8 @@ const shared: any = [
   PayFormComponent,
   ReservedCardComponent,
   ProfileReservedCardComponent,
-  SaveCreditCardComponent
+  SaveCreditCardComponent,
+  LoaderComponent,
 ];
 
 @NgModule({
@@ -78,6 +80,7 @@ const shared: any = [
     ReservedCardComponent,
     ProfileReservedCardComponent,
     SaveCreditCardComponent,
+    LoaderComponent,
   ],
   imports: [MaterialModule, FormsModule, NgxSliderModule, AppRoutingModule],
   exports: [[...shared]],

@@ -3,7 +3,7 @@
   <form [formGroup]="creditCard" (ngSubmit)="onSubmit()" >
     <div class="tab-for">
       <h5 *ngIf="this.Cards.length != 0">Your Cards:</h5>
-      <select *ngIf="this.Cards.length != 0"  name="" id="" (change)="onCardChange($event)">
+      <select class="choose-card" *ngIf="this.Cards.length != 0"  name="" id="" (change)="onCardChange($event)">
         <option value="">New Card</option>
         <option *ngFor="let item of this.Cards" [value]="item | json">***{{item.cardNumber.toString().substring(item.cardNumber.toString().length -4) }}</option>
       </select>
@@ -55,7 +55,7 @@
       </div>
       <div class="clear"></div>
     </div>
-    <input type="submit" value="SUBMIT" />
+    <input type="submit" value="Save" />
     <div class="single-bottom">
       <ul>
         <li>

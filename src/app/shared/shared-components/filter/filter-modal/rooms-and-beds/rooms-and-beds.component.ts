@@ -7,9 +7,9 @@ import { FilterModalDataComunicationService } from 'src/app/shared/shared-servic
   styleUrls: ['./rooms-and-beds.component.css'],
 })
 export class RoomsAndBedsComponent implements OnInit {
-  bedrooms: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8];
-  beds: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8];
-  bathrooms: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+  RoomsCount: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+  BedsPerRoomCount: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+  BathRoomsCount: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8];
   bedroomIsChecked!: any;
 
   constructor(private filterModalInfo: FilterModalDataComunicationService) {}
@@ -17,12 +17,12 @@ export class RoomsAndBedsComponent implements OnInit {
   ngOnInit(): void {}
 
   onChangeBedrooms(e: any) {
-    this.filterModalInfo.filterModalInfo.roomsAndBeds.bedrooms = e.target.value
+    this.filterModalInfo.filterModalInfo.RoomsCount = e.target.value;
   }
   onChangeBeds(e: any) {
-    this.filterModalInfo.filterModalInfo.roomsAndBeds.beds = e.target.value
+    this.filterModalInfo.filterModalInfo.BedsPerRoomCount = e.target.value;
   }
   onChangeBathrooms(e: any) {
-    this.filterModalInfo.filterModalInfo.roomsAndBeds.bathrooms = e.target.value
+    this.filterModalInfo.filterModalInfo.BathRoomsCount = e.target.value;
   }
 }

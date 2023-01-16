@@ -15,12 +15,11 @@ export class PaymentComponent implements OnInit {
   creditCards:creditCard[] = []
   ngOnInit(): void {
     this.CreditCardService.getSavedCreditCards().subscribe((res) => {
-      console.log(res);
       this.creditCards = res.creditCards;
     });
   }
   delete(index:number){
-    console.log(index)
+
     let activeUserId = JSON.parse(localStorage['user']).uid
       ? JSON.parse(localStorage['user']).uid
       : null;

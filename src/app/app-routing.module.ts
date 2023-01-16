@@ -27,11 +27,14 @@ const routes: Routes = [
   {
     path: 'hotel/:id',
     component: InnerHotelPgComponent,
-    canActivate: [],
   },
-  { path: 'trip', component: TripComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'reservation', component: ReservationComponent },
+  { path: 'trip', component: TripComponent, canActivate: [AuthGuard] },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  {
+    path: 'reservation',
+    component: ReservationComponent,
+    canActivate: [AuthGuard],
+  },
 ];
 
 @NgModule({

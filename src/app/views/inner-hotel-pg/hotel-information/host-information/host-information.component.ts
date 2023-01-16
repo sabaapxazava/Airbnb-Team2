@@ -1,4 +1,3 @@
-import { InputModalityDetector } from '@angular/cdk/a11y';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({

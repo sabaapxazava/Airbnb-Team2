@@ -20,6 +20,8 @@
     <div class="col-md-12">
       <h2>Favourite Hotels</h2>
     </div>
-    <div class="reserved-hotel-card"></div>
+    <div class="reserved-hotel-card">
+      <app-card *ngFor="let card of wishlistArray" [card]="card"></app-card>
+    </div>
   </div>
 </article>
