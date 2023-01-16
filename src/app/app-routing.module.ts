@@ -10,6 +10,7 @@ import { InnerHotelPgComponent } from './views/inner-hotel-pg/inner-hotel-pg.com
 import { TripComponent } from './views/trip/trip.component';
 import { ReservationComponent } from './views/reservation/reservation.component';
 import { ProfileComponent } from './views/profile/profile.component';
+import { NotFoundPageComponent } from './views/not-found-page/not-found-page.component';
 
 const routes: Routes = [
   {
@@ -35,6 +36,8 @@ const routes: Routes = [
     component: ReservationComponent,
     canActivate: [AuthGuard],
   },
+  { path: '404', component: NotFoundPageComponent },
+  { path: '**', component: NotFoundPageComponent }
 ];
 
 @NgModule({
