@@ -31,7 +31,6 @@ export class ProfileComponent implements OnInit {
       : null;
 
     this.reservedService.getReservedHotel(activeUserId).subscribe((res) => {
-      console.log(res);
 
       this.userInfo = new FormGroup({
         email: new FormControl(res.email),

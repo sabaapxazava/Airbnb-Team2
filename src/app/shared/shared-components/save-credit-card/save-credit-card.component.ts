@@ -1,9 +1,7 @@
-import { Component, OnInit, EventEmitter, Input, Output  } from '@angular/core';
-import { FormControl, FormGroup, RequiredValidator } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, EventEmitter, Output  } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { creditCard } from '../../shared-models/creditCard.model';
 import { CreditCardService } from '../../shared-services/credit-card.service';
-import { ReservedService } from '../../shared-services/reserved.service';
 @Component({
   selector: 'app-save-credit-card',
   templateUrl: './save-credit-card.component.html',
@@ -11,9 +9,8 @@ import { ReservedService } from '../../shared-services/reserved.service';
 })
 export class SaveCreditCardComponent implements OnInit {
 
-  constructor(private creditCardService: CreditCardService, private reserve:ReservedService) {
+  constructor(private creditCardService: CreditCardService) {
     this.creditCardService.getSavedCreditCards().subscribe(data => this.Cards = data.creditCards as creditCard[])
-    console.log(this.Cards)
    }
   ngOnInit(): void {
   }

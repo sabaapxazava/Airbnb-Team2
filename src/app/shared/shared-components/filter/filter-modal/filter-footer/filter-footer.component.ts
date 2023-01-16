@@ -49,6 +49,5 @@ export class FilterFooterComponent implements OnInit {
     this.filterModalInfo.filterModalInfo = new FilterInfo();
 
     this.filterModalInfo.resetValueEmitter.emit();
-    console.log(this.filterModalInfo.filterModalInfo);
   }
 }

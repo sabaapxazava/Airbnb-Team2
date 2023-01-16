@@ -31,10 +31,6 @@ export class ReservedCardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.cost, 'reserved-card');
-    console.log(this.numberOfDays, 'reserved-card');
-    console.log(this.currentHotelId, 'reserved-card');
-    console.log(this.card.mainImages)
   }
 
   selectImage(index: number) {

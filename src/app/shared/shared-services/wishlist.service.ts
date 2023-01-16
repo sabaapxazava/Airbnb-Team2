@@ -52,7 +52,6 @@ export class WishlistService {
         } else {
           data.wishlist.push(hotelId);
         }
-        console.log(data.wishlist);
         docRef.update({ wishlist: data.wishlist });
       }
     });

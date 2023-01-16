@@ -27,7 +27,6 @@ export class MostRequestedHotelsComponent implements OnInit {
     this.baseHttpService.getAll<Hotel>(fullApiUrl).subscribe((res: any) => {
       this.cards = res;
       this.hotelFilteredArray = this.cards;
-      console.log(this.cards);
     });
     this.categoryService.categoryItemEmitter.subscribe((response) => {
       this.hotelItem = response;

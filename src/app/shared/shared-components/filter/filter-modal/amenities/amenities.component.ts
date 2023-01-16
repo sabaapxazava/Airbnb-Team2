@@ -24,10 +24,6 @@ export class AmenitiesComponent implements OnInit {
     this.amenitiesService.getAllAmenities().subscribe((response) => {
       this.Amenities = response;
     });
-
-    this.filterModalInfo.resetValueEmitter.subscribe(() => {
-      console.log(event);
-    });
   }
 
   onAmenities(e: any) {

@@ -103,7 +103,6 @@ export class FirebaseAuthService {
       if(data){
         return true
       }
-      console.log(data)
       const userData: User = {
         id: fireUser.uid,
         fullName: fireUser.displayName,

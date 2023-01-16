@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { HotelModelModule } from 'src/app/shared/shared-models/hotel-model.model';
 import { Hotel } from 'src/app/shared/shared-models/hotel.model';
 
 @Component({
@@ -21,7 +20,6 @@ export class HotelInformationComponent implements OnInit {
                 }
       })
     }).forEach(image => image.forEach(image => this.images.push(image)))
-    console.log(this.currentHotel)
   }
 
 }

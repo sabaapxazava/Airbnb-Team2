@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { HotelModelModule } from 'src/app/shared/shared-models/hotel-model.model';
 import { Hotel } from '../../shared-models/hotel.model';
 
 @Component({
@@ -47,7 +46,6 @@ export class DatePickerComponent implements OnInit {
       this.StartDateEndDate.emit({startDate: this.startDate, endDate: this.endDate})
       this.endDate = null;
       this.startDate = null;
-
     }
   }
 }

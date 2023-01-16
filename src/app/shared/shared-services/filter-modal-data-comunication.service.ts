@@ -11,6 +11,4 @@ export class FilterModalDataComunicationService {
   paramsUrl!: string;
 
   public filterModalInfo = new FilterInfo();
-
-  constructor() {}
 }

@@ -33,8 +33,6 @@ export class LoginComponent implements OnInit {
 
   forgotPassword() {
     let userEmail: any = this.LoginForm.value.email;
-    this.fireWorker.forgotPassword(userEmail).then(res =>{
-      console.log(res);
-    });
+    this.fireWorker.forgotPassword(userEmail)
   }
 }
