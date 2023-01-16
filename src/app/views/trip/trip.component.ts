@@ -3,6 +3,7 @@ import { BaseHttpService } from 'src/app/shared/shared-services/base-http.servic
 import { Hotel } from 'src/app/shared/shared-models/hotel.model';
 import { ReservedService } from 'src/app/shared/shared-services/reserved.service';
 import { environment } from 'src/environments/environment.prod';
+import { WishlistService } from 'src/app/shared/shared-services/wishlist.service';
 
 @Component({
   selector: 'app-trip',
@@ -13,6 +14,7 @@ export class TripComponent implements OnInit {
   reservedHotelArray: any[] = [];
   wishlistArray: any[] = [];
   constructor(
+    private wshlistService: WishlistService,
     private reservedService: ReservedService,
     private baseHttpService: BaseHttpService
   ) {}
@@ -25,16 +27,22 @@ export class TripComponent implements OnInit {
     if (activeUserId != null) {
       this.reservedService
         .getReservedHotel(activeUserId)
-        .subscribe((res: any) => {
+        .subscribe(async(res: any) => {
           this.reservedHotelArray = res.reservedHotels;
-
-          res.wishlist.forEach((item: Hotel) => {
+          if(this.wishlistArray.length != 0){
+            this.wishlistArray = [];
+            console.log(this.wishlistArray, "Ssss")
+          }
+          await res.wishlist.forEach(async(item: Hotel) => {
+            let winished = true;
             this.baseHttpService
               .getById(`${environment.baseApiUrl}/Hotel/${item}`)
               .subscribe((item) => {
                 this.wishlistArray.push(item);
+                winished = false;
               });
           });
+          this.wshlistService.loadWishlist(activeUserId)
         });
     }
   }

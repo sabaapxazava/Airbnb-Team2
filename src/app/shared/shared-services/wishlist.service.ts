@@ -12,34 +12,39 @@ export class WishlistService {
   ) {
     let self = this;
     this.angularFireAuth.onAuthStateChanged(function (user) {
-      if (user) {
-        let id = localStorage['user']
-          ? JSON.parse(localStorage['user']).uid
-          : null;
-        self.getWishlistFunc = self.getWishlist(id);
-        if (self.getWishlistFunc) {
-          self.getWishlistSubscriber = self.getWishlistFunc.subscribe(
-            (data: any) => {
-              self.wishlistEmitter.emit({
-                Data: data.wishlist,
-              });
-            }
-          );
-        }
-      }
-      if (!user) {
-        if (typeof self.getWishlistSubscriber == 'object') {
-          self.getWishlistSubscriber.unsubscribe();
-        }
-        self.wishlistEmitter.emit({
-          Data: [],
-        });
-      }
+      self.loadWishlist(user);
     });
+  }
+  loadWishlist(user: any){
+    if (user) {
+      let id = localStorage['user']
+        ? JSON.parse(localStorage['user']).uid
+        : null;
+      this.getWishlistFunc = this.getWishlist(id);
+      if (this.getWishlistFunc) {
+        if(this.getWishlistSubscriber != undefined){
+          this.getWishlistSubscriber.unsubscribe()
+        }
+        this.getWishlistSubscriber = this.getWishlistFunc.subscribe(
+          (data: any) => {
+            this.wishlistEmitter.emit({
+              Data: data.wishlist,
+            });
+          }
+        );
+      }
+    }
+    if (!user) {
+      if (this.getWishlistSubscriber != undefined) {
+        this.getWishlistSubscriber.unsubscribe();
+      }
+      this.wishlistEmitter.emit({
+        Data: [],
+      });
+    }
   }
   getWishlistSubscriber!: any;
   getWishlistFunc!: any;
-  ngOnInit(): void {}
   wishlistEmitter: EventEmitter<any> = new EventEmitter();
   ss!: Observable<any>;
   AddRemoveFromWishlist(userId: any, hotelId: string) {
